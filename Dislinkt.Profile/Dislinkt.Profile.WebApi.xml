@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Dislinkt.Profile.WebApi</name>
+    </assembly>
+    <members>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.RegisterUser">
+            <summary>
+            Register new user
+            </summary>
+            <returns>A boolean status of registration</returns>
+        </member>
+    </members>
+</doc>
