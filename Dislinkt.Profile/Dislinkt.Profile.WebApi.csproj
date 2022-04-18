@@ -17,5 +17,9 @@
     <PackageReference Include="Swashbuckle.Core.Extension" Version="1.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Dislinkt.Profile.Application\Dislinkt.Profile.Application.csproj" />
+  </ItemGroup>
+
 
 </Project>

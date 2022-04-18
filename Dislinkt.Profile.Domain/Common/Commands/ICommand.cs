@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dislinkt.Profile.Application
+namespace Dislinkt.Profile.Domain.Common.Commands
 {
-    public class Class1
+    public interface ICommand
     {
     }
 }
