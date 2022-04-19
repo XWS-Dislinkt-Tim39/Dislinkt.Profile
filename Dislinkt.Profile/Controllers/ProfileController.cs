@@ -1,9 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Dislinkt.Profile.Application;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Dislinkt.Profile.WebApi.Controllers
 {
@@ -16,7 +13,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// </summary>
         /// <returns>A boolean status of registration</returns>
         [HttpPost]
-        public bool RegisterUser()
+        public bool RegisterUser(UserData userData)
         {
             return false;
         }

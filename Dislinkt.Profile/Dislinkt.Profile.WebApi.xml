@@ -4,7 +4,7 @@
         <name>Dislinkt.Profile.WebApi</name>
     </assembly>
     <members>
-        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.RegisterUser">
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.RegisterUser(Dislinkt.Profile.Application.UserData)">
             <summary>
             Register new user
             </summary>
