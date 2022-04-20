@@ -4,11 +4,12 @@
         <name>Dislinkt.Profile.WebApi</name>
     </assembly>
     <members>
-        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.RegisterUser(Dislinkt.Profile.Application.UserData)">
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.RegisterUserAsync(Dislinkt.Profile.UserData)">
             <summary>
             Register new user
             </summary>
             <returns>A boolean status of registration</returns>
+            /// <param name="userData">for user</param>
         </member>
     </members>
 </doc>

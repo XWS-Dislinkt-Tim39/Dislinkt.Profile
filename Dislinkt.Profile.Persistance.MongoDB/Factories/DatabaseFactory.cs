@@ -6,8 +6,8 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Factories
     {
         public IMongoDatabase Create()
         {
-            var mongoClient = new MongoClient("MongoSettings:ConnectionString");
-            return mongoClient.GetDatabase("MongoSettings:DatabaseName"); 
+            var mongoClient = new MongoClient("mongodb+srv://aleksandramitro:SifrazaMongo99!@cluster0.qmuvt.mongodb.net/xml?retryWrites=true&w=majority");
+            return mongoClient.GetDatabase("xml"); 
         }
     }
 }

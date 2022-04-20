@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
-namespace Dislinkt.Profile.Application
+namespace Dislinkt.Profile
 {
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum GenderData
     {
         /// <summary>
         /// Male
         /// </summary>
-        Male,
+        Male = 0,
         /// <summary>
         /// Female
         /// </summary>
-        Female
+        Female = 1
     }
 }
