@@ -56,6 +56,8 @@
     <Compile Include="SignUpUser\Commands\SignUpHandler.cs" />
     <Compile Include="UpdateUser\Commands\UpdateUserCommand.cs" />
     <Compile Include="UpdateUser\Commands\UpdateUserHandler.cs" />
+    <Compile Include="WorkExperiences\WorkExcperienceHandler.cs" />
+    <Compile Include="WorkExperiences\WorkExperienceCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dislinkt.Profile.Application\Dislinkt.Profile.csproj">

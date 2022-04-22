@@ -26,6 +26,15 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
             await _queryExecutor.UpdateAsync(filter, update);
         }
 
+        public async Task AddWorkExperienceAsync(User user)
+        {
+            var filter = Builders<UserEntity>.Filter.Eq(u => u.Id, user.Id);
+
+            var update = Builders<UserEntity>.Update.Set(u => u.WorkExperiences, WorkExperienceEntity.ToWorkExperienceEntities(user.WorkExperiences));
+
+            await _queryExecutor.UpdateAsync(filter, update);
+        }
+
         public async Task CreateUserAsync(User user)
         {
            try
