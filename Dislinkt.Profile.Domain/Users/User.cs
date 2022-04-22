@@ -5,25 +5,7 @@ namespace Dislinkt.Profile.Domain.Users
     public class User
     {
         public User(Guid id, string firstName, string lastName, string username, string emailAddress, string password, DateTime dateOfBirth, 
-            string address, string city, string country, string  phoneNumber, Gender gender, bool isApproved, VisibilityStatus visibilityStatus)
-        {
-            Id = id;
-            FirstName = firstName;
-            LastName = lastName;
-            Username = username;
-            EmailAddress = emailAddress;
-            Password = password;
-            DateOfBirth = dateOfBirth;
-            Address = address;
-            City = city;
-            Country = country;
-            PhoneNumber = phoneNumber;
-            Gender = gender;
-            IsApproved = isApproved;
-            Status = visibilityStatus;
-        }
-        public User(Guid id, string firstName, string lastName, string username, string emailAddress, string password, DateTime dateOfBirth,
-            string address, string city, string country, string phoneNumber, Gender gender, bool isApproved, VisibilityStatus visibilityStatus, Education[] educations)
+            string address, string city, string country, string  phoneNumber, Gender gender, bool isApproved, VisibilityStatus visibilityStatus, Education[] educations, WorkExperience[] workExperiences)
         {
             Id = id;
             FirstName = firstName;
@@ -40,6 +22,7 @@ namespace Dislinkt.Profile.Domain.Users
             IsApproved = isApproved;
             Status = visibilityStatus;
             Educations = educations;
+            WorkExperiences = workExperiences;
         }
         public Guid Id { get; }
         public string FirstName { get; }
@@ -56,5 +39,6 @@ namespace Dislinkt.Profile.Domain.Users
         public bool IsApproved { get; }
         public VisibilityStatus Status { get; }
         public Education[] Educations { get; }
+        public WorkExperience[] WorkExperiences { get; }
     }
 }

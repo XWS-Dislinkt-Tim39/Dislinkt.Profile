@@ -16,6 +16,16 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
         {
             _queryExecutor = queryExecutor;
         }
+
+        public async Task AddEducationAsync(User user)
+        {
+            var filter = Builders<UserEntity>.Filter.Eq(u => u.Id, user.Id);
+
+            var update = Builders<UserEntity>.Update.Set(u => u.Educations, EducationEntity.ToEducationEntities(user.Educations));
+
+            await _queryExecutor.UpdateAsync(filter, update);
+        }
+
         public async Task CreateUserAsync(User user)
         {
            try

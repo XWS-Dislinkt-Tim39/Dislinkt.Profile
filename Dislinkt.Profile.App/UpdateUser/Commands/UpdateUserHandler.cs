@@ -22,7 +22,7 @@ namespace Dislinkt.Profile.App.UpdateUser.Commands
 
             var updatedUser = new User(request.Request.Id, request.Request.FirstName, request.Request.LastName, request.Request.UserName,
                 request.Request.EmailAddress, existingUser.Password, request.Request.DateOfBirth, existingUser.Address, existingUser.City,
-                existingUser.Country, request.Request.PhoneNumber, (Gender)request.Request.Gender, existingUser.IsApproved, existingUser.Status);
+                existingUser.Country, request.Request.PhoneNumber, (Gender)request.Request.Gender, existingUser.IsApproved, existingUser.Status, existingUser.Educations, existingUser.WorkExperiences);
 
             await _userRepository.UpdateUserAsync(updatedUser);
 

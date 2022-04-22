@@ -1,4 +1,5 @@
 ﻿using Dislinkt.Profile.Core.Repositories;
+using Dislinkt.Profile.Domain.Users;
 using MediatR;
 using System;
 using System.Net;
@@ -28,7 +29,7 @@ namespace Dislinkt.Profile.App.RegisterUser.Commands
 
             await _userRepository.CreateUserAsync(new Domain.Users.User(Guid.NewGuid(), request.Request.FirstName, request.Request.LastName, request.Request.Username,
                 request.Request.EmailAddress, request.Request.Password, request.Request.DateOfBirth, request.Request.Address, request.Request.City, request.Request.Country,
-                request.Request.PhoneNumber, (Domain.Users.Gender)request.Request.Gender, false, Domain.Users.VisibilityStatus.Public));
+                request.Request.PhoneNumber, (Domain.Users.Gender)request.Request.Gender, false, Domain.Users.VisibilityStatus.Public, Array.Empty<Education>(), Array.Empty<WorkExperience>()));
 
             SendEmailViaWebApi(request.Request.EmailAddress);
             return true;
