@@ -2,6 +2,7 @@
 using Dislinkt.Profile.App.RegisterUser.Commands;
 using Dislinkt.Profile.App.SignUpUser.Commands;
 using Dislinkt.Profile.App.UpdateUser.Commands;
+using Dislinkt.Profile.App.WorkExperiences;
 using Dislinkt.Profile.Application;
 using Dislinkt.Profile.Domain.Users;
 using MediatR;
@@ -53,6 +54,18 @@ namespace Dislinkt.Profile.WebApi.Controllers
         public async Task<bool> AddEducation(EducationData educationData)
         {
             return await _mediator.Send(new EducationCommand(educationData));
+
+        }
+        /// <summary>
+        /// Add work experience
+        /// </summary>
+        /// <returns>A boolean status of adding work experience to user</returns>
+        /// /// <param name="workExperienceData">for user</param>
+        [HttpPost]
+        [Route("/add-work-experience")]
+        public async Task<bool> AddWorkExperience(WorkExperienceData workExperienceData)
+        {
+            return await _mediator.Send(new WorkExperienceCommand(workExperienceData));
 
         }
         /// <summary>
