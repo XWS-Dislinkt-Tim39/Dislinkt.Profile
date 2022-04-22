@@ -40,6 +40,9 @@
     <Reference Include="DnsClient, Version=1.6.0.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL">
       <HintPath>..\packages\DnsClient.1.6.0\lib\net471\DnsClient.dll</HintPath>
     </Reference>
+    <Reference Include="MediatR, Version=8.0.0.0, Culture=neutral, PublicKeyToken=bb9a41a5e8aaa7e2, processorArchitecture=MSIL">
+      <HintPath>..\packages\MediatR.8.1.0\lib\net461\MediatR.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -155,11 +158,22 @@
     <Compile Include="Common\MongoSettings.cs" />
     <Compile Include="Common\QueryExecutor.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\UserEntity.cs" />
     <Compile Include="Factories\DatabaseFactory.cs" />
     <Compile Include="Factories\IDatabaseFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Dislinkt.Profile.Core\Dislinkt.Profile.Core.csproj">
+      <Project>{9F19F507-05BA-487A-85A7-1147E89E00E3}</Project>
+      <Name>Dislinkt.Profile.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dislinkt.Profile.Domain\Dislinkt.Profile.Domain.csproj">
+      <Project>{B5BD2D77-030C-47BF-9B1B-B155B136535C}</Project>
+      <Name>Dislinkt.Profile.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Core\Compression\Snappy\lib\linux\libsnappy64.so" />

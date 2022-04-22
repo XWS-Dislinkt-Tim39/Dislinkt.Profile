@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B5BD2D77-030C-47BF-9B1B-B155B136535C}</ProjectGuid>
+    <ProjectGuid>{25D1E3FA-7351-4C4C-9ADA-D83690C5B2C7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Dislinkt.Profile.Domain</RootNamespace>
-    <AssemblyName>Dislinkt.Profile.Domain</AssemblyName>
+    <RootNamespace>Dislinkt.Profile.App</RootNamespace>
+    <AssemblyName>Dislinkt.Profile.App</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,15 +31,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <HintPath>..\packages\Castle.Core.4.4.1\lib\net45\Castle.Core.dll</HintPath>
-    </Reference>
     <Reference Include="MediatR, Version=8.0.0.0, Culture=neutral, PublicKeyToken=bb9a41a5e8aaa7e2, processorArchitecture=MSIL">
       <HintPath>..\packages\MediatR.8.1.0\lib\net461\MediatR.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,13 +46,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Commands\ICommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Users\Gender.cs" />
-    <Compile Include="Users\User.cs" />
-    <Compile Include="Users\VisibilityStatus.cs" />
+    <Compile Include="RegisterUser\Commands\RegisterUserCommand.cs" />
+    <Compile Include="RegisterUser\Commands\RegisterUserHandler.cs" />
+    <Compile Include="SignUpUser\Commands\SignUpCommand.cs" />
+    <Compile Include="SignUpUser\Commands\SignUpHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dislinkt.Profile.Application\Dislinkt.Profile.csproj">
+      <Project>{A0D5730E-58A0-475C-852C-E4282FDCF172}</Project>
+      <Name>Dislinkt.Profile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dislinkt.Profile.Core\Dislinkt.Profile.Core.csproj">
+      <Project>{9F19F507-05BA-487A-85A7-1147E89E00E3}</Project>
+      <Name>Dislinkt.Profile.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dislinkt.Profile.Domain\Dislinkt.Profile.Domain.csproj">
+      <Project>{B5BD2D77-030C-47BF-9B1B-B155B136535C}</Project>
+      <Name>Dislinkt.Profile.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

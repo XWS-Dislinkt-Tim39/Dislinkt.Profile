@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Dislinkt.Profile.Application
+﻿
+namespace Dislinkt.Profile
 {
     public class UserData
     {
-        /// <summary>
-        /// User id
-        /// </summary>
-        public Guid Id { get; set; }
         /// <summary>
         /// First name
         /// </summary>
@@ -48,13 +39,6 @@ namespace Dislinkt.Profile.Application
         /// Gender
         /// </summary>
         public GenderData Gender { get; set; }
-        /// <summary>
-        /// Is approved profile
-        /// </summary>
-        public bool IsApproved { get; set; }
-        /// <summary>
-        /// Visibility of user profile
-        /// </summary>
-        public VisibilityStatusData Status { get; set; }
+
     }
 }

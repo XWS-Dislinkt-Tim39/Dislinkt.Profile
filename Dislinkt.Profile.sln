@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Profile.WebApi", "Dislinkt.Profile\Dislinkt.Profile.WebApi.csproj", "{2F32EC39-3158-4E58-B257-0AEC469B1A23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dislinkt.Profile.WebApi", "Dislinkt.Profile\Dislinkt.Profile.WebApi.csproj", "{2F32EC39-3158-4E58-B257-0AEC469B1A23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Profile.Application", "Dislinkt.Profile.Application\Dislinkt.Profile.Application.csproj", "{A0D5730E-58A0-475C-852C-E4282FDCF172}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Profile", "Dislinkt.Profile.Application\Dislinkt.Profile.csproj", "{A0D5730E-58A0-475C-852C-E4282FDCF172}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Profile.Domain", "Dislinkt.Profile.Domain\Dislinkt.Profile.Domain.csproj", "{B5BD2D77-030C-47BF-9B1B-B155B136535C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Profile.Persistance.MongoDB", "Dislinkt.Profile.Persistance.MongoDB\Dislinkt.Profile.Persistance.MongoDB.csproj", "{0BD532DA-C8C8-4579-88AC-EE8AD5379D67}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Profile.Core", "Dislinkt.Profile.Core\Dislinkt.Profile.Core.csproj", "{9F19F507-05BA-487A-85A7-1147E89E00E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Profile.App", "Dislinkt.Profile.App\Dislinkt.Profile.App.csproj", "{25D1E3FA-7351-4C4C-9ADA-D83690C5B2C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{9F19F507-05BA-487A-85A7-1147E89E00E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F19F507-05BA-487A-85A7-1147E89E00E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F19F507-05BA-487A-85A7-1147E89E00E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25D1E3FA-7351-4C4C-9ADA-D83690C5B2C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25D1E3FA-7351-4C4C-9ADA-D83690C5B2C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25D1E3FA-7351-4C4C-9ADA-D83690C5B2C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25D1E3FA-7351-4C4C-9ADA-D83690C5B2C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
