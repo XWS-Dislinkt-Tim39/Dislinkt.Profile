@@ -37,6 +37,17 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
             return result?.AsEnumerable()?.FirstOrDefault(u => u.EmailAddress == emailAddress)?.ToUser() ?? null;
         }
 
+        public async Task<User> GetByEmailAddressAndPassword(string emailAddress, string password)
+        {
+            var filter = Builders<UserEntity>.Filter.Eq(u => u.EmailAddress, emailAddress)
+                & Builders<UserEntity>.Filter.Eq(u => u.Password, password)
+                & Builders<UserEntity>.Filter.Eq(u => u.IsApproved, true);
+
+            var result = await _queryExecutor.FindAsync(filter);
+
+            return result?.AsEnumerable()?.FirstOrDefault(u => u.EmailAddress == emailAddress)?.ToUser() ?? null;
+        }
+
         private UserEntity ToUserEntity(User user)
         {
             return new UserEntity

@@ -36,6 +36,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,6 +50,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterUser\Commands\RegisterUserCommand.cs" />
     <Compile Include="RegisterUser\Commands\RegisterUserHandler.cs" />
+    <Compile Include="SignUpUser\Commands\SignUpCommand.cs" />
+    <Compile Include="SignUpUser\Commands\SignUpHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dislinkt.Profile.Application\Dislinkt.Profile.csproj">
@@ -66,5 +70,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

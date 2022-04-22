@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace Dislinkt.Profile
 {
     public class UserData
