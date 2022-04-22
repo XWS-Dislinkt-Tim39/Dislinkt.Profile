@@ -160,6 +160,7 @@
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\EducationEntity.cs" />
     <Compile Include="Entities\UserEntity.cs" />
+    <Compile Include="Entities\WorkExperienceEntity.cs" />
     <Compile Include="Factories\DatabaseFactory.cs" />
     <Compile Include="Factories\IDatabaseFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

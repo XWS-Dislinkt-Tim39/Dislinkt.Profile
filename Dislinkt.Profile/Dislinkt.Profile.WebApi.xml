@@ -18,6 +18,13 @@
             <returns>Updated user</returns>
             /// <param name="updateUserData">for user</param>
         </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.AddEducation(Dislinkt.Profile.EducationData)">
+            <summary>
+            Add education
+            </summary>
+            <returns>A boolean status of adding education to user</returns>
+            /// <param name="educationData">for user</param>
+        </member>
         <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.SignUpUserAsync(System.String,System.String)">
             <summary>
             Sign up user

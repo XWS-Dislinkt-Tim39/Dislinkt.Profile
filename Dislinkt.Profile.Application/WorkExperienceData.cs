@@ -1,21 +1,21 @@
 ﻿using System;
 
-namespace Dislinkt.Profile
+namespace Dislinkt.Profile.Application
 {
-    public class EducationData
+    public class WorkExperienceData
     {
         /// <summary>
         /// User id
         /// </summary>
         public Guid UserId { get; set; }
         /// <summary>
-        /// Name of school
+        /// Name of company
         /// </summary>
-        public string NameOfSchool { get; set; }
+        public string NameOfCompany { get; set; }
         /// <summary>
-        /// Field of study
+        /// Field of work
         /// </summary>
-        public string FieldOfStudy { get; set; }
+        public string FieldOfWork { get; set; }
         /// <summary>
         /// Start date
         /// </summary>

@@ -6,6 +6,7 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Entities
 {
     public class EducationEntity : BaseEntity
     {
+        public Guid UserId { get; set; }
         public string NameOfSchool { get; set; }
         public string FieldOfStudy { get; set; }
         public DateTime StartDate { get; set; }
@@ -18,6 +19,7 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Entities
             return new EducationEntity
             {
                 Id = education.Id,
+                UserId = education.UserId,
                 NameOfSchool = education.NameOfSchool,
                 FieldOfStudy = education.FieldOfStudy,
                 StartDate = education.StartDate,
@@ -27,7 +29,7 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Entities
         }
         public Education ToEducation()
         {
-            return new Education(this.Id, this.NameOfSchool, this.FieldOfStudy, this.StartDate, this.EndDate, this.Description);
+            return new Education(this.Id, this.UserId, this.NameOfSchool, this.FieldOfStudy, this.StartDate, this.EndDate, this.Description);
         }
     }
 }

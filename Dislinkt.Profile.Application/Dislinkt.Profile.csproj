@@ -54,6 +54,7 @@
     <Compile Include="VisibilityStatusData.cs" />
     <Compile Include="UserData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkExperienceData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

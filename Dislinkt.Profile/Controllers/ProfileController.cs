@@ -1,4 +1,5 @@
-﻿using Dislinkt.Profile.App.RegisterUser.Commands;
+﻿using Dislinkt.Profile.App.Educations.Commands;
+using Dislinkt.Profile.App.RegisterUser.Commands;
 using Dislinkt.Profile.App.SignUpUser.Commands;
 using Dislinkt.Profile.App.UpdateUser.Commands;
 using Dislinkt.Profile.Application;
@@ -40,6 +41,18 @@ namespace Dislinkt.Profile.WebApi.Controllers
         public async Task<User> UpdateUserAsync(UpdateUserData updateUserData)
         {
             return await _mediator.Send(new UpdateUserCommand(updateUserData));
+
+        }
+        /// <summary>
+        /// Add education
+        /// </summary>
+        /// <returns>A boolean status of adding education to user</returns>
+        /// /// <param name="educationData">for user</param>
+        [HttpPost]
+        [Route("/add-education")]
+        public async Task<bool> AddEducation(EducationData educationData)
+        {
+            return await _mediator.Send(new EducationCommand(educationData));
 
         }
         /// <summary>

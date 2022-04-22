@@ -22,29 +22,8 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Entities
         public bool IsApproved { get; set; }
         public VisibilityStatus Status { get; set; }
         public EducationEntity[] Educations { get; set; } 
-        public UserEntity ToUserEntity(User user)
-        {
-            return new UserEntity
-            {
-                Id = user.Id,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Username = user.Username,
-                EmailAddress = user.EmailAddress,
-                Password = user.Password,
-                DateOfBirth = user.DateOfBirth,
-                Address = user.Address,
-                City = user.City,
-                Country = user.Country,
-                PhoneNumber = user.PhoneNumber,
-                Gender = user.Gender,
-                IsApproved = user.IsApproved,
-                Status = user.Status
-            };
-        }
-        public User ToUser()
-            => new User(this.Id, this.FirstName, this.LastName, this.Username, this.EmailAddress, this.Password, this.DateOfBirth, this.Address, this.City, this.Country, this.PhoneNumber, this.Gender, this.IsApproved, this.Status);
-        public static UserEntity ToUserEntityWithEducation(User user)
+        public WorkExperienceEntity[] WorkExperiences { get; set; }
+        public static UserEntity ToUserEntity(User user)
         {
             return new UserEntity
             {
@@ -62,12 +41,12 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Entities
                 Gender = user.Gender,
                 IsApproved = user.IsApproved,
                 Status = user.Status,
-                Educations = user.Educations.Select(p => EducationEntity.ToEducationEntity(p)).ToArray()
+                Educations = EducationEntity.ToEducationEntities(user.Educations),
+                WorkExperiences = WorkExperienceEntity.ToWorkExperienceEntities(user.WorkExperiences)
             };
         }
-        public  User ToUserWithEducation()
-            => new User(this.Id, this.FirstName, this.LastName, this.Username, this.EmailAddress, this.Password, this.DateOfBirth, this.Address, this.City, this.Country, this.PhoneNumber, this.Gender, this.IsApproved, this.Status, this.Educations.Select(p => p.ToEducation()).ToArray());
-
+        public User ToUser()
+            => new User(this.Id, this.FirstName, this.LastName, this.Username, this.EmailAddress, this.Password, this.DateOfBirth, this.Address, this.City, this.Country, this.PhoneNumber, this.Gender, this.IsApproved, this.Status, this.Educations.Select(p => p.ToEducation()).ToArray(), this.WorkExperiences.Select(p => p.ToWorkExperience()).ToArray());
 
     }
 }
