@@ -158,6 +158,7 @@
     <Compile Include="Common\MongoSettings.cs" />
     <Compile Include="Common\QueryExecutor.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\EducationEntity.cs" />
     <Compile Include="Entities\UserEntity.cs" />
     <Compile Include="Factories\DatabaseFactory.cs" />
     <Compile Include="Factories\IDatabaseFactory.cs" />

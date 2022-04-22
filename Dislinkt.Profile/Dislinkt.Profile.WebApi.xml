@@ -11,6 +11,13 @@
             <returns>A boolean status of registration</returns>
             /// <param name="userData">for user</param>
         </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.UpdateUserAsync(Dislinkt.Profile.Application.UpdateUserData)">
+            <summary>
+            Update existing user
+            </summary>
+            <returns>Updated user</returns>
+            /// <param name="updateUserData">for user</param>
+        </member>
         <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.SignUpUserAsync(System.String,System.String)">
             <summary>
             Sign up user

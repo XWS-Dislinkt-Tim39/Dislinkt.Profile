@@ -19,15 +19,15 @@ namespace Dislinkt.Profile.App.RegisterUser.Commands
        
         public async Task<bool> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
         {
-            var existingUser = await _userRepository.GetByEmailAddress(request.Request.EmailAddress);
+            var existingUser = await _userRepository.GetByEmailAddressAsync(request.Request.EmailAddress);
 
             if(existingUser != null)
             {
                 return false;
             }
 
-            await _userRepository.CreateUser(new Domain.Users.User(Guid.NewGuid(), request.Request.FirstName, request.Request.LastName,
-                request.Request.EmailAddress, request.Request.Password, request.Request.Address, request.Request.City, request.Request.Country,
+            await _userRepository.CreateUserAsync(new Domain.Users.User(Guid.NewGuid(), request.Request.FirstName, request.Request.LastName, request.Request.Username,
+                request.Request.EmailAddress, request.Request.Password, request.Request.DateOfBirth, request.Request.Address, request.Request.City, request.Request.Country,
                 request.Request.PhoneNumber, (Domain.Users.Gender)request.Request.Gender, false, Domain.Users.VisibilityStatus.Public));
 
             SendEmailViaWebApi(request.Request.EmailAddress);

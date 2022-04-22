@@ -52,6 +52,8 @@
     <Compile Include="RegisterUser\Commands\RegisterUserHandler.cs" />
     <Compile Include="SignUpUser\Commands\SignUpCommand.cs" />
     <Compile Include="SignUpUser\Commands\SignUpHandler.cs" />
+    <Compile Include="UpdateUser\Commands\UpdateUserCommand.cs" />
+    <Compile Include="UpdateUser\Commands\UpdateUserHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dislinkt.Profile.Application\Dislinkt.Profile.csproj">
@@ -70,6 +72,8 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Education\Commands\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

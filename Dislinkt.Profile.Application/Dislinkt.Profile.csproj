@@ -50,6 +50,7 @@
     <Compile Include="EducationData.cs" />
     <Compile Include="GenderData.cs" />
     <Compile Include="SignUpData.cs" />
+    <Compile Include="UpdateUserData.cs" />
     <Compile Include="VisibilityStatusData.cs" />
     <Compile Include="UserData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
