@@ -1,6 +1,8 @@
 ﻿using Dislinkt.Profile.App.Educations.Commands;
 using Dislinkt.Profile.App.RegisterUser.Commands;
 using Dislinkt.Profile.App.SignUpUser.Commands;
+using Dislinkt.Profile.App.Skills.Commands.AddSkillToUser;
+using Dislinkt.Profile.App.Skills.Commands.NewSkills;
 using Dislinkt.Profile.App.UpdateUser.Commands;
 using Dislinkt.Profile.App.WorkExperiences;
 using Dislinkt.Profile.Application;
@@ -66,6 +68,30 @@ namespace Dislinkt.Profile.WebApi.Controllers
         public async Task<bool> AddWorkExperience(WorkExperienceData workExperienceData)
         {
             return await _mediator.Send(new WorkExperienceCommand(workExperienceData));
+
+        }
+        /// <summary>
+        /// Add new skill
+        /// </summary>
+        /// <returns>A boolean status of adding skill to user</returns>
+        /// /// <param name="skillAddedData">for user</param>
+        [HttpPost]
+        [Route("/add-new-skill")]
+        public async Task<bool> AddNewSkill(SkillAddedData skillAddedData)
+        {
+            return await _mediator.Send(new NewSkillCommand(skillAddedData));
+
+        }
+        /// <summary>
+        /// Add existing skill
+        /// </summary>
+        /// <returns>A boolean status of adding skill to user</returns>
+        /// /// <param name="skillData">for user</param>
+        [HttpPost]
+        [Route("/add-skill")]
+        public async Task<bool> AddSkill(SkillData skillData)
+        {
+            return await _mediator.Send(new AddSkillToUserCommand(skillData));
 
         }
         /// <summary>

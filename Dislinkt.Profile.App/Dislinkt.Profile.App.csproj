@@ -54,6 +54,10 @@
     <Compile Include="RegisterUser\Commands\RegisterUserHandler.cs" />
     <Compile Include="SignUpUser\Commands\SignUpCommand.cs" />
     <Compile Include="SignUpUser\Commands\SignUpHandler.cs" />
+    <Compile Include="Skills\Commands\AddSkillToUser\AddSkillToUserCommand.cs" />
+    <Compile Include="Skills\Commands\AddSkillToUser\AddSkillToUserHandler.cs" />
+    <Compile Include="Skills\Commands\NewSkills\NewSkillCommand.cs" />
+    <Compile Include="Skills\Commands\NewSkills\NewSkillHandler.cs" />
     <Compile Include="UpdateUser\Commands\UpdateUserCommand.cs" />
     <Compile Include="UpdateUser\Commands\UpdateUserHandler.cs" />
     <Compile Include="WorkExperiences\WorkExcperienceHandler.cs" />

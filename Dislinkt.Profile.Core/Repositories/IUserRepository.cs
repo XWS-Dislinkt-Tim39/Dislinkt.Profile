@@ -13,5 +13,6 @@ namespace Dislinkt.Profile.Core.Repositories
         Task UpdateUserAsync(User user);
         Task AddEducationAsync(User user);
         Task AddWorkExperienceAsync(User user);
+        Task AddSkillAsync(User user);
     }
 }

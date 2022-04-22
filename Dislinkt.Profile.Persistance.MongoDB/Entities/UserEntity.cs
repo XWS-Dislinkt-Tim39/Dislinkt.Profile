@@ -23,6 +23,7 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Entities
         public VisibilityStatus Status { get; set; }
         public EducationEntity[] Educations { get; set; } 
         public WorkExperienceEntity[] WorkExperiences { get; set; }
+        public Guid[] Skills { get; set; }
         public static UserEntity ToUserEntity(User user)
         {
             return new UserEntity
@@ -42,11 +43,15 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Entities
                 IsApproved = user.IsApproved,
                 Status = user.Status,
                 Educations = EducationEntity.ToEducationEntities(user.Educations),
-                WorkExperiences = WorkExperienceEntity.ToWorkExperienceEntities(user.WorkExperiences)
+                WorkExperiences = WorkExperienceEntity.ToWorkExperienceEntities(user.WorkExperiences),
+                Skills = user.Skills
             };
         }
         public User ToUser()
-            => new User(this.Id, this.FirstName, this.LastName, this.Username, this.EmailAddress, this.Password, this.DateOfBirth, this.Address, this.City, this.Country, this.PhoneNumber, this.Gender, this.IsApproved, this.Status, this.Educations.Select(p => p.ToEducation()).ToArray(), this.WorkExperiences.Select(p => p.ToWorkExperience()).ToArray());
+            => new User(this.Id, this.FirstName, this.LastName, this.Username, this.EmailAddress, this.Password,
+                this.DateOfBirth, this.Address, this.City, this.Country, this.PhoneNumber, this.Gender, this.IsApproved, 
+                this.Status, this.Educations.Select(p => p.ToEducation()).ToArray(), 
+                this.WorkExperiences.Select(p => p.ToWorkExperience()).ToArray(), this.Skills);
 
     }
 }

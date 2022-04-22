@@ -32,6 +32,20 @@
             <returns>A boolean status of adding work experience to user</returns>
             /// <param name="workExperienceData">for user</param>
         </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.AddNewSkill(Dislinkt.Profile.Application.SkillAddedData)">
+            <summary>
+            Add new skill
+            </summary>
+            <returns>A boolean status of adding skill to user</returns>
+            /// <param name="skillAddedData">for user</param>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.AddSkill(Dislinkt.Profile.Application.SkillData)">
+            <summary>
+            Add existing skill
+            </summary>
+            <returns>A boolean status of adding skill to user</returns>
+            /// <param name="skillData">for user</param>
+        </member>
         <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.SignUpUserAsync(System.String,System.String)">
             <summary>
             Sign up user
