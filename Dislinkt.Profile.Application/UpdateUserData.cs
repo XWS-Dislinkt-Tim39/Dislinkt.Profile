@@ -1,10 +1,13 @@
-﻿
-using System;
+﻿using System;
 
-namespace Dislinkt.Profile
+namespace Dislinkt.Profile.Application
 {
-    public class UserData
+    public class UpdateUserData
     {
+        /// <summary>
+        /// Id
+        /// </summary>
+        public Guid Id { get; set; }
         /// <summary>
         /// First name
         /// </summary>
@@ -16,39 +19,22 @@ namespace Dislinkt.Profile
         /// <summary>
         /// User name
         /// </summary>
-        public string Username { get; set; }
+        public string UserName { get; set; }
         /// <summary>
         /// Email address
         /// </summary>
         public string EmailAddress { get; set; }
         /// <summary>
-        /// Password
+        /// Phone number
         /// </summary>
-        public string Password { get; set; }
-        /// <summary>
-        /// Address
-        /// </summary>
-        public string Address { get; set; }
+        public string PhoneNumber { get; set; }
         /// <summary>
         /// Date of birth
         /// </summary>
         public DateTime DateOfBirth { get; set; }
         /// <summary>
-        /// City
-        /// </summary>
-        public string City { get; set; }
-        /// <summary>
-        /// Country
-        /// </summary>
-        public string Country { get; set; }
-        /// <summary>
-        /// Phone number
-        /// </summary>
-        public string PhoneNumber { get; set; }
-        /// <summary>
         /// Gender
         /// </summary>
         public GenderData Gender { get; set; }
-
     }
 }

@@ -5,6 +5,7 @@ using Dislinkt.Profile.Persistance.MongoDB.Entities;
 using MongoDB.Driver;
 using System.Threading.Tasks;
 using System.Linq;
+using System;
 
 namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
 {
@@ -15,7 +16,7 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
         {
             _queryExecutor = queryExecutor;
         }
-        public async Task CreateUser(User user)
+        public async Task CreateUserAsync(User user)
         {
            try
            {
@@ -28,7 +29,7 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
 
         }
 
-        public async Task<User> GetByEmailAddress(string emailAddress)
+        public async Task<User> GetByEmailAddressAsync(string emailAddress)
         {
             var filter = Builders<UserEntity>.Filter.Eq(u => u.EmailAddress, emailAddress);
 
@@ -37,7 +38,15 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
             return result?.AsEnumerable()?.FirstOrDefault(u => u.EmailAddress == emailAddress)?.ToUser() ?? null;
         }
 
-        public async Task<User> GetByEmailAddressAndPassword(string emailAddress, string password)
+        public async Task<User> GetById(Guid id)
+        {
+
+            var result = await _queryExecutor.FindByIdAsync<UserEntity>(id);
+
+            return result?.ToUser() ?? null;
+        }
+
+        public async Task<User> GetUserByEmailAddressAndPasswordAsync(string emailAddress, string password)
         {
             var filter = Builders<UserEntity>.Filter.Eq(u => u.EmailAddress, emailAddress)
                 & Builders<UserEntity>.Filter.Eq(u => u.Password, password)
@@ -48,6 +57,20 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
             return result?.AsEnumerable()?.FirstOrDefault(u => u.EmailAddress == emailAddress)?.ToUser() ?? null;
         }
 
+        public async Task UpdateUserAsync(User user)
+        {
+            var filter = Builders<UserEntity>.Filter.Eq(u => u.Id, user.Id);
+
+            var update = Builders<UserEntity>.Update.Set(u => u.FirstName, user.FirstName)
+                .Set(u => u.LastName, user.LastName)
+                .Set(u => u.EmailAddress, user.EmailAddress)
+                .Set(u => u.Gender, user.Gender)
+                .Set(u => u.PhoneNumber, user.PhoneNumber)
+                .Set(u => u.DateOfBirth, user.DateOfBirth);
+
+            await _queryExecutor.UpdateAsync(filter, update);
+        }
+
         private UserEntity ToUserEntity(User user)
         {
             return new UserEntity
@@ -55,8 +78,10 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
                 Id = user.Id,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
+                Username = user.Username,
                 EmailAddress = user.EmailAddress,
                 Password = user.Password,
+                DateOfBirth = user.DateOfBirth,
                 Address = user.Address,
                 City = user.City,
                 Country = user.Country,
