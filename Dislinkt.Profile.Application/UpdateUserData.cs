@@ -17,10 +17,6 @@ namespace Dislinkt.Profile.Application
         /// </summary>
         public string LastName { get; set; }
         /// <summary>
-        /// User name
-        /// </summary>
-        public string UserName { get; set; }
-        /// <summary>
         /// Email address
         /// </summary>
         public string EmailAddress { get; set; }
