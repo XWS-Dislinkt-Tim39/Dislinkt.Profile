@@ -31,7 +31,7 @@ namespace Dislinkt.Profile.App.RegisterUser.Commands
                 request.Request.EmailAddress, request.Request.Password, request.Request.DateOfBirth, request.Request.Address, request.Request.City, request.Request.Country,
                 request.Request.PhoneNumber, (Domain.Users.Gender)request.Request.Gender, 
                 false, Domain.Users.VisibilityStatus.Public, Array.Empty<Education>(), 
-                Array.Empty<WorkExperience>(), Array.Empty<Guid>()));
+                Array.Empty<WorkExperience>(), Array.Empty<Guid>(), Array.Empty<Guid>()));
 
             SendEmailViaWebApi(request.Request.EmailAddress);
             return true;

@@ -49,6 +49,10 @@
     <Compile Include="Common\Commands\ICommand.cs" />
     <Compile Include="Educations\Commands\EducationCommand.cs" />
     <Compile Include="Educations\Commands\EducationHandler.cs" />
+    <Compile Include="Interests\Commands\AddInterestToUser\AddInterestToUserCommand.cs" />
+    <Compile Include="Interests\Commands\AddInterestToUser\AddInterestToUserHandler.cs" />
+    <Compile Include="Interests\Commands\NewInterest\NewInterestCommand.cs" />
+    <Compile Include="Interests\Commands\NewInterest\NewInterestHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterUser\Commands\RegisterUserCommand.cs" />
     <Compile Include="RegisterUser\Commands\RegisterUserHandler.cs" />

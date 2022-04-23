@@ -1,4 +1,6 @@
 ﻿using Dislinkt.Profile.App.Educations.Commands;
+using Dislinkt.Profile.App.Interests.Commands.AddInterestToUser;
+using Dislinkt.Profile.App.Interests.Commands.NewInterest;
 using Dislinkt.Profile.App.RegisterUser.Commands;
 using Dislinkt.Profile.App.SignUpUser.Commands;
 using Dislinkt.Profile.App.Skills.Commands.AddSkillToUser;
@@ -92,6 +94,30 @@ namespace Dislinkt.Profile.WebApi.Controllers
         public async Task<bool> AddSkill(SkillData skillData)
         {
             return await _mediator.Send(new AddSkillToUserCommand(skillData));
+
+        }
+        /// <summary>
+        /// Add new interest
+        /// </summary>
+        /// <returns>A boolean status of adding interest to user</returns>
+        /// /// <param name="interestAddedData">for user</param>
+        [HttpPost]
+        [Route("/add-new-interest")]
+        public async Task<bool> AddNewInterest(InterestAddedData interestAddedData)
+        {
+            return await _mediator.Send(new NewInterestCommand(interestAddedData));
+
+        }
+        /// <summary>
+        /// Add existing interest
+        /// </summary>
+        /// <returns>A boolean status of adding interest to user</returns>
+        /// /// <param name="interestData">for user</param>
+        [HttpPost]
+        [Route("/add-interest")]
+        public async Task<bool> AddInterest(InterestData interestData)
+        {
+            return await _mediator.Send(new AddInterestToUserCommand(interestData));
 
         }
         /// <summary>

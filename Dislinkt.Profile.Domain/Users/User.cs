@@ -6,7 +6,7 @@ namespace Dislinkt.Profile.Domain.Users
     {
         public User(Guid id, string firstName, string lastName, string username, string emailAddress, string password, DateTime dateOfBirth, 
             string address, string city, string country, string  phoneNumber, Gender gender, bool isApproved, VisibilityStatus visibilityStatus, 
-            Education[] educations, WorkExperience[] workExperiences, Guid[] skills)
+            Education[] educations, WorkExperience[] workExperiences, Guid[] skills, Guid[] interests)
         {
             Id = id;
             FirstName = firstName;
@@ -25,6 +25,7 @@ namespace Dislinkt.Profile.Domain.Users
             Educations = educations;
             WorkExperiences = workExperiences;
             Skills = skills;
+            Interests = interests;
         }
         public Guid Id { get; }
         public string FirstName { get; }
@@ -43,5 +44,6 @@ namespace Dislinkt.Profile.Domain.Users
         public Education[] Educations { get; }
         public WorkExperience[] WorkExperiences { get; }
         public Guid[] Skills { get; }
+        public Guid[] Interests { get; }
     }
 }
