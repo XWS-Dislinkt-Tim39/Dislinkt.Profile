@@ -15,7 +15,7 @@ namespace Dislinkt.Profile.App.WorkExperiences
         }
         public async Task<bool> Handle(WorkExperienceCommand request, CancellationToken cancellationToken)
         {
-            var existingUser = await _userRepository.GetById(request.Request.UserId);
+            var existingUser = await _userRepository.GetByIdAsync(request.Request.UserId);
 
             if (existingUser == null) return false;
 

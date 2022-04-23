@@ -55,6 +55,8 @@
     <Compile Include="Interests\Commands\GetAllInterests\GetAllInterestsCommand.cs" />
     <Compile Include="Interests\Commands\NewInterest\NewInterestCommand.cs" />
     <Compile Include="Interests\Commands\NewInterest\NewInterestHandler.cs" />
+    <Compile Include="Interests\Commands\SearchInterests\SearchInterestsCommand.cs" />
+    <Compile Include="Interests\Commands\SearchInterests\SearchInterestsHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterUser\Commands\RegisterUserCommand.cs" />
     <Compile Include="RegisterUser\Commands\RegisterUserHandler.cs" />
@@ -66,10 +68,14 @@
     <Compile Include="Skills\Commands\GetAllSkills\GetAllSkillsHandler.cs" />
     <Compile Include="Skills\Commands\NewSkills\NewSkillCommand.cs" />
     <Compile Include="Skills\Commands\NewSkills\NewSkillHandler.cs" />
+    <Compile Include="Skills\Commands\SearchSkills\SearchSkillsCommand.cs" />
+    <Compile Include="Skills\Commands\SearchSkills\SearchSkillsHandler.cs" />
     <Compile Include="UpdateUser\Commands\UpdateUserCommand.cs" />
     <Compile Include="UpdateUser\Commands\UpdateUserHandler.cs" />
     <Compile Include="Users\Commands\GetAllUsers\GetAllUsersCommand.cs" />
     <Compile Include="Users\Commands\GetAllUsers\GetAllUsersHandler.cs" />
+    <Compile Include="Users\Commands\SearchUsers\SearchUsersCommand.cs" />
+    <Compile Include="Users\Commands\SearchUsers\SearchUsersHander.cs" />
     <Compile Include="WorkExperiences\WorkExcperienceHandler.cs" />
     <Compile Include="WorkExperiences\WorkExperienceCommand.cs" />
   </ItemGroup>

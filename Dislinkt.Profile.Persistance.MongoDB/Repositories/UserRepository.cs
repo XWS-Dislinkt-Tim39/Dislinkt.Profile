@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using System;
 using System.Collections.Generic;
+using MongoDB.Bson;
 
 namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
 {
@@ -67,7 +68,7 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
 
         }
 
-        public async Task<IReadOnlyList<User>> GetAll()
+        public async Task<IReadOnlyList<User>> GetAllAsync()
         {
             var filter = Builders<UserEntity>.Filter.Eq(u => u.IsApproved, true);
 
@@ -85,12 +86,21 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
             return result?.AsEnumerable()?.FirstOrDefault(u => u.EmailAddress == emailAddress)?.ToUser() ?? null;
         }
 
-        public async Task<User> GetById(Guid id)
+        public async Task<User> GetByIdAsync(Guid id)
         {
 
             var result = await _queryExecutor.FindByIdAsync<UserEntity>(id);
 
             return result?.ToUser() ?? null;
+        }
+
+        public async Task<IReadOnlyCollection<User>> GetByUsernameAsync(string username)
+        {
+            var filter = Builders<UserEntity>.Filter.Regex("username", new BsonRegularExpression(username));
+
+            var result = await _queryExecutor.FindAsync(filter);
+
+            return result?.AsEnumerable()?.Select(u => u.ToUser()).ToArray() ?? Array.Empty<User>();
         }
 
         public async Task<User> GetUserByEmailAddressAndPasswordAsync(string emailAddress, string password)

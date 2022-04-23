@@ -21,7 +21,7 @@ namespace Dislinkt.Profile.App.Skills.Commands.NewSkills
             var newSkill = new Domain.Users.Skill(Guid.NewGuid(), request.Request.Name);
             await _skillRepository.AddAsync(newSkill);
 
-            var existingUser = await _userRepository.GetById(request.Request.UserId);
+            var existingUser = await _userRepository.GetByIdAsync(request.Request.UserId);
 
             if (existingUser == null) return false;
 

@@ -16,7 +16,7 @@ namespace Dislinkt.Profile.App.Users.Commands.GetAllUsers
         }
         public async Task<IReadOnlyCollection<User>> Handle(GetAllUsersCommand request, CancellationToken cancellationToken)
         {
-            return await _userRepository.GetAll();
+            return await _userRepository.GetAllAsync();
         }
     }
 }

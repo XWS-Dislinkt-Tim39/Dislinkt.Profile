@@ -21,7 +21,7 @@ namespace Dislinkt.Profile.App.Interests.Commands.NewInterest
             var newInterest = new Domain.Users.Interest(Guid.NewGuid(), request.Request.Name);
             await _interestRepository.AddAsync(newInterest);
 
-            var existingUser = await _userRepository.GetById(request.Request.UserId);
+            var existingUser = await _userRepository.GetByIdAsync(request.Request.UserId);
 
             if (existingUser == null) return false;
 
