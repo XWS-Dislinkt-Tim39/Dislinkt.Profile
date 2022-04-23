@@ -19,12 +19,12 @@ namespace Dislinkt.Profile.App.Skills.Commands.AddSkillToUser
 
             if (existingUser == null) return false;
 
-            var updatedSkills = existingUser.Skills.Append(request.Request.Id);
+            var updatedSkills = existingUser.Skills.Append(request.Request.Id).ToArray();
 
-            await _userRepository.AddWorkExperienceAsync(new Domain.Users.User(existingUser.Id, existingUser.FirstName, existingUser.LastName,
+            await _userRepository.AddSkillAsync(new Domain.Users.User(existingUser.Id, existingUser.FirstName, existingUser.LastName,
                 existingUser.Username, existingUser.EmailAddress, existingUser.Password, existingUser.DateOfBirth, existingUser.Address,
                 existingUser.City, existingUser.Country, existingUser.PhoneNumber, existingUser.Gender, existingUser.IsApproved, existingUser.Status,
-                existingUser.Educations, existingUser.WorkExperiences, updatedSkills.ToArray()));
+                existingUser.Educations, existingUser.WorkExperiences, updatedSkills));
 
             return true;
         }
