@@ -6,6 +6,7 @@ using MongoDB.Driver;
 using System.Threading.Tasks;
 using System.Linq;
 using System;
+using System.Collections.Generic;
 
 namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
 {
@@ -64,6 +65,15 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
                 throw ex;
            }
 
+        }
+
+        public async Task<IReadOnlyList<User>> GetAll()
+        {
+            var filter = Builders<UserEntity>.Filter.Eq(u => u.IsApproved, true);
+
+            var result = await _queryExecutor.FindAsync<UserEntity>(filter);
+
+            return result?.AsEnumerable().Select(u => u.ToUser()).ToArray() ?? Array.Empty<User>();
         }
 
         public async Task<User> GetByEmailAddressAsync(string emailAddress)
