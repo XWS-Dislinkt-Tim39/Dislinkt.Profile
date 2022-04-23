@@ -51,6 +51,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Users\Education.cs" />
     <Compile Include="Users\Gender.cs" />
+    <Compile Include="Users\Interest.cs" />
     <Compile Include="Users\Skill.cs" />
     <Compile Include="Users\User.cs" />
     <Compile Include="Users\VisibilityStatus.cs" />

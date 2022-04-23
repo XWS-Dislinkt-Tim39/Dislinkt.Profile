@@ -63,6 +63,7 @@ namespace Dislinkt.Profile
             services.AddScoped<IQueryExecutor, QueryExecutor>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ISkillRepository, SkillRepository>();
+            services.AddScoped<IInterestRepository, InterestRepository>();
             services.AddScoped<MongoDbContext>();
 
             BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));

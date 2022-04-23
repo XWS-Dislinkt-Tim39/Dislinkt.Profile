@@ -46,6 +46,20 @@
             <returns>A boolean status of adding skill to user</returns>
             /// <param name="skillData">for user</param>
         </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.AddNewInterest(Dislinkt.Profile.Application.InterestAddedData)">
+            <summary>
+            Add new interest
+            </summary>
+            <returns>A boolean status of adding interest to user</returns>
+            /// <param name="interestAddedData">for user</param>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.AddInterest(Dislinkt.Profile.Application.InterestData)">
+            <summary>
+            Add existing interest
+            </summary>
+            <returns>A boolean status of adding interest to user</returns>
+            /// <param name="interestData">for user</param>
+        </member>
         <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.SignUpUserAsync(System.String,System.String)">
             <summary>
             Sign up user
