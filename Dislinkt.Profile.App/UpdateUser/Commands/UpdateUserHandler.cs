@@ -16,7 +16,7 @@ namespace Dislinkt.Profile.App.UpdateUser.Commands
 
         public async Task<User> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
         {
-            var existingUser = await _userRepository.GetById(request.Request.Id);
+            var existingUser = await _userRepository.GetByIdAsync(request.Request.Id);
 
             if (existingUser == null) return null;
 

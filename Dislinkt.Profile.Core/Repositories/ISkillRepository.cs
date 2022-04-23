@@ -7,6 +7,7 @@ namespace Dislinkt.Profile.Core.Repositories
     public interface ISkillRepository
     {
         Task AddAsync(Skill skill);
-        Task<IReadOnlyCollection<Skill>> GetAll();
+        Task<IReadOnlyCollection<Skill>> GetAllAsync();
+        Task<IReadOnlyCollection<Skill>> GetByNameAsync(string name);
     }
 }

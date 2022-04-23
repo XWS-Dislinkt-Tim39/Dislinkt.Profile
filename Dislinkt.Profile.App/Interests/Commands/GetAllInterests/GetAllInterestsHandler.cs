@@ -18,7 +18,7 @@ namespace Dislinkt.Profile.App.Interests.Commands.GetAllInterests
 
         public async Task<IReadOnlyCollection<Interest>> Handle(GetAllInterestsCommand request, CancellationToken cancellationToken)
         {
-            return await _interestsRepository.GetAll();
+            return await _interestsRepository.GetAllAsync();
         }
     }
 }

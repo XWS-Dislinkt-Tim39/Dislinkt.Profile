@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 using System;
+using MongoDB.Bson;
 
 namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
 {
@@ -30,9 +31,18 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
             }
         }
 
-        public async Task<IReadOnlyCollection<Skill>> GetAll()
+        public async Task<IReadOnlyCollection<Skill>> GetAllAsync()
         {
             var result = await _queryExecutor.GetAll<SkillEntity>();
+
+            return result?.AsEnumerable().Select(s => s.ToSkill()).ToArray() ?? Array.Empty<Skill>();
+        }
+
+        public async Task<IReadOnlyCollection<Skill>> GetByNameAsync(string name)
+        {
+            var filter = Builders<SkillEntity>.Filter.Regex("name", new BsonRegularExpression(name));
+
+            var result = await _queryExecutor.FindAsync(filter);
 
             return result?.AsEnumerable().Select(s => s.ToSkill()).ToArray() ?? Array.Empty<Skill>();
         }

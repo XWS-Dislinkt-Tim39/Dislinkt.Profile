@@ -7,6 +7,7 @@ namespace Dislinkt.Profile.Core.Repositories
     public interface IInterestRepository
     {
         Task AddAsync(Interest interest);
-        Task<IReadOnlyCollection<Interest>> GetAll();
+        Task<IReadOnlyCollection<Interest>> GetAllAsync();
+        Task<IReadOnlyCollection<Interest>> GetAllByNameAsync(string name);
     }
 }

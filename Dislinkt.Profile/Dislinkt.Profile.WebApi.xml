@@ -23,42 +23,42 @@
             Add education
             </summary>
             <returns>A boolean status of adding education to user</returns>
-            /// <param name="educationData">for user</param>
+            /// <param name="educationData">for education</param>
         </member>
         <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.AddWorkExperience(Dislinkt.Profile.Application.WorkExperienceData)">
             <summary>
             Add work experience
             </summary>
             <returns>A boolean status of adding work experience to user</returns>
-            /// <param name="workExperienceData">for user</param>
+            /// <param name="workExperienceData">for work experience</param>
         </member>
         <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.AddNewSkill(Dislinkt.Profile.Application.SkillAddedData)">
             <summary>
             Add new skill
             </summary>
             <returns>A boolean status of adding skill to user</returns>
-            /// <param name="skillAddedData">for user</param>
+            /// <param name="skillAddedData">for skill</param>
         </member>
         <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.AddSkill(Dislinkt.Profile.Application.SkillData)">
             <summary>
             Add existing skill
             </summary>
             <returns>A boolean status of adding skill to user</returns>
-            /// <param name="skillData">for user</param>
+            /// <param name="skillData">for skill</param>
         </member>
         <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.AddNewInterest(Dislinkt.Profile.Application.InterestAddedData)">
             <summary>
             Add new interest
             </summary>
             <returns>A boolean status of adding interest to user</returns>
-            /// <param name="interestAddedData">for user</param>
+            /// <param name="interestAddedData">for interest</param>
         </member>
         <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.AddInterest(Dislinkt.Profile.Application.InterestData)">
             <summary>
             Add existing interest
             </summary>
             <returns>A boolean status of adding interest to user</returns>
-            /// <param name="interestData">for user</param>
+            /// <param name="interestData">for interest</param>
         </member>
         <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.SignUpUserAsync(System.String,System.String)">
             <summary>
@@ -73,6 +73,27 @@
             Get all users
             </summary>
             <returns>Get all users</returns>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.SearchUserAsync(System.String)">
+            <summary>
+            Search users
+            </summary>
+            <returns>Get users by username</returns>
+            /// /// <param name="username">for user</param>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.SearchSkillsAsync(System.String)">
+            <summary>
+            Search skills
+            </summary>
+            <returns>Get skills by name</returns>
+            /// /// <param name="name">for skill</param>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.SearchInterestsAsync(System.String)">
+            <summary>
+            Search interests
+            </summary>
+            <returns>Get interests by name</returns>
+            /// /// <param name="name">for interests</param>
         </member>
         <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.GetAllSkillsAsync">
             <summary>

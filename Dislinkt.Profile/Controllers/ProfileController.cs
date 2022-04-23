@@ -2,13 +2,16 @@
 using Dislinkt.Profile.App.Interests.Commands.AddInterestToUser;
 using Dislinkt.Profile.App.Interests.Commands.GetAllInterests;
 using Dislinkt.Profile.App.Interests.Commands.NewInterest;
+using Dislinkt.Profile.App.Interests.Commands.SearchInterests;
 using Dislinkt.Profile.App.RegisterUser.Commands;
 using Dislinkt.Profile.App.SignUpUser.Commands;
 using Dislinkt.Profile.App.Skills.Commands.AddSkillToUser;
 using Dislinkt.Profile.App.Skills.Commands.GetAllSkills;
 using Dislinkt.Profile.App.Skills.Commands.NewSkills;
+using Dislinkt.Profile.App.Skills.Commands.SearchSkills;
 using Dislinkt.Profile.App.UpdateUser.Commands;
 using Dislinkt.Profile.App.Users.Commands.GetAllUsers;
+using Dislinkt.Profile.App.Users.Commands.SearchUsers;
 using Dislinkt.Profile.App.WorkExperiences;
 using Dislinkt.Profile.Application;
 using Dislinkt.Profile.Domain.Users;
@@ -56,7 +59,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// Add education
         /// </summary>
         /// <returns>A boolean status of adding education to user</returns>
-        /// /// <param name="educationData">for user</param>
+        /// /// <param name="educationData">for education</param>
         [HttpPost]
         [Route("/add-education")]
         public async Task<bool> AddEducation(EducationData educationData)
@@ -68,7 +71,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// Add work experience
         /// </summary>
         /// <returns>A boolean status of adding work experience to user</returns>
-        /// /// <param name="workExperienceData">for user</param>
+        /// /// <param name="workExperienceData">for work experience</param>
         [HttpPost]
         [Route("/add-work-experience")]
         public async Task<bool> AddWorkExperience(WorkExperienceData workExperienceData)
@@ -80,7 +83,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// Add new skill
         /// </summary>
         /// <returns>A boolean status of adding skill to user</returns>
-        /// /// <param name="skillAddedData">for user</param>
+        /// /// <param name="skillAddedData">for skill</param>
         [HttpPost]
         [Route("/add-new-skill")]
         public async Task<bool> AddNewSkill(SkillAddedData skillAddedData)
@@ -92,7 +95,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// Add existing skill
         /// </summary>
         /// <returns>A boolean status of adding skill to user</returns>
-        /// /// <param name="skillData">for user</param>
+        /// /// <param name="skillData">for skill</param>
         [HttpPost]
         [Route("/add-skill")]
         public async Task<bool> AddSkill(SkillData skillData)
@@ -104,7 +107,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// Add new interest
         /// </summary>
         /// <returns>A boolean status of adding interest to user</returns>
-        /// /// <param name="interestAddedData">for user</param>
+        /// /// <param name="interestAddedData">for interest</param>
         [HttpPost]
         [Route("/add-new-interest")]
         public async Task<bool> AddNewInterest(InterestAddedData interestAddedData)
@@ -116,7 +119,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// Add existing interest
         /// </summary>
         /// <returns>A boolean status of adding interest to user</returns>
-        /// /// <param name="interestData">for user</param>
+        /// /// <param name="interestData">for interest</param>
         [HttpPost]
         [Route("/add-interest")]
         public async Task<bool> AddInterest(InterestData interestData)
@@ -145,6 +148,39 @@ namespace Dislinkt.Profile.WebApi.Controllers
         public async Task<IReadOnlyCollection<User>> GetAllUsersAsync()
         {
             return await _mediator.Send(new GetAllUsersCommand());
+        }
+        /// <summary>
+        /// Search users
+        /// </summary>
+        /// <returns>Get users by username</returns>
+        /// /// /// <param name="username">for user</param>
+        [HttpGet]
+        [Route("/search-users")]
+        public async Task<IReadOnlyCollection<User>> SearchUserAsync(string username)
+        {
+            return await _mediator.Send(new SearchUsersCommand(username));
+        }
+        /// <summary>
+        /// Search skills
+        /// </summary>
+        /// <returns>Get skills by name</returns>
+        /// /// /// <param name="name">for skill</param>
+        [HttpGet]
+        [Route("/search-skills")]
+        public async Task<IReadOnlyCollection<Skill>> SearchSkillsAsync(string name)
+        {
+            return await _mediator.Send(new SearchSkillsCommand(name));
+        }
+        /// <summary>
+        /// Search interests
+        /// </summary>
+        /// <returns>Get interests by name</returns>
+        /// /// /// <param name="name">for interests</param>
+        [HttpGet]
+        [Route("/search-interests")]
+        public async Task<IReadOnlyCollection<Interest>> SearchInterestsAsync(string name)
+        {
+            return await _mediator.Send(new SearchInterestsCommand(name));
         }
         /// <summary>
         /// Get all skills

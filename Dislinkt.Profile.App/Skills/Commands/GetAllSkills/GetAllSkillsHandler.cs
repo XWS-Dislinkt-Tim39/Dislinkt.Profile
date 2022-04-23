@@ -16,7 +16,7 @@ namespace Dislinkt.Profile.App.Skills.Commands.GetAllSkills
         }
         public async Task<IReadOnlyCollection<Skill>> Handle(GetAllSkillsCommand request, CancellationToken cancellationToken)
         {
-            return await _skillRepository.GetAll();
+            return await _skillRepository.GetAllAsync();
         }
     }
 }
