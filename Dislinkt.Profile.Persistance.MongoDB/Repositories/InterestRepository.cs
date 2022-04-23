@@ -3,7 +3,10 @@ using Dislinkt.Profile.Domain.Users;
 using Dislinkt.Profile.Persistance.MongoDB.Common;
 using Dislinkt.Profile.Persistance.MongoDB.Entities;
 using MongoDB.Driver;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using System;
+using System.Linq;
 
 namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
 {
@@ -24,6 +27,13 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
             {
                 throw ex;
             }
+        }
+
+        public async Task<IReadOnlyCollection<Interest>> GetAll()
+        {
+            var result = await _queryExecutor.GetAll<InterestEntity>();
+
+            return result?.AsEnumerable().Select(i => i.ToInterest()).ToArray() ?? Array.Empty<Interest>();
         }
     }
 }

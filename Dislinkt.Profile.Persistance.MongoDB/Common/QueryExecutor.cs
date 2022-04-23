@@ -24,7 +24,8 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Common
 
         public async Task<T> FindByIdAsync<T>(Guid id) where T : BaseEntity
         => await _mongoDbContext.GetCollection<T>().Find(b => b.Id == id).FirstOrDefaultAsync();
-
+        public async Task<IReadOnlyCollection<T>> GetAll<T>() where T : BaseEntity
+            => await _mongoDbContext.GetCollection<T>().Find(_ => true).ToListAsync();
 
         public async Task UpdateAsync<T>(FilterDefinition<T> filterDefinition, UpdateDefinition<T> updateDefinition) where T : BaseEntity
         => await _mongoDbContext.GetCollection<T>().UpdateOneAsync(filterDefinition, updateDefinition);

@@ -68,5 +68,23 @@
             /// <param name="emailAddress">for user</param>
             /// <param name="password">for user</param>
         </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.GetAllUsersAsync">
+            <summary>
+            Get all users
+            </summary>
+            <returns>Get all users</returns>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.GetAllSkillsAsync">
+            <summary>
+            Get all skills
+            </summary>
+            <returns>Get all skills</returns>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.GetAllInterestsAsync">
+            <summary>
+            Get all interests
+            </summary>
+            <returns>Get all interests</returns>
+        </member>
     </members>
 </doc>

@@ -1,16 +1,20 @@
 ﻿using Dislinkt.Profile.App.Educations.Commands;
 using Dislinkt.Profile.App.Interests.Commands.AddInterestToUser;
+using Dislinkt.Profile.App.Interests.Commands.GetAllInterests;
 using Dislinkt.Profile.App.Interests.Commands.NewInterest;
 using Dislinkt.Profile.App.RegisterUser.Commands;
 using Dislinkt.Profile.App.SignUpUser.Commands;
 using Dislinkt.Profile.App.Skills.Commands.AddSkillToUser;
+using Dislinkt.Profile.App.Skills.Commands.GetAllSkills;
 using Dislinkt.Profile.App.Skills.Commands.NewSkills;
 using Dislinkt.Profile.App.UpdateUser.Commands;
+using Dislinkt.Profile.App.Users.Commands.GetAllUsers;
 using Dislinkt.Profile.App.WorkExperiences;
 using Dislinkt.Profile.Application;
 using Dislinkt.Profile.Domain.Users;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Dislinkt.Profile.WebApi.Controllers
@@ -131,6 +135,36 @@ namespace Dislinkt.Profile.WebApi.Controllers
         public async Task<User> SignUpUserAsync(string emailAddress, string password)
         {
             return await _mediator.Send(new SignUpCommand(emailAddress, password));
+        }
+        /// <summary>
+        /// Get all users
+        /// </summary>
+        /// <returns>Get all users</returns>
+        [HttpGet]
+        [Route("/get-all-users")]
+        public async Task<IReadOnlyCollection<User>> GetAllUsersAsync()
+        {
+            return await _mediator.Send(new GetAllUsersCommand());
+        }
+        /// <summary>
+        /// Get all skills
+        /// </summary>
+        /// <returns>Get all skills</returns>
+        [HttpGet]
+        [Route("/get-all-skills")]
+        public async Task<IReadOnlyCollection<Skill>> GetAllSkillsAsync()
+        {
+            return await _mediator.Send(new GetAllSkillsCommand());
+        }
+        /// <summary>
+        /// Get all interests
+        /// </summary>
+        /// <returns>Get all interests</returns>
+        [HttpGet]
+        [Route("/get-all-interests")]
+        public async Task<IReadOnlyCollection<Interest>> GetAllInterestsAsync()
+        {
+            return await _mediator.Send(new GetAllInterestsCommand());
         }
     }
 }

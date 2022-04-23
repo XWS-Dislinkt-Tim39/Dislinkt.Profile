@@ -13,5 +13,6 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Common
         Task CreateAsync<T>(T t) where T : BaseEntity;
         Task DeleteByIdAsync<T>(FilterDefinition<T> filterDefinition) where T : BaseEntity;
         Task UpdateAsync<T>(FilterDefinition<T> filterDefinition, UpdateDefinition<T> updateDefinition) where T : BaseEntity;
+        Task<IReadOnlyCollection<T>> GetAll<T>() where T : BaseEntity;
     }
 }
