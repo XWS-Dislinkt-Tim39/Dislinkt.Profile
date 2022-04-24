@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System;
 using System.Linq;
 using MongoDB.Bson;
+using System.Text.RegularExpressions;
 
 namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
 {
@@ -39,7 +40,7 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
 
         public async Task<IReadOnlyCollection<Interest>> GetAllByNameAsync(string name)
         {
-            var filter = Builders<InterestEntity>.Filter.Regex("name", new BsonRegularExpression(name));
+            var filter = Builders<InterestEntity>.Filter.Regex("Name", BsonRegularExpression.Create(new Regex(name, RegexOptions.IgnoreCase)));
 
             var result = await _queryExecutor.FindAsync(filter);
 
