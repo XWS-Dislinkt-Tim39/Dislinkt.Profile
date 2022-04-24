@@ -72,6 +72,8 @@
     <Compile Include="Skills\Commands\SearchSkills\SearchSkillsHandler.cs" />
     <Compile Include="UpdateUser\Commands\UpdateUserCommand.cs" />
     <Compile Include="UpdateUser\Commands\UpdateUserHandler.cs" />
+    <Compile Include="Users\Commands\ApproveUsers\ApproveUserCommand.cs" />
+    <Compile Include="Users\Commands\ApproveUsers\ApproveUserHandler.cs" />
     <Compile Include="Users\Commands\GetAllUsers\GetAllUsersCommand.cs" />
     <Compile Include="Users\Commands\GetAllUsers\GetAllUsersHandler.cs" />
     <Compile Include="Users\Commands\SearchUsers\SearchUsersCommand.cs" />
