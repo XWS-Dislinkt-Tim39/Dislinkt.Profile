@@ -67,6 +67,14 @@
             <returns>A boolean status of approving user</returns>
             /// <param name="id">for user</param>
         </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.ChangePrivacyAsync(System.Guid,System.Boolean)">
+            <summary>
+            Change privacy
+            </summary>
+            <returns>A boolean status of changed privacy for user</returns>
+            /// <param name="userId">for user</param>
+            /// <param name="isPublic">for privacy</param>
+        </member>
         <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.SignUpUserAsync(System.String,System.String)">
             <summary>
             Sign up user
