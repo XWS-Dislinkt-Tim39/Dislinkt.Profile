@@ -1,6 +1,7 @@
 ﻿using Dislinkt.Profile.Core.Repositories;
 using Dislinkt.Profile.Domain.Users;
 using MediatR;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
