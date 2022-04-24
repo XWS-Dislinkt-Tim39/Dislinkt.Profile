@@ -4,6 +4,7 @@ using MediatR;
 using System;
 using System.Net;
 using System.Net.Mail;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -28,7 +29,7 @@ namespace Dislinkt.Profile.App.RegisterUser.Commands
             }
 
             await _userRepository.CreateUserAsync(new Domain.Users.User(Guid.NewGuid(), request.Request.FirstName, request.Request.LastName, request.Request.FirstName + " " + request.Request.LastName,
-                request.Request.EmailAddress, request.Request.Password, request.Request.DateOfBirth, request.Request.Address, request.Request.City, request.Request.Country,
+                request.Request.EmailAddress, BitConverter.ToString(SHA256.Create().ComputeHash(Encoding.ASCII.GetBytes(request.Request.Password))), request.Request.DateOfBirth, request.Request.Address, request.Request.City, request.Request.Country,
                 request.Request.PhoneNumber, (Domain.Users.Gender)request.Request.Gender, 
                 false, Domain.Users.VisibilityStatus.Public, Array.Empty<Education>(), 
                 Array.Empty<WorkExperience>(), Array.Empty<Guid>(), Array.Empty<Guid>()));
