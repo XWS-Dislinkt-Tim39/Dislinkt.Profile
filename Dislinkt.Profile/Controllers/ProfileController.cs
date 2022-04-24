@@ -10,6 +10,7 @@ using Dislinkt.Profile.App.Skills.Commands.GetAllSkills;
 using Dislinkt.Profile.App.Skills.Commands.NewSkills;
 using Dislinkt.Profile.App.Skills.Commands.SearchSkills;
 using Dislinkt.Profile.App.UpdateUser.Commands;
+using Dislinkt.Profile.App.Users.Commands.ApproveUsers;
 using Dislinkt.Profile.App.Users.Commands.GetAllUsers;
 using Dislinkt.Profile.App.Users.Commands.SearchUsers;
 using Dislinkt.Profile.App.WorkExperiences;
@@ -17,6 +18,7 @@ using Dislinkt.Profile.Application;
 using Dislinkt.Profile.Domain.Users;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -125,6 +127,18 @@ namespace Dislinkt.Profile.WebApi.Controllers
         public async Task<bool> AddInterest(InterestData interestData)
         {
             return await _mediator.Send(new AddInterestToUserCommand(interestData));
+
+        }
+        /// <summary>
+        /// Approve user
+        /// </summary>
+        /// <returns>A boolean status of approving user</returns>
+        /// /// <param name="id">for user</param>
+        [HttpPost]
+        [Route("/approve-user")]
+        public async Task<bool> ApproveUserAsync(Guid id)
+        {
+            return await _mediator.Send(new ApproveUserCommand(id));
 
         }
         /// <summary>

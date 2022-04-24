@@ -56,6 +56,16 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
             await _queryExecutor.UpdateAsync(filter, update);
         }
 
+        public async Task ApproveUserAsync(Guid id)
+        {
+
+            var filter = Builders<UserEntity>.Filter.Eq(u => u.Id, id);
+
+            var update = Builders<UserEntity>.Update.Set(u => u.IsApproved, true);
+
+            await _queryExecutor.UpdateAsync(filter, update);
+        }
+
         public async Task CreateUserAsync(User user)
         {
            try

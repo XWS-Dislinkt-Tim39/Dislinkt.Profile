@@ -60,6 +60,13 @@
             <returns>A boolean status of adding interest to user</returns>
             /// <param name="interestData">for interest</param>
         </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.ApproveUserAsync(System.Guid)">
+            <summary>
+            Approve user
+            </summary>
+            <returns>A boolean status of approving user</returns>
+            /// <param name="id">for user</param>
+        </member>
         <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.SignUpUserAsync(System.String,System.String)">
             <summary>
             Sign up user
