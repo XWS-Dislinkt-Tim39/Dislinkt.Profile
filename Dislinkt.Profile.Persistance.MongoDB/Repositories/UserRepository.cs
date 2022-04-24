@@ -140,6 +140,15 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
             await _queryExecutor.UpdateAsync(filter, update);
         }
 
+        public async Task UpdateUserPrivacyAsync(Guid id, bool isPublic)
+        {
+            var filter = Builders<UserEntity>.Filter.Eq(u => u.Id, id);
+
+            var update = Builders<UserEntity>.Update.Set(u => u.Status, isPublic ? VisibilityStatus.Public : VisibilityStatus.Private);
+
+            await _queryExecutor.UpdateAsync(filter, update);
+        }
+
         private UserEntity ToUserEntity(User user)
         {
             return new UserEntity

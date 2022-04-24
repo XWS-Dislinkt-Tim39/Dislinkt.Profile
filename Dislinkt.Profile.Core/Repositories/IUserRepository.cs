@@ -14,6 +14,7 @@ namespace Dislinkt.Profile.Core.Repositories
         Task<User> GetByEmailAddressAsync(string emailAddress);
         Task<User> GetUserByEmailAddressAndPasswordAsync(string emailAddress, string password);
         Task UpdateUserAsync(User user);
+        Task UpdateUserPrivacyAsync(Guid id, bool isPublic);
         Task ApproveUserAsync(Guid id);
         Task AddEducationAsync(User user);
         Task AddWorkExperienceAsync(User user);

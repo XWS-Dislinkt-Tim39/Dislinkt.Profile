@@ -13,6 +13,7 @@ using Dislinkt.Profile.App.UpdateUser.Commands;
 using Dislinkt.Profile.App.Users.Commands.ApproveUsers;
 using Dislinkt.Profile.App.Users.Commands.GetAllUsers;
 using Dislinkt.Profile.App.Users.Commands.SearchUsers;
+using Dislinkt.Profile.App.Users.Commands.UpdatePrivacy;
 using Dislinkt.Profile.App.WorkExperiences;
 using Dislinkt.Profile.Application;
 using Dislinkt.Profile.Domain.Users;
@@ -139,6 +140,19 @@ namespace Dislinkt.Profile.WebApi.Controllers
         public async Task<bool> ApproveUserAsync(Guid id)
         {
             return await _mediator.Send(new ApproveUserCommand(id));
+
+        }
+        /// <summary>
+        /// Change privacy
+        /// </summary>
+        /// <returns>A boolean status of changed privacy for user</returns>
+        /// /// <param name="userId">for user</param>
+        /// /// <param name="isPublic">for privacy</param>
+        [HttpPost]
+        [Route("/change-privacy")]
+        public async Task<bool> ChangePrivacyAsync(Guid userId, bool isPublic)
+        {
+            return await _mediator.Send(new UpdatePrivacyCommand(userId, isPublic));
 
         }
         /// <summary>
