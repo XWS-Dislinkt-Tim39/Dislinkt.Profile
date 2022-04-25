@@ -51,7 +51,7 @@ namespace Dislinkt.Profile.App.RegisterUser.Commands
                 {
                     From = new MailAddress("dislinkt@gmail.com"),
                     Subject = "Approve your account on Dislinkt",
-                    Body = "<h1>Hello</h1>",
+                    Body = "<h3>Hello</h3> <br/> <p>Click on the link to approve your account!</p>",
                     IsBodyHtml = true,
                 };
                 mailMessage.To.Add(receiverEmailAddress);
