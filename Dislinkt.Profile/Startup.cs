@@ -18,6 +18,8 @@ using MediatR;
 using Dislinkt.Profile.App.RegisterUser.Commands;
 using System.Text.Json.Serialization;
 using Newtonsoft.Json.Serialization;
+using Dislinkt.Profile.Core.MessageProducers;
+using Dislinkt.Profile.RabbitMQ.MessageProducers;
 
 namespace Dislinkt.Profile
 {
@@ -65,6 +67,7 @@ namespace Dislinkt.Profile
             services.AddScoped<ISkillRepository, SkillRepository>();
             services.AddScoped<IInterestRepository, InterestRepository>();
             services.AddScoped<MongoDbContext>();
+            services.AddScoped<IMessageProducer, MessageProducer>();
 
             BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
 
