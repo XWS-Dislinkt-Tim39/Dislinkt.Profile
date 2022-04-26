@@ -16,6 +16,7 @@ using Dislinkt.Profile.App.Users.Commands.SearchUsers;
 using Dislinkt.Profile.App.Users.Commands.UpdatePrivacy;
 using Dislinkt.Profile.App.WorkExperiences;
 using Dislinkt.Profile.Application;
+using Dislinkt.Profile.Core.MessageProducers;
 using Dislinkt.Profile.Domain.Users;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -30,9 +31,11 @@ namespace Dislinkt.Profile.WebApi.Controllers
     public class ProfileController : ControllerBase
     {
         private readonly IMediator _mediator;
-        public ProfileController(IMediator mediator)
+        private readonly IMessageProducer _messageProducer;
+        public ProfileController(IMediator mediator, IMessageProducer messageProducer)
         {
             _mediator = mediator;
+            _messageProducer = messageProducer;
         }
         /// <summary>
         /// Register new user
@@ -43,7 +46,13 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/register-user")]
         public async Task<bool> RegisterUserAsync(UserData userData)
         {
-            return await _mediator.Send(new RegisterUserCommand(userData));
+            var result = await _mediator.Send(new RegisterUserCommand(userData));
+
+            if (result == false) return false;
+
+            _messageProducer.SendRegistrationMessage(userData);
+
+            return true;
 
         }
         /// <summary>

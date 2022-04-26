@@ -33,6 +33,7 @@
     <ProjectReference Include="..\Dislinkt.Profile.App\Dislinkt.Profile.App.csproj" />
     <ProjectReference Include="..\Dislinkt.Profile.Core\Dislinkt.Profile.Core.csproj" />
     <ProjectReference Include="..\Dislinkt.Profile.Persistance.MongoDB\Dislinkt.Profile.Persistance.MongoDB.csproj" />
+    <ProjectReference Include="..\Dislinkt.Profile.RabbitMQ\Dislinkt.Profile.RabbitMQ.csproj" />
   </ItemGroup>
 
 
