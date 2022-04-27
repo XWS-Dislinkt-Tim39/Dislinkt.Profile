@@ -20,6 +20,7 @@ using Dislinkt.Profile.Core.MessageProducers;
 using Dislinkt.Profile.Domain.Users;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.Swagger.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -30,6 +31,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
     [ApiController]
     public class ProfileController : ControllerBase
     {
+        private const string ApiTag = "Profile";
         private readonly IMediator _mediator;
         private readonly IMessageProducer _messageProducer;
         public ProfileController(IMediator mediator, IMessageProducer messageProducer)
@@ -43,6 +45,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// <returns>A boolean status of registration</returns>
         /// /// <param name="userData">for user</param>
         [HttpPost]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/register-user")]
         public async Task<bool> RegisterUserAsync(UserData userData)
         {
@@ -61,6 +64,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// <returns>Updated user</returns>
         /// /// <param name="updateUserData">for user</param>
         [HttpPost]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/update-user")]
         public async Task<User> UpdateUserAsync(UpdateUserData updateUserData)
         {
@@ -73,6 +77,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// <returns>A boolean status of adding education to user</returns>
         /// /// <param name="educationData">for education</param>
         [HttpPost]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/add-education")]
         public async Task<bool> AddEducation(EducationData educationData)
         {
@@ -85,6 +90,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// <returns>A boolean status of adding work experience to user</returns>
         /// /// <param name="workExperienceData">for work experience</param>
         [HttpPost]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/add-work-experience")]
         public async Task<bool> AddWorkExperience(WorkExperienceData workExperienceData)
         {
@@ -97,6 +103,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// <returns>A boolean status of adding skill to user</returns>
         /// /// <param name="skillAddedData">for skill</param>
         [HttpPost]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/add-new-skill")]
         public async Task<bool> AddNewSkill(SkillAddedData skillAddedData)
         {
@@ -109,6 +116,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// <returns>A boolean status of adding skill to user</returns>
         /// /// <param name="skillData">for skill</param>
         [HttpPost]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/add-skill")]
         public async Task<bool> AddSkill(SkillData skillData)
         {
@@ -121,6 +129,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// <returns>A boolean status of adding interest to user</returns>
         /// /// <param name="interestAddedData">for interest</param>
         [HttpPost]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/add-new-interest")]
         public async Task<bool> AddNewInterest(InterestAddedData interestAddedData)
         {
@@ -133,6 +142,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// <returns>A boolean status of adding interest to user</returns>
         /// /// <param name="interestData">for interest</param>
         [HttpPost]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/add-interest")]
         public async Task<bool> AddInterest(InterestData interestData)
         {
@@ -145,6 +155,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// <returns>A boolean status of approving user</returns>
         /// /// <param name="id">for user</param>
         [HttpPost]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/approve-user")]
         public async Task<bool> ApproveUserAsync(Guid id)
         {
@@ -158,6 +169,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// /// <param name="userId">for user</param>
         /// /// <param name="isPublic">for privacy</param>
         [HttpPost]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/change-privacy")]
         public async Task<bool> ChangePrivacyAsync(Guid userId, bool isPublic)
         {
@@ -171,6 +183,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// /// <param name="emailAddress">for user</param>
         /// /// <param name="password">for user</param>
         [HttpGet]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/sign-up")]
         public async Task<User> SignUpUserAsync(string emailAddress, string password)
         {
@@ -181,6 +194,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// </summary>
         /// <returns>Get all users</returns>
         [HttpGet]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/get-all-users")]
         public async Task<IReadOnlyCollection<User>> GetAllUsersAsync()
         {
@@ -192,6 +206,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// <returns>Get users by username</returns>
         /// /// /// <param name="username">for user</param>
         [HttpGet]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/search-users")]
         public async Task<IReadOnlyCollection<User>> SearchUserAsync(string username)
         {
@@ -214,6 +229,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// <returns>Get interests by name</returns>
         /// /// /// <param name="name">for interests</param>
         [HttpGet]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/search-interests")]
         public async Task<IReadOnlyCollection<Interest>> SearchInterestsAsync(string name)
         {
@@ -224,6 +240,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// </summary>
         /// <returns>Get all skills</returns>
         [HttpGet]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/get-all-skills")]
         public async Task<IReadOnlyCollection<Skill>> GetAllSkillsAsync()
         {
@@ -234,6 +251,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// </summary>
         /// <returns>Get all interests</returns>
         [HttpGet]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/get-all-interests")]
         public async Task<IReadOnlyCollection<Interest>> GetAllInterestsAsync()
         {
