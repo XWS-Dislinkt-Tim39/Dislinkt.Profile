@@ -12,6 +12,7 @@ namespace Dislinkt.Profile.Core.Repositories
         Task<IReadOnlyCollection<User>> GetByUsernameAsync(string username);
         Task<User> GetByIdAsync(Guid id);
         Task<User> GetByEmailAddressAsync(string emailAddress);
+        Task<User> GetByEmailAddressAndUsernameAsync(string emailAddress, string username);
         Task<User> GetUserByEmailAddressAndPasswordAsync(string emailAddress, string password);
         Task UpdateUserAsync(User user);
         Task UpdateUserPrivacyAsync(Guid id, bool isPublic);

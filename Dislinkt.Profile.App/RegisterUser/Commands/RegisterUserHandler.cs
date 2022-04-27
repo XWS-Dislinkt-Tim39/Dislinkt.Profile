@@ -21,14 +21,14 @@ namespace Dislinkt.Profile.App.RegisterUser.Commands
        
         public async Task<bool> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
         {
-            var existingUser = await _userRepository.GetByEmailAddressAsync(request.Request.EmailAddress);
+            var existingUser = await _userRepository.GetByEmailAddressAndUsernameAsync(request.Request.EmailAddress, request.Request.Username);
 
             if(existingUser != null)
             {
                 return false;
             }
 
-            await _userRepository.CreateUserAsync(new Domain.Users.User(Guid.NewGuid(), request.Request.FirstName, request.Request.LastName, request.Request.FirstName + " " + request.Request.LastName,
+            await _userRepository.CreateUserAsync(new Domain.Users.User(Guid.NewGuid(), request.Request.FirstName, request.Request.LastName, request.Request.Username,
                 request.Request.EmailAddress, BitConverter.ToString(SHA256.Create().ComputeHash(Encoding.ASCII.GetBytes(request.Request.Password))), request.Request.DateOfBirth, request.Request.Address, request.Request.City, request.Request.Country,
                 request.Request.PhoneNumber, (Domain.Users.Gender)request.Request.Gender, 
                 false, Domain.Users.VisibilityStatus.Public, Array.Empty<Education>(), 

@@ -86,7 +86,7 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
             var filter = Builders<UserEntity>.Filter.Eq(u => u.IsApproved, true) &
                 Builders<UserEntity>.Filter.Eq(u => u.Status, VisibilityStatus.Public);
 
-            var result = await _queryExecutor.FindAsync<UserEntity>(filter);
+            var result = await _queryExecutor.FindAsync(filter);
 
             return result?.AsEnumerable().Select(u => u.ToUser()).ToArray() ?? Array.Empty<User>();
         }
@@ -95,11 +95,19 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
         {
             var filter = Builders<UserEntity>.Filter.Eq(u => u.EmailAddress, emailAddress);
 
-            var result = await _queryExecutor.FindAsync<UserEntity>(filter);
+            var result = await _queryExecutor.FindAsync(filter);
 
             return result?.AsEnumerable()?.FirstOrDefault(u => u.EmailAddress == emailAddress)?.ToUser() ?? null;
         }
+        public async Task<User> GetByEmailAddressAndUsernameAsync(string emailAddress, string username)
+        {
+            var filter = Builders<UserEntity>.Filter.Eq(u => u.EmailAddress, emailAddress)
+                & Builders<UserEntity>.Filter.Eq(u => u.Username, username);
 
+            var result = await _queryExecutor.FindAsync(filter);
+
+            return result?.AsEnumerable()?.FirstOrDefault(u => u.EmailAddress == emailAddress)?.ToUser() ?? null;
+        }
         public async Task<User> GetByIdAsync(Guid id)
         {
 
