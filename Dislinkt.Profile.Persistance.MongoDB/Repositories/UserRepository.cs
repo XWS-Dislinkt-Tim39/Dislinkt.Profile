@@ -126,11 +126,9 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
         }
 
         public async Task<User> GetUserByEmailAddressAndPasswordAsync(string emailAddress, string password)
-        {
-            var hashedPassword = BitConverter.ToString(SHA256.Create().ComputeHash(Encoding.ASCII.GetBytes(password)));
-
+        { 
             var filter = Builders<UserEntity>.Filter.Eq(u => u.EmailAddress, emailAddress)
-                & Builders<UserEntity>.Filter.Eq(u => u.Password, hashedPassword)
+                & Builders<UserEntity>.Filter.Eq(u => u.Password, password)
                 & Builders<UserEntity>.Filter.Eq(u => u.IsApproved, true);
 
             var result = await _queryExecutor.FindAsync(filter);
