@@ -49,6 +49,7 @@
     <Compile Include="Repositories\IInterestRepository.cs" />
     <Compile Include="Repositories\ISkillRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Services\IAuthService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dislinkt.Profile.Domain\Dislinkt.Profile.Domain.csproj">

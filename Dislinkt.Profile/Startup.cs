@@ -20,6 +20,8 @@ using System.Text.Json.Serialization;
 using Newtonsoft.Json.Serialization;
 using Dislinkt.Profile.Core.MessageProducers;
 using Dislinkt.Profile.RabbitMQ.MessageProducers;
+using Dislinkt.Profile.Core.Services;
+using Dislinkt.Profile.App.Services;
 
 namespace Dislinkt.Profile
 {
@@ -60,12 +62,14 @@ namespace Dislinkt.Profile
                 options.DatabaseName = Configuration.GetSection("MongoSettings:DatabaseName").Value;
             });
 
+            services.AddSingleton(Configuration);
             services.AddMediatR(typeof(RegisterUserCommand).GetTypeInfo().Assembly);
             services.AddScoped<IDatabaseFactory, DatabaseFactory>();
             services.AddScoped<IQueryExecutor, QueryExecutor>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ISkillRepository, SkillRepository>();
             services.AddScoped<IInterestRepository, InterestRepository>();
+            services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<MongoDbContext>();
             services.AddScoped<IMessageProducer, MessageProducer>();
 
