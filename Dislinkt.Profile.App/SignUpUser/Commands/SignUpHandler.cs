@@ -1,5 +1,5 @@
 ﻿using Dislinkt.Profile.Core.Repositories;
-using Dislinkt.Profile.Domain.Users;
+using Dislinkt.Profile.Core.Services;
 using MediatR;
 using System;
 using System.Security.Cryptography;
@@ -9,18 +9,24 @@ using System.Threading.Tasks;
 
 namespace Dislinkt.Profile.App.SignUpUser.Commands
 {
-    public class SignUpHandler : IRequestHandler<SignUpCommand, User>
+    public class SignUpHandler : IRequestHandler<SignUpCommand, string>
     {
         private readonly IUserRepository _userRepository;
-        public SignUpHandler(IUserRepository userRepository)
+        private readonly IAuthService _authService;
+        public SignUpHandler(IUserRepository userRepository, IAuthService authService)
         {
             _userRepository = userRepository;
+            _authService = authService;
         }
-        public async Task<User> Handle(SignUpCommand request, CancellationToken cancellationToken)
+        public async Task<string> Handle(SignUpCommand request, CancellationToken cancellationToken)
         {
-            var user =await _userRepository.GetUserByEmailAddressAndPasswordAsync(request.Request.EmailAddress, BitConverter.ToString(SHA256.Create().ComputeHash(Encoding.ASCII.GetBytes(request.Request.Password))));
+            var user = await _userRepository.GetUserByEmailAddressAndPasswordAsync(request.Request.EmailAddress, BitConverter.ToString(SHA256.Create().ComputeHash(Encoding.ASCII.GetBytes(request.Request.Password))));
 
-            return user;
+            if (user == null) return null;
+
+            var token = _authService.CreateToken(user);
+
+            return token;
         }
     }
 }
