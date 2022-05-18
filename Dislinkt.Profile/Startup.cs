@@ -22,6 +22,9 @@ using Dislinkt.Profile.Core.MessageProducers;
 using Dislinkt.Profile.RabbitMQ.MessageProducers;
 using Dislinkt.Profile.Core.Services;
 using Dislinkt.Profile.App.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Dislinkt.Profile
 {
@@ -55,6 +58,27 @@ namespace Dislinkt.Profile
                 c.IncludeXmlComments(xmlPath);
 
             });
+
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            });
+
+            services.AddAuthentication()
+                    .AddJwtBearer(cfg =>
+                    {
+                        cfg.TokenValidationParameters = new TokenValidationParameters()
+                        {
+                            ValidateIssuerSigningKey = true,
+                            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8
+                                .GetBytes(Configuration.GetSection("AppSettings:Token").Value)),
+                            ValidateIssuer = false,
+                            ValidateAudience = false
+
+                        };
+                    });
+
 
             services.Configure<MongoSettings>(options =>
             {
@@ -95,6 +119,12 @@ namespace Dislinkt.Profile
             app.UseRouting();
 
             app.UseAuthorization();
+
+            //app.UseJwtBearerAuthentication(new JwtBearerOptions()
+           // {
+           //     Audience = "http://localhost:5001/",
+           //     Authority = "http://localhost:5000/"
+           // });
 
             app.UseEndpoints(endpoints =>
             {
