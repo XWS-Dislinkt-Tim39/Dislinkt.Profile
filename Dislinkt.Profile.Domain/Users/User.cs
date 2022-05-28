@@ -4,7 +4,7 @@ namespace Dislinkt.Profile.Domain.Users
 {
     public class User
     {
-        public User(Guid id, string firstName, string lastName, string username, string emailAddress, string password, DateTime dateOfBirth, 
+        public User(Guid id, string firstName, string lastName, string username, string biography,string emailAddress, string password, DateTime dateOfBirth, 
             string address, string city, string country, string  phoneNumber, Gender gender, bool isApproved, VisibilityStatus visibilityStatus, 
             Education[] educations, WorkExperience[] workExperiences, Guid[] skills, Guid[] interests)
         {
@@ -14,6 +14,7 @@ namespace Dislinkt.Profile.Domain.Users
             Username = username;
             EmailAddress = emailAddress;
             Password = password;
+            Biography = biography;
             DateOfBirth = dateOfBirth;
             Address = address;
             City = city;
@@ -32,6 +33,7 @@ namespace Dislinkt.Profile.Domain.Users
         public string LastName { get;  }
         public string Username { get; }
         public string EmailAddress { get; }
+        public string Biography { get; }
         public string Password { get; }
         public string Address { get; }
         public DateTime DateOfBirth { get; }

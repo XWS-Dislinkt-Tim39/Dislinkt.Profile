@@ -28,7 +28,7 @@ namespace Dislinkt.Profile.App.RegisterUser.Commands
                 return false;
             }
 
-            await _userRepository.CreateUserAsync(new Domain.Users.User(Guid.NewGuid(), request.Request.FirstName, request.Request.LastName, request.Request.Username,
+            await _userRepository.CreateUserAsync(new Domain.Users.User(Guid.NewGuid(), request.Request.FirstName, request.Request.LastName, request.Request.Username, request.Request.Biography,
                 request.Request.EmailAddress, BitConverter.ToString(SHA256.Create().ComputeHash(Encoding.ASCII.GetBytes(request.Request.Password))), request.Request.DateOfBirth, request.Request.Address, request.Request.City, request.Request.Country,
                 request.Request.PhoneNumber, (Domain.Users.Gender)request.Request.Gender, 
                 false, Domain.Users.VisibilityStatus.Public, Array.Empty<Education>(), 

@@ -23,7 +23,7 @@ namespace Dislinkt.Profile.App.WorkExperiences
                 request.Request.FieldOfWork, request.Request.StartDate, request.Request.EndDate, request.Request.Description));
 
             await _userRepository.AddWorkExperienceAsync(new Domain.Users.User(existingUser.Id, existingUser.FirstName, existingUser.LastName,
-                existingUser.Username, existingUser.EmailAddress, existingUser.Password, existingUser.DateOfBirth, existingUser.Address,
+                existingUser.Username, existingUser.Biography, existingUser.EmailAddress, existingUser.Password, existingUser.DateOfBirth, existingUser.Address,
                 existingUser.City, existingUser.Country, existingUser.PhoneNumber, existingUser.Gender, existingUser.IsApproved, existingUser.Status,
                 existingUser.Educations, updatedWorkExperience.ToArray(), existingUser.Skills, existingUser.Interests));
 

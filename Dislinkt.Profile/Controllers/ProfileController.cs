@@ -65,7 +65,6 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// <returns>Updated user</returns>
         /// /// <param name="updateUserData">for user</param>
         [HttpPost]
-        [Authorize]
         [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/update-user")]
         public async Task<User> UpdateUserAsync(UpdateUserData updateUserData)
