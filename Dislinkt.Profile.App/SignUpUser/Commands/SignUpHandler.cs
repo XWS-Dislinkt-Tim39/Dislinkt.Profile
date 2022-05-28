@@ -6,10 +6,11 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Dislinkt.Profile.Domain.Users;
 
 namespace Dislinkt.Profile.App.SignUpUser.Commands
 {
-    public class SignUpHandler : IRequestHandler<SignUpCommand, string>
+    public class SignUpHandler : IRequestHandler<SignUpCommand, UserDetails>
     {
         private readonly IUserRepository _userRepository;
         private readonly IAuthService _authService;
@@ -18,15 +19,16 @@ namespace Dislinkt.Profile.App.SignUpUser.Commands
             _userRepository = userRepository;
             _authService = authService;
         }
-        public async Task<string> Handle(SignUpCommand request, CancellationToken cancellationToken)
+        public async Task<UserDetails> Handle(SignUpCommand request, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetUserByEmailAddressAndPasswordAsync(request.Request.EmailAddress, BitConverter.ToString(SHA256.Create().ComputeHash(Encoding.ASCII.GetBytes(request.Request.Password))));
 
             if (user == null) return null;
 
             var token = _authService.CreateToken(user);
+            var details = new UserDetails(user, token);
 
-            return token;
+            return details;
         }
     }
 }

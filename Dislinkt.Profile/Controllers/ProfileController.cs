@@ -194,7 +194,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [HttpGet]
         [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/sign-up")]
-        public async Task<string> SignUpUserAsync(string emailAddress, string password)
+        public async Task<UserDetails> SignUpUserAsync(string emailAddress, string password)
         {
             return await _mediator.Send(new SignUpCommand(emailAddress, password));
         }

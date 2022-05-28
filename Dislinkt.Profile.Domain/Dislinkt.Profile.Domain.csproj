@@ -54,6 +54,7 @@
     <Compile Include="Users\Interest.cs" />
     <Compile Include="Users\Skill.cs" />
     <Compile Include="Users\User.cs" />
+    <Compile Include="Users\UserDetails.cs" />
     <Compile Include="Users\VisibilityStatus.cs" />
     <Compile Include="Users\WorkExperience.cs" />
   </ItemGroup>

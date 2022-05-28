@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Dislinkt.Profile.App.SignUpUser.Commands
 {
-    public class SignUpCommand : IRequest<string>
+    public class SignUpCommand : IRequest<UserDetails>
     {
         public SignUpCommand(string emailAddress, string password)
         {

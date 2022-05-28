@@ -64,5 +64,11 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dislinkt.Profile.Domain\Dislinkt.Profile.Domain.csproj">
+      <Project>{B5BD2D77-030C-47BF-9B1B-B155B136535C}</Project>
+      <Name>Dislinkt.Profile.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
