@@ -13,6 +13,7 @@ using Dislinkt.Profile.App.UpdateUser.Commands;
 using Dislinkt.Profile.App.Users.Commands.ApproveUsers;
 using Dislinkt.Profile.App.Users.Commands.GetAllUsers;
 using Dislinkt.Profile.App.Users.Commands.SearchUsers;
+using Dislinkt.Profile.App.Users.Commands.GetUser;
 using Dislinkt.Profile.App.Users.Commands.UpdatePrivacy;
 using Dislinkt.Profile.App.WorkExperiences;
 using Dislinkt.Profile.Application;
@@ -65,6 +66,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// <returns>Updated user</returns>
         /// /// <param name="updateUserData">for user</param>
         [HttpPost]
+        [Authorize]
         [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/update-user")]
         public async Task<User> UpdateUserAsync(UpdateUserData updateUserData)
@@ -207,6 +209,18 @@ namespace Dislinkt.Profile.WebApi.Controllers
         public async Task<IReadOnlyCollection<User>> GetAllUsersAsync()
         {
             return await _mediator.Send(new GetAllUsersCommand());
+        }
+        /// <summary>
+        /// Get user
+        /// </summary>
+        /// <returns>Get user by id</returns>
+        /// /// /// <param id="id">for user</param>
+        [HttpGet]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
+        [Route("/get-user")]
+        public async Task<User> GetUserAsync(Guid id)
+        {
+            return await _mediator.Send(new GetUserCommand(id));
         }
         /// <summary>
         /// Search users

@@ -89,6 +89,13 @@
             </summary>
             <returns>Get all users</returns>
         </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.GetUserAsync(System.Guid)">
+            <summary>
+            Get user
+            </summary>
+            <returns>Get user by id</returns>
+            /// /// <param id="id">for user</param>
+        </member>
         <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.SearchUserAsync(System.String)">
             <summary>
             Search users
