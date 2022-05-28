@@ -164,7 +164,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// /// <param name="id">for user</param>
         [HttpPost]
         [SwaggerOperation(Tags = new[] { ApiTag })]
-        [Route("/approve-user")]
+        [Route("/approve-user/{id}")]
         public async Task<bool> ApproveUserAsync(Guid id)
         {
             return await _mediator.Send(new ApproveUserCommand(id));

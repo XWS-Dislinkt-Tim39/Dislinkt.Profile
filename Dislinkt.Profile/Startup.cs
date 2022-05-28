@@ -41,6 +41,16 @@ namespace Dislinkt.Profile
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins("https://localhost:44351", "http://localhost:4200")
+                                            .AllowAnyHeader()
+                                            .AllowAnyMethod();
+                    });
+            });
             services.AddMvcCore();
             services.AddControllers().AddNewtonsoftJson(opt =>
             {
@@ -135,10 +145,19 @@ namespace Dislinkt.Profile
                 });
 
             }
+            // Shows UseCors with CorsPolicyBuilder.
            
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors(builder =>
+            {
+                builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+            });
 
             app.UseAuthorization();
 
