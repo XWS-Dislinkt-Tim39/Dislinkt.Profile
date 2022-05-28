@@ -109,7 +109,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [HttpPost]
         [Authorize]
         [SwaggerOperation(Tags = new[] { ApiTag })]
-        [Route("/add-new-skill")]
+        [Route("/add-new-skill/")]
         public async Task<bool> AddNewSkill(SkillAddedData skillAddedData)
         {
             return await _mediator.Send(new NewSkillCommand(skillAddedData));
