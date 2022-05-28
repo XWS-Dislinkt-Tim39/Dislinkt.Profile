@@ -145,7 +145,13 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
                 .Set(u => u.EmailAddress, user.EmailAddress)
                 .Set(u => u.Gender, user.Gender)
                 .Set(u => u.PhoneNumber, user.PhoneNumber)
-                .Set(u => u.DateOfBirth, user.DateOfBirth);
+                .Set(u => u.DateOfBirth, user.DateOfBirth)
+                .Set(u => u.City, user.City)
+                .Set(u => u.Country, user.Country)
+                .Set(u => u.Address, user.Address)
+                .Set(u => u.Biography, user.Biography);
+
+
 
             await _queryExecutor.UpdateAsync(filter, update);
         }

@@ -17,6 +17,7 @@ namespace Dislinkt.Profile
         /// Username
         /// </summary>
         public string Username { get; set; }
+        public string Biography { get; set; }
         /// <summary>
         /// Email address
         /// </summary>

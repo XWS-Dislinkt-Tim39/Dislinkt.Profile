@@ -28,7 +28,7 @@ namespace Dislinkt.Profile.App.Interests.Commands.NewInterest
             var updatedInterests = existingUser.Interests.Append(newInterest.Id);
 
             await _userRepository.AddInterestAsync(new Domain.Users.User(existingUser.Id, existingUser.FirstName, existingUser.LastName,
-                existingUser.Username, existingUser.EmailAddress, existingUser.Password, existingUser.DateOfBirth, existingUser.Address,
+                existingUser.Username, existingUser.Biography, existingUser.EmailAddress, existingUser.Password, existingUser.DateOfBirth, existingUser.Address,
                 existingUser.City, existingUser.Country, existingUser.PhoneNumber, existingUser.Gender, existingUser.IsApproved, existingUser.Status,
                 existingUser.Educations, existingUser.WorkExperiences, existingUser.Skills, updatedInterests.ToArray()));
 

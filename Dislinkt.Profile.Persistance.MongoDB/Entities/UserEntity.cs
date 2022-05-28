@@ -11,6 +11,7 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Username { get; set; }
+        public string Biography { get; set; }
         public string EmailAddress { get; set; }
         public string Password { get; set; }
         public DateTime DateOfBirth { get; set; }
@@ -50,7 +51,7 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Entities
             };
         }
         public User ToUser()
-            => new User(this.Id, this.FirstName, this.LastName, this.Username, this.EmailAddress, this.Password,
+            => new User(this.Id, this.FirstName, this.LastName, this.Username, this.Biography,this.EmailAddress, this.Password,
                 this.DateOfBirth, this.Address, this.City, this.Country, this.PhoneNumber, this.Gender, this.IsApproved,
                 this.Status, this.Educations == null ? Array.Empty<Education>() : this.Educations.Select(p => p.ToEducation()).ToArray(),
                 this.WorkExperiences == null ? Array.Empty<WorkExperience>() : this.WorkExperiences.Select(p => p.ToWorkExperience()).ToArray(),
