@@ -77,7 +77,7 @@ namespace Dislinkt.Profile
                         new OpenApiSecurityScheme {
                             Reference = new OpenApiReference {
                                 Type = ReferenceType.SecurityScheme,
-                                    Id = "Bearer"
+                                Id = "Bearer"
                             }
                         },
                         new string[] {}
@@ -150,7 +150,6 @@ namespace Dislinkt.Profile
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();
             app.UseCors(builder =>
             {
                 builder
@@ -159,13 +158,15 @@ namespace Dislinkt.Profile
                 .AllowAnyHeader();
             });
 
-            app.UseAuthorization();
 
+            app.UseAuthentication();
+            app.UseRouting();
+            app.UseAuthorization();
             //app.UseJwtBearerAuthentication(new JwtBearerOptions()
-           // {
-           //     Audience = "http://localhost:5001/",
-           //     Authority = "http://localhost:5000/"
-           // });
+            // {
+            //     Audience = "http://localhost:5001/",
+            //     Authority = "http://localhost:5000/"
+            // });
 
             app.UseEndpoints(endpoints =>
             {
