@@ -32,6 +32,13 @@
             <returns>A boolean status of adding work experience to user</returns>
             /// <param name="workExperienceData">for work experience</param>
         </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.UpdateWorkExperienceAsync(Dislinkt.Profile.Application.UpdateWorkExperienceData)">
+            <summary>
+            Update work experience
+            </summary>
+            <returns>Updated work experience</returns>
+            /// <param name="updateWorkExperience">for user</param>
+        </member>
         <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.AddNewSkill(Dislinkt.Profile.Application.SkillAddedData)">
             <summary>
             Add new skill

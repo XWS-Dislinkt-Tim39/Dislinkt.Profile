@@ -169,6 +169,7 @@
     <Compile Include="Repositories\InterestRepository.cs" />
     <Compile Include="Repositories\SkillRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Repositories\WorkExperienceRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dislinkt.Profile.Core\Dislinkt.Profile.Core.csproj">

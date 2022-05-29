@@ -26,6 +26,7 @@ using Swashbuckle.Swagger.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Dislinkt.Profile.App.WorkExperiences.Commands;
 
 namespace Dislinkt.Profile.WebApi.Controllers
 {
@@ -100,6 +101,20 @@ namespace Dislinkt.Profile.WebApi.Controllers
         public async Task<bool> AddWorkExperience(WorkExperienceData workExperienceData)
         {
             return await _mediator.Send(new WorkExperienceCommand(workExperienceData));
+
+        }
+        /// <summary>
+        /// Update work experience
+        /// </summary>
+        /// <returns>Updated work experience</returns>
+        /// /// <param name="updateWorkExperience">for user</param>
+        [HttpPost]
+        [Authorize]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
+        [Route("/update-work-experience")]
+        public async Task<WorkExperience> UpdateWorkExperienceAsync(UpdateWorkExperienceData updateWorkExperience)
+        {
+            return await _mediator.Send(new EditWorkExperienceCommand(updateWorkExperience));
 
         }
         /// <summary>
