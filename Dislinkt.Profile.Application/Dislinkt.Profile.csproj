@@ -54,6 +54,7 @@
     <Compile Include="SignUpData.cs" />
     <Compile Include="SkillAddedData.cs" />
     <Compile Include="SkillData.cs" />
+    <Compile Include="UpdateEducationData.cs" />
     <Compile Include="UpdatePrivacyData.cs" />
     <Compile Include="UpdateUserData.cs" />
     <Compile Include="UpdateWorkExperienceData.cs" />

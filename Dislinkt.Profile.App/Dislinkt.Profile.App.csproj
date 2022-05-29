@@ -87,6 +87,8 @@
     <Compile Include="Common\Commands\ICommand.cs" />
     <Compile Include="Educations\Commands\EducationCommand.cs" />
     <Compile Include="Educations\Commands\EducationHandler.cs" />
+    <Compile Include="Educations\Commands\UpdateEducationCommand.cs" />
+    <Compile Include="Educations\Commands\UpdateEducationHandler.cs" />
     <Compile Include="Interests\Commands\AddInterestToUser\AddInterestToUserCommand.cs" />
     <Compile Include="Interests\Commands\AddInterestToUser\AddInterestToUserHandler.cs" />
     <Compile Include="Interests\Commands\GetAllInterests\GetAllInterestsHandler.cs" />
