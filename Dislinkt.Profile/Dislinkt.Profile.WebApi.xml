@@ -143,5 +143,12 @@
             </summary>
             <returns>Get all interests</returns>
         </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.GetUserSkillsAsync(System.Guid)">
+            <summary>
+            Get user skills
+            </summary>
+            <returns>Get user skills</returns>
+            /// /// /// <param id="id">for user</param>
+        </member>
     </members>
 </doc>
