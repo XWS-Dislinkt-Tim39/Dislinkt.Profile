@@ -90,6 +90,21 @@ namespace Dislinkt.Profile.WebApi.Controllers
 
         }
         /// <summary>
+        /// Update education
+        /// </summary>
+        /// <returns>Updated educatione</returns>
+        /// /// <param name="updateEducation">for user</param>
+        [HttpPost]
+        [Authorize]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
+        [Route("/update-education")]
+        public async Task UpdateEducationAsync(UpdateEducationData updateEducation)
+        {
+            await _mediator.Send(new UpdateEducationCommand(updateEducation));
+
+        }
+
+        /// <summary>
         /// Add work experience
         /// </summary>
         /// <returns>A boolean status of adding work experience to user</returns>

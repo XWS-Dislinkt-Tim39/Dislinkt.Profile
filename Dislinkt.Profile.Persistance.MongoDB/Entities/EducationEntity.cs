@@ -1,9 +1,11 @@
 ﻿using Dislinkt.Profile.Domain.Users;
+using Dislinkt.Profile.Persistance.MongoDB.Attributes;
 using System;
 using System.Linq;
 
 namespace Dislinkt.Profile.Persistance.MongoDB.Entities
 {
+    [CollectionName("Educations")]
     public class EducationEntity : BaseEntity
     {
         public Guid UserId { get; set; }

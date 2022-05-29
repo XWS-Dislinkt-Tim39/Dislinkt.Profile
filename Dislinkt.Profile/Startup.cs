@@ -125,6 +125,7 @@ namespace Dislinkt.Profile
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ISkillRepository, SkillRepository>();
             services.AddScoped<IWorkExperienceRepository, WorkExperienceRepository>();
+            services.AddScoped<IEducationRepository, EducationRepository>();
             services.AddScoped<IInterestRepository, InterestRepository>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<MongoDbContext>();

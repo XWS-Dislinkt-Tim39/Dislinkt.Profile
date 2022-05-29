@@ -25,6 +25,13 @@
             <returns>A boolean status of adding education to user</returns>
             /// <param name="educationData">for education</param>
         </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.UpdateEducationAsync(Dislinkt.Profile.Application.UpdateEducationData)">
+            <summary>
+            Update education
+            </summary>
+            <returns>Updated educatione</returns>
+            /// <param name="updateEducation">for user</param>
+        </member>
         <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.AddWorkExperience(Dislinkt.Profile.Application.WorkExperienceData)">
             <summary>
             Add work experience

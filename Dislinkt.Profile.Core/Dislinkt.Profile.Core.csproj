@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="MessageProducers\IMessageProducer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IEducationRepository.cs" />
     <Compile Include="Repositories\IInterestRepository.cs" />
     <Compile Include="Repositories\ISkillRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
