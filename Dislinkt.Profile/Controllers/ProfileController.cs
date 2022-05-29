@@ -27,6 +27,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Dislinkt.Profile.App.WorkExperiences.Commands;
+using Dislinkt.Profile.App.Users.Commands.GetPublicUsers;
 
 namespace Dislinkt.Profile.WebApi.Controllers
 {
@@ -239,6 +240,17 @@ namespace Dislinkt.Profile.WebApi.Controllers
         public async Task<IReadOnlyCollection<User>> GetAllUsersAsync()
         {
             return await _mediator.Send(new GetAllUsersCommand());
+        }
+        /// <summary>
+        /// Get public users
+        /// </summary>
+        /// <returns>Get all users</returns>
+        [HttpGet]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
+        [Route("/get-public-users")]
+        public async Task<IReadOnlyCollection<User>> GetPublicUsersAsync()
+        {
+            return await _mediator.Send(new GetPublicUsersCommand());
         }
         /// <summary>
         /// Get user

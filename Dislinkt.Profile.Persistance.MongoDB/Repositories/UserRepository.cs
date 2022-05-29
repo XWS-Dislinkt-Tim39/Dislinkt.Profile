@@ -81,10 +81,19 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
 
         }
 
-        public async Task<IReadOnlyList<User>> GetAllAsync()
+        public async Task<IReadOnlyList<User>> GetPublicAsync()
         {
             var filter = Builders<UserEntity>.Filter.Eq(u => u.IsApproved, true) &
                 Builders<UserEntity>.Filter.Eq(u => u.Status, VisibilityStatus.Public);
+
+            var result = await _queryExecutor.FindAsync(filter);
+
+            return result?.AsEnumerable().Select(u => u.ToUser()).ToArray() ?? Array.Empty<User>();
+        }
+
+        public async Task<IReadOnlyList<User>> GetAllAsync()
+        {
+            var filter = Builders<UserEntity>.Filter.Eq(u => u.IsApproved, true);
 
             var result = await _queryExecutor.FindAsync(filter);
 

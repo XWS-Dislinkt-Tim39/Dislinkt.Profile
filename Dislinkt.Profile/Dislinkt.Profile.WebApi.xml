@@ -103,6 +103,12 @@
             </summary>
             <returns>Get all users</returns>
         </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.GetPublicUsersAsync">
+            <summary>
+            Get public users
+            </summary>
+            <returns>Get all users</returns>
+        </member>
         <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.GetUserAsync(System.Guid)">
             <summary>
             Get user
