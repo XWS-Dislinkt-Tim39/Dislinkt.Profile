@@ -39,6 +39,13 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
             return result?.AsEnumerable().Select(s => s.ToSkill()).ToArray() ?? Array.Empty<Skill>();
         }
 
+        public async Task<Skill> GetById(Guid id)
+        {
+            var result = await _queryExecutor.FindByIdAsync<SkillEntity>(id);
+
+            return result?.ToSkill() ?? null;
+        }
+
         public async Task<IReadOnlyCollection<Skill>> GetByNameAsync(string name)
         {
             var filter = Builders<SkillEntity>.Filter.Regex("Name", BsonRegularExpression.Create(new Regex(name, RegexOptions.IgnoreCase)));
