@@ -121,6 +121,8 @@
     <Compile Include="Users\Commands\SearchUsers\SearchUsersHander.cs" />
     <Compile Include="Users\Commands\UpdatePrivacy\UpdatePrivacyCommand.cs" />
     <Compile Include="Users\Commands\UpdatePrivacy\UpdatePrivacyHandler.cs" />
+    <Compile Include="WorkExperiences\Commands\EditWorkExperienceCommand.cs" />
+    <Compile Include="WorkExperiences\Commands\EditWorkExperienceHandler.cs" />
     <Compile Include="WorkExperiences\WorkExcperienceHandler.cs" />
     <Compile Include="WorkExperiences\WorkExperienceCommand.cs" />
   </ItemGroup>
