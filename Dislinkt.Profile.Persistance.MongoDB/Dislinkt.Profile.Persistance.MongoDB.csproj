@@ -172,6 +172,10 @@
     <Compile Include="Repositories\WorkExperienceRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Dislinkt.Profile.Application\Dislinkt.Profile.csproj">
+      <Project>{A0D5730E-58A0-475C-852C-E4282FDCF172}</Project>
+      <Name>Dislinkt.Profile</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Dislinkt.Profile.Core\Dislinkt.Profile.Core.csproj">
       <Project>{9F19F507-05BA-487A-85A7-1147E89E00E3}</Project>
       <Name>Dislinkt.Profile.Core</Name>

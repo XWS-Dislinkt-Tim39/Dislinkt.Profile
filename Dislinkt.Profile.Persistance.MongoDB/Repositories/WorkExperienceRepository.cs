@@ -1,4 +1,5 @@
-﻿using Dislinkt.Profile.Core.Repositories;
+﻿using Dislinkt.Profile.Application;
+using Dislinkt.Profile.Core.Repositories;
 using Dislinkt.Profile.Domain.Users;
 using Dislinkt.Profile.Persistance.MongoDB.Common;
 using Dislinkt.Profile.Persistance.MongoDB.Entities;
@@ -25,20 +26,19 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
 
             return result?.ToWorkExperience() ?? null;
         }
-        public async Task UpdateWorkExperienceAsync(WorkExperience experience)
+        public async Task UpdateWorkExperienceAsync(UpdateWorkExperienceData experience)
         {
-            /*var filter = Builders<UserEntity>.Filter.ElemMatch(u => u.WorkExperiences, Builders<WorkExperienceEntity>.Filter.Eq(u=>u.Id,experience.Id));
+            var filter = Builders<UserEntity>.Filter.ElemMatch(u => u.WorkExperiences, Builders<WorkExperienceEntity>.Filter.Eq(u=>u.Id,experience.Id));
             
-            var filter1 = Builders<WorkExperienceEntity>.Filter.Eq(u=> u.UserId,filter.Id);
-            var update = Builders<WorkExperienceEntity>.Update.Set(u => u.NameOfCompany, experience.NameOfCompany)
-                .Set(u => u.FieldOfWork, experience.FieldOfWork)
-                .Set(u => u.Description, experience.Description)
-                .Set(u => u.StartDate, experience.StartDate)
-                .Set(u => u.EndDate, experience.EndDate);
+            var update = Builders<UserEntity>.Update.Set(u => u.WorkExperiences[-1].NameOfCompany, experience.NameOfCompany)
+                .Set(u => u.WorkExperiences[-1].FieldOfWork, experience.FieldOfWork)
+                .Set(u => u.WorkExperiences[-1].Description, experience.Description)
+                .Set(u => u.WorkExperiences[-1].StartDate, experience.StartDate)
+                .Set(u => u.WorkExperiences[-1].EndDate, experience.EndDate);
 
 
 
-            await _queryExecutor.UpdateAsync(filter, update);*/
+            await _queryExecutor.UpdateAsync(filter, update);
         }
 
     }

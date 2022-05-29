@@ -1,4 +1,5 @@
-﻿using Dislinkt.Profile.Domain.Users;
+﻿using Dislinkt.Profile.Application;
+using Dislinkt.Profile.Domain.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,6 @@ namespace Dislinkt.Profile.Core.Repositories
     public interface IWorkExperienceRepository
     {
         Task<WorkExperience> GetByIdAsync(Guid id);
-        Task UpdateWorkExperienceAsync(WorkExperience experience);
+        Task UpdateWorkExperienceAsync(UpdateWorkExperienceData experience);
     }
 }

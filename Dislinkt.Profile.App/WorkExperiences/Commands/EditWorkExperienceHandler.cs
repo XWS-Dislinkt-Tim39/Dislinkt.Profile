@@ -21,14 +21,14 @@ namespace Dislinkt.Profile.App.WorkExperiences.Commands
         {
             var existingWorkExperience = await _experienceRepository.GetByIdAsync(request.Request.Id);
 
-            if (existingWorkExperience == null) return null;
+           // if (existingWorkExperience == null) return null;
 
             var updatedWorkExperience = new WorkExperience(request.Request.Id, request.Request.UserId, request.Request.NameOfCompany, request.Request.FieldOfWork,
                 request.Request.StartDate, request.Request.EndDate, request.Request.Description
                 );
 
 
-            await _experienceRepository.UpdateWorkExperienceAsync(updatedWorkExperience);
+            await _experienceRepository.UpdateWorkExperienceAsync(request.Request);
 
             return updatedWorkExperience;
         }

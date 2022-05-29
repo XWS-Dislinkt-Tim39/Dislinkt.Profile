@@ -112,9 +112,9 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Authorize]
         [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/update-work-experience")]
-        public async Task<WorkExperience> UpdateWorkExperienceAsync(UpdateWorkExperienceData updateWorkExperience)
+        public async Task UpdateWorkExperienceAsync(UpdateWorkExperienceData updateWorkExperience)
         {
-            return await _mediator.Send(new EditWorkExperienceCommand(updateWorkExperience));
+             await _mediator.Send(new EditWorkExperienceCommand(updateWorkExperience));
 
         }
         /// <summary>
