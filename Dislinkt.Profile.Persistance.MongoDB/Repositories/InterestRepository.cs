@@ -46,5 +46,12 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
 
             return result?.AsEnumerable().Select(i => i.ToInterest()).ToArray() ?? Array.Empty<Interest>();
         }
+
+        public async Task<Interest> GetById(Guid id)
+        {
+            var result = await _queryExecutor.FindByIdAsync<InterestEntity>(id);
+
+            return result?.ToInterest() ?? null;
+        }
     }
 }

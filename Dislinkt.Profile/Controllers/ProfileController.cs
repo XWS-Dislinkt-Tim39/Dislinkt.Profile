@@ -28,6 +28,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Dislinkt.Profile.App.WorkExperiences.Commands;
 using Dislinkt.Profile.App.Users.Commands.GetPublicUsers;
+using Dislinkt.Profile.App.Skills.Commands.GetUserSkills.Commands;
+using Dislinkt.Profile.App.Interests.Commands.GetUserInterests;
 
 namespace Dislinkt.Profile.WebApi.Controllers
 {
@@ -320,6 +322,32 @@ namespace Dislinkt.Profile.WebApi.Controllers
         public async Task<IReadOnlyCollection<Interest>> GetAllInterestsAsync()
         {
             return await _mediator.Send(new GetAllInterestsCommand());
+        }
+        /// <summary>
+        /// Get user skills
+        /// </summary>
+        /// <returns>Get user skills</returns>
+        /// /// /// /// <param id="id">for user</param>
+        [Authorize]
+        [HttpGet]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
+        [Route("/get-user-skills")]
+        public async Task<IReadOnlyCollection<Skill>> GetUserSkillsAsync(Guid id)
+        {
+            return await _mediator.Send(new GetUserSkillsCommand(id));
+        }
+        /// <summary>
+        /// Get user interests
+        /// </summary>
+        /// <returns>Get user interests</returns>
+        /// /// /// /// <param id="id">for user</param>
+        [Authorize]
+        [HttpGet]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
+        [Route("/get-user-interests")]
+        public async Task<IReadOnlyCollection<Interest>> GetUserInterestsAsync(Guid id)
+        {
+            return await _mediator.Send(new GetUserInterestsCommand(id));
         }
     }
 }
