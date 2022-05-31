@@ -94,7 +94,7 @@
             Sign up user
             </summary>
             <returns>Registred user or null if user dont exist</returns>
-            /// <param name="emailAddress">for user</param>
+            /// <param name="username">for user</param>
             /// <param name="password">for user</param>
         </member>
         <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.GetAllUsersAsync">
