@@ -6,11 +6,11 @@ namespace Dislinkt.Profile.App.SignUpUser.Commands
 {
     public class SignUpCommand : IRequest<UserDetails>
     {
-        public SignUpCommand(string emailAddress, string password)
+        public SignUpCommand(string username, string password)
         {
             this.Request = new SignUpData
             {
-                EmailAddress = emailAddress,
+                Username = username,
                 Password = password
             };
         }

@@ -4,9 +4,9 @@ namespace Dislinkt.Profile.Application
     public class SignUpData
     {
         /// <summary>
-        /// Email address
+        /// Username
         /// </summary>
-        public string EmailAddress { get; set; }
+        public string Username { get; set; }
         /// <summary>
         /// Password
         /// </summary>

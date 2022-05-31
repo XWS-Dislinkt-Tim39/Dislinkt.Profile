@@ -27,6 +27,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Dislinkt.Profile.App.WorkExperiences.Commands;
+using Dislinkt.Profile.App.Users.Commands.GetPublicUsers;
 using Dislinkt.Profile.App.Skills.Commands.GetUserSkills.Commands;
 using Dislinkt.Profile.App.Interests.Commands.GetUserInterests;
 
@@ -222,14 +223,14 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// Sign up user
         /// </summary>
         /// <returns>Registred user or null if user dont exist</returns>
-        /// /// <param name="emailAddress">for user</param>
+        /// /// <param name="username">for user</param>
         /// /// <param name="password">for user</param>
         [HttpGet]
         [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/sign-up")]
-        public async Task<UserDetails> SignUpUserAsync(string emailAddress, string password)
+        public async Task<UserDetails> SignUpUserAsync(string username, string password)
         {
-            return await _mediator.Send(new SignUpCommand(emailAddress, password));
+            return await _mediator.Send(new SignUpCommand(username, password));
         }
         /// <summary>
         /// Get all users
@@ -241,6 +242,17 @@ namespace Dislinkt.Profile.WebApi.Controllers
         public async Task<IReadOnlyCollection<User>> GetAllUsersAsync()
         {
             return await _mediator.Send(new GetAllUsersCommand());
+        }
+        /// <summary>
+        /// Get public users
+        /// </summary>
+        /// <returns>Get all users</returns>
+        [HttpGet]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
+        [Route("/get-public-users")]
+        public async Task<IReadOnlyCollection<User>> GetPublicUsersAsync()
+        {
+            return await _mediator.Send(new GetPublicUsersCommand());
         }
         /// <summary>
         /// Get user

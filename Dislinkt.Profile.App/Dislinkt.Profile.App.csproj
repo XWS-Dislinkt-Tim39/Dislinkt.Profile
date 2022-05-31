@@ -121,6 +121,8 @@
     <Compile Include="Users\Commands\ApproveUsers\ApproveUserHandler.cs" />
     <Compile Include="Users\Commands\GetAllUsers\GetAllUsersCommand.cs" />
     <Compile Include="Users\Commands\GetAllUsers\GetAllUsersHandler.cs" />
+    <Compile Include="Users\Commands\GetPublicUsers\GetPublicUsersCommand.cs" />
+    <Compile Include="Users\Commands\GetPublicUsers\GetPublicUsersHandler.cs" />
     <Compile Include="Users\Commands\GetUser\GetUserCommand.cs" />
     <Compile Include="Users\Commands\GetUser\GetUserHandler.cs" />
     <Compile Include="Users\Commands\SearchUsers\SearchUsersCommand.cs" />
