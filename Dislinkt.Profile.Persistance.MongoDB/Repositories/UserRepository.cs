@@ -145,6 +145,17 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
             return result?.AsEnumerable()?.FirstOrDefault(u => u.EmailAddress == emailAddress)?.ToUser() ?? null;
         }
 
+        public async Task<User> GetUserByUsernameAndPasswordAsync(string username, string password)
+        {
+            var filter = Builders<UserEntity>.Filter.Eq(u => u.Username, username)
+                & Builders<UserEntity>.Filter.Eq(u => u.Password, password)
+                & Builders<UserEntity>.Filter.Eq(u => u.IsApproved, true);
+
+            var result = await _queryExecutor.FindAsync(filter);
+
+            return result?.AsEnumerable()?.FirstOrDefault(u => u.Username == username)?.ToUser() ?? null;
+        }
+
         public async Task UpdateUserAsync(User user)
         {
             var filter = Builders<UserEntity>.Filter.Eq(u => u.Id, user.Id);

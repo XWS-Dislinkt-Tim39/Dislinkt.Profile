@@ -21,7 +21,7 @@ namespace Dislinkt.Profile.App.SignUpUser.Commands
         }
         public async Task<UserDetails> Handle(SignUpCommand request, CancellationToken cancellationToken)
         {
-            var user = await _userRepository.GetUserByEmailAddressAndPasswordAsync(request.Request.EmailAddress, BitConverter.ToString(SHA256.Create().ComputeHash(Encoding.ASCII.GetBytes(request.Request.Password))));
+            var user = await _userRepository.GetUserByUsernameAndPasswordAsync(request.Request.Username, BitConverter.ToString(SHA256.Create().ComputeHash(Encoding.ASCII.GetBytes(request.Request.Password))));
 
             if (user == null) return null;
 

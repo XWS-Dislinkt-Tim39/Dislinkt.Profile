@@ -33,11 +33,19 @@ namespace Dislinkt.Profile.App.RegisterUser.Commands
                 request.Request.PhoneNumber, (Domain.Users.Gender)request.Request.Gender, 
                 false, Domain.Users.VisibilityStatus.Public, Array.Empty<Education>(), 
                 Array.Empty<WorkExperience>(), Array.Empty<Guid>(), Array.Empty<Guid>()));
+           
+            var newUser = await _userRepository.GetByEmailAddressAndUsernameAsync(request.Request.EmailAddress, request.Request.Username);
 
-            SendEmailViaWebApi(request.Request.EmailAddress);
+            if (newUser== null)
+            {
+                return false;
+            }
+            var id = newUser.Id.ToString();
+
+            SendEmailViaWebApi(request.Request.EmailAddress,id);
             return true;
         }
-        private void SendEmailViaWebApi(string receiverEmailAddress)
+        private void SendEmailViaWebApi(string receiverEmailAddress,string id)
         {
             try
             {
@@ -51,7 +59,7 @@ namespace Dislinkt.Profile.App.RegisterUser.Commands
                 {
                     From = new MailAddress("dislinkt@gmail.com"),
                     Subject = "Approve your account on Dislinkt",
-                    Body = "<h3>Hello</h3> <br/> <p>Click on the link to approve your account!</p>",
+                    Body = String.Format("<h3>Hello</h3> <br/> <p>Click on the link to approve your account!</p></br>http://localhost:4200/registration-confirm/{0}", id),
                     IsBodyHtml = true,
                 };
                 mailMessage.To.Add(receiverEmailAddress);
