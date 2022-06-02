@@ -118,6 +118,8 @@
     <Compile Include="Skills\Commands\NewSkills\NewSkillHandler.cs" />
     <Compile Include="Skills\Commands\SearchSkills\SearchSkillsCommand.cs" />
     <Compile Include="Skills\Commands\SearchSkills\SearchSkillsHandler.cs" />
+    <Compile Include="Skills\RemoveSkillFromUser\Commands\RemoveSkillFromUserCommand.cs" />
+    <Compile Include="Skills\RemoveSkillFromUser\Commands\RemoveSkillFromUserHandler.cs" />
     <Compile Include="UpdateUser\Commands\UpdateUserCommand.cs" />
     <Compile Include="UpdateUser\Commands\UpdateUserHandler.cs" />
     <Compile Include="Users\Commands\ApproveUsers\ApproveUserCommand.cs" />

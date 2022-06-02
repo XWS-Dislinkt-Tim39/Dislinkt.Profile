@@ -60,6 +60,14 @@
             <returns>A boolean status of adding skill to user</returns>
             /// <param name="skillData">for skill</param>
         </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.RemoveSkill(System.Guid,System.Guid)">
+            <summary>
+            Add existing interest
+            </summary>
+            <returns>A boolean status of removing skill from user</returns>
+            /// <param name="userId">for user</param>
+            /// <param name="skillId">for interest</param>
+        </member>
         <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.AddNewInterest(Dislinkt.Profile.Application.InterestAddedData)">
             <summary>
             Add new interest
@@ -78,8 +86,8 @@
             <summary>
             Add existing interest
             </summary>
-            <returns>A boolean status of adding interest to user</returns>
-            /// <param name="userId">for interest</param>
+            <returns>A boolean status of removing interest from user</returns>
+            /// <param name="userId">for user</param>
             /// <param name="interestId">for interest</param>
         </member>
         <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.ApproveUserAsync(System.Guid)">
