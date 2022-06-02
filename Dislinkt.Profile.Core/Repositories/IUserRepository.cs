@@ -25,5 +25,6 @@ namespace Dislinkt.Profile.Core.Repositories
         Task AddSkillAsync(User user);
         Task AddInterestAsync(User user);
         Task RemoveInterestAsync(Guid userId, Guid interestId);
+        Task RemoveSkillAsync(Guid userId, Guid skillId);
     }
 }

@@ -31,6 +31,7 @@ using Dislinkt.Profile.App.Users.Commands.GetPublicUsers;
 using Dislinkt.Profile.App.Skills.Commands.GetUserSkills.Commands;
 using Dislinkt.Profile.App.Interests.Commands.GetUserInterests;
 using Dislinkt.Profile.App.Interests.Commands.RemoveInterestFromUser;
+using Dislinkt.Profile.App.Skills.RemoveSkillFromUser.Commands;
 
 namespace Dislinkt.Profile.WebApi.Controllers
 {
@@ -165,6 +166,21 @@ namespace Dislinkt.Profile.WebApi.Controllers
 
         }
         /// <summary>
+        /// Add existing interest
+        /// </summary>
+        /// <returns>A boolean status of removing skill from user</returns>
+        /// /// <param name="userId">for user</param>
+        /// /// <param name="skillId">for interest</param>
+        [HttpDelete]
+        [Authorize]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
+        [Route("/remove-skill")]
+        public async Task<bool> RemoveSkill(Guid userId, Guid skillId)
+        {
+            return await _mediator.Send(new RemoveSkillFromUserCommand(userId, skillId));
+
+        }
+        /// <summary>
         /// Add new interest
         /// </summary>
         /// <returns>A boolean status of adding interest to user</returns>
@@ -195,10 +211,10 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// <summary>
         /// Add existing interest
         /// </summary>
-        /// <returns>A boolean status of adding interest to user</returns>
-        /// /// <param name="userId">for interest</param>
+        /// <returns>A boolean status of removing interest from user</returns>
+        /// /// <param name="userId">for user</param>
         /// /// <param name="interestId">for interest</param>
-        [HttpGet]
+        [HttpDelete]
         [Authorize]
         [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/remove-interest")]
