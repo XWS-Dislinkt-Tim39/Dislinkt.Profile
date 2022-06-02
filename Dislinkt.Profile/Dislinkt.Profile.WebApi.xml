@@ -74,6 +74,14 @@
             <returns>A boolean status of adding interest to user</returns>
             /// <param name="interestData">for interest</param>
         </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.RemoveInterest(System.Guid,System.Guid)">
+            <summary>
+            Add existing interest
+            </summary>
+            <returns>A boolean status of adding interest to user</returns>
+            /// <param name="userId">for interest</param>
+            /// <param name="interestId">for interest</param>
+        </member>
         <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.ApproveUserAsync(System.Guid)">
             <summary>
             Approve user

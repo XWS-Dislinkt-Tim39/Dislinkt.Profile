@@ -40,6 +40,15 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
             await _queryExecutor.UpdateAsync(filter, update);
         }
 
+        public async Task RemoveInterestAsync(Guid userId,Guid interestId)
+        {
+            var filter = Builders<UserEntity>.Filter.Eq(u => u.Id,userId);
+
+            var update = Builders<UserEntity>.Update.Pull(u => u.Interests, interestId);
+
+            await _queryExecutor.UpdateAsync(filter, update);
+        }
+
         public async Task AddSkillAsync(User user)
         {
             var filter = Builders<UserEntity>.Filter.Eq(u => u.Id, user.Id);

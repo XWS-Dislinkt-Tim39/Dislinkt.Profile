@@ -30,6 +30,7 @@ using Dislinkt.Profile.App.WorkExperiences.Commands;
 using Dislinkt.Profile.App.Users.Commands.GetPublicUsers;
 using Dislinkt.Profile.App.Skills.Commands.GetUserSkills.Commands;
 using Dislinkt.Profile.App.Interests.Commands.GetUserInterests;
+using Dislinkt.Profile.App.Interests.Commands.RemoveInterestFromUser;
 
 namespace Dislinkt.Profile.WebApi.Controllers
 {
@@ -192,6 +193,22 @@ namespace Dislinkt.Profile.WebApi.Controllers
 
         }
         /// <summary>
+        /// Add existing interest
+        /// </summary>
+        /// <returns>A boolean status of adding interest to user</returns>
+        /// /// <param name="userId">for interest</param>
+        /// /// <param name="interestId">for interest</param>
+        [HttpGet]
+        [Authorize]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
+        [Route("/remove-interest")]
+        public async Task<bool> RemoveInterest(Guid userId,Guid interestId)
+        {
+            return await _mediator.Send(new RemoveInterestFromUserCommand(userId,interestId));
+
+        }
+
+        /// <summary>
         /// Approve user
         /// </summary>
         /// <returns>A boolean status of approving user</returns>
@@ -328,7 +345,6 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// </summary>
         /// <returns>Get user skills</returns>
         /// /// /// /// <param id="id">for user</param>
-        [Authorize]
         [HttpGet]
         [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/get-user-skills")]
@@ -341,7 +357,6 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// </summary>
         /// <returns>Get user interests</returns>
         /// /// /// /// <param id="id">for user</param>
-        [Authorize]
         [HttpGet]
         [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/get-user-interests")]

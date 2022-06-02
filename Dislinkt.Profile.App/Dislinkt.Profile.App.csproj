@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -91,6 +92,8 @@
     <Compile Include="Educations\Commands\UpdateEducationHandler.cs" />
     <Compile Include="Interests\Commands\GetUserInterests\GetUserInterestsCommand.cs" />
     <Compile Include="Interests\Commands\GetUserInterests\GetUserInterestsHandler.cs" />
+    <Compile Include="Interests\Commands\RemoveInterestFromUser\RemoveInterestFromUserCommand.cs" />
+    <Compile Include="Interests\Commands\RemoveInterestFromUser\RemoveInterestFromUserHandler.cs" />
     <Compile Include="Skills\Commands\GetUserSkills\Commands\GetUserSkillsCommand.cs" />
     <Compile Include="Interests\Commands\AddInterestToUser\AddInterestToUserCommand.cs" />
     <Compile Include="Interests\Commands\AddInterestToUser\AddInterestToUserHandler.cs" />
