@@ -25,6 +25,7 @@ using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.Swagger.Annotations;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Dislinkt.Profile.App.WorkExperiences.Commands;
 using Dislinkt.Profile.App.Users.Commands.GetPublicUsers;
@@ -32,6 +33,8 @@ using Dislinkt.Profile.App.Skills.Commands.GetUserSkills.Commands;
 using Dislinkt.Profile.App.Interests.Commands.GetUserInterests;
 using Dislinkt.Profile.App.Interests.Commands.RemoveInterestFromUser;
 using Dislinkt.Profile.App.Skills.RemoveSkillFromUser.Commands;
+using Grpc.Net.Client;
+using GrpcService;
 
 namespace Dislinkt.Profile.WebApi.Controllers
 {
@@ -57,15 +60,29 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/register-user")]
         public async Task<bool> RegisterUserAsync(UserData userData)
         {
-            var result = await _mediator.Send(new RegisterUserCommand(userData));
+            /*var result = await _mediator.Send(new RegisterUserCommand(userData));
 
             if (result == false) return false;
+            
+            _messageProducer.SendRegistrationMessage(userData);*/
 
-            _messageProducer.SendRegistrationMessage(userData);
+            var channel = GrpcChannel.ForAddress("https://localhost:5001/");
+            var client = new Greeter.GreeterClient(channel);
+
+            var reply = client.SayHello(new HelloRequest{ Id = Guid.NewGuid().ToString(), Username = userData.Username, Status = 1 });
+
+            if (!reply.Successful)
+            {
+                Debug.WriteLine("Doslo je do greske prilikom upisa u Neo4j");
+                return false;
+            }
+
+            Debug.WriteLine("Uspesno prosledjen na registraciju u Neo4j -- " + reply.Message);
 
             return true;
 
         }
+
         /// <summary>
         /// Update existing user
         /// </summary>
