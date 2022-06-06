@@ -26,6 +26,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Protos\greet.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.21.1" />
     <PackageReference Include="Grpc.Net.Client" Version="2.46.0" />
     <PackageReference Include="Grpc.Tools" Version="2.46.3">
@@ -56,6 +60,10 @@
     <ProjectReference Include="..\Dislinkt.Profile.Core\Dislinkt.Profile.Core.csproj" />
     <ProjectReference Include="..\Dislinkt.Profile.Persistance.MongoDB\Dislinkt.Profile.Persistance.MongoDB.csproj" />
     <ProjectReference Include="..\Dislinkt.Profile.RabbitMQ\Dislinkt.Profile.RabbitMQ.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\greet.proto" GrpcServices="Client" />
   </ItemGroup>
 
 
