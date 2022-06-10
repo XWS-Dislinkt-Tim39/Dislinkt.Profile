@@ -60,13 +60,13 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/register-user")]
         public async Task<bool> RegisterUserAsync(UserData userData)
         {
-            /*var result = await _mediator.Send(new RegisterUserCommand(userData));
+            var result = await _mediator.Send(new RegisterUserCommand(userData));
 
             if (result == false) return false;
             
-            _messageProducer.SendRegistrationMessage(userData);*/
+            _messageProducer.SendRegistrationMessage(userData);
 
-            var channel = GrpcChannel.ForAddress("https://localhost:5001/");
+           /* var channel = GrpcChannel.ForAddress("https://localhost:44357/");
             var client = new Greeter.GreeterClient(channel);
 
             var reply = client.SayHello(new HelloRequest{ Id = Guid.NewGuid().ToString(), Username = userData.Username, Status = 1 });
@@ -77,7 +77,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
                 return false;
             }
 
-            Debug.WriteLine("Uspesno prosledjen na registraciju u Neo4j -- " + reply.Message);
+            Debug.WriteLine("Uspesno prosledjen na registraciju u Neo4j -- " + reply.Message);*/
 
             return true;
 
