@@ -88,10 +88,10 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// </summary>
         /// <returns>Updated user</returns>
         /// /// <param name="updateUserData">for user</param>
-        [HttpPost]
+        [HttpPut]
         [Authorize]
         [SwaggerOperation(Tags = new[] { ApiTag })]
-        [Route("/update-user")]
+        [Route("/user")]
         public async Task<User> UpdateUserAsync(UpdateUserData updateUserData)
         {
             return await _mediator.Send(new UpdateUserCommand(updateUserData));
@@ -105,7 +105,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [HttpPost]
         [Authorize]
         [SwaggerOperation(Tags = new[] { ApiTag })]
-        [Route("/add-education")]
+        [Route("/education")]
         public async Task<bool> AddEducation(EducationData educationData)
         {
             return await _mediator.Send(new EducationCommand(educationData));
@@ -116,10 +116,10 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// </summary>
         /// <returns>Updated educatione</returns>
         /// /// <param name="updateEducation">for user</param>
-        [HttpPost]
+        [HttpPut]
         [Authorize]
         [SwaggerOperation(Tags = new[] { ApiTag })]
-        [Route("/update-education")]
+        [Route("/education")]
         public async Task UpdateEducationAsync(UpdateEducationData updateEducation)
         {
             await _mediator.Send(new UpdateEducationCommand(updateEducation));
@@ -134,7 +134,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [HttpPost]
         [Authorize]
         [SwaggerOperation(Tags = new[] { ApiTag })]
-        [Route("/add-work-experience")]
+        [Route("/work-experience")]
         public async Task<bool> AddWorkExperience(WorkExperienceData workExperienceData)
         {
             return await _mediator.Send(new WorkExperienceCommand(workExperienceData));
@@ -145,10 +145,10 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// </summary>
         /// <returns>Updated work experience</returns>
         /// /// <param name="updateWorkExperience">for user</param>
-        [HttpPost]
+        [HttpPut]
         [Authorize]
         [SwaggerOperation(Tags = new[] { ApiTag })]
-        [Route("/update-work-experience")]
+        [Route("/work-experience")]
         public async Task UpdateWorkExperienceAsync(UpdateWorkExperienceData updateWorkExperience)
         {
              await _mediator.Send(new EditWorkExperienceCommand(updateWorkExperience));
@@ -162,7 +162,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [HttpPost]
         [Authorize]
         [SwaggerOperation(Tags = new[] { ApiTag })]
-        [Route("/add-new-skill/")]
+        [Route("/add-new-skill")]
         public async Task<bool> AddNewSkill(SkillAddedData skillAddedData)
         {
             return await _mediator.Send(new NewSkillCommand(skillAddedData));
@@ -176,7 +176,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [HttpPost]
         [Authorize]
         [SwaggerOperation(Tags = new[] { ApiTag })]
-        [Route("/add-skill")]
+        [Route("/skill")]
         public async Task<bool> AddSkill(SkillData skillData)
         {
             return await _mediator.Send(new AddSkillToUserCommand(skillData));
@@ -191,7 +191,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [HttpDelete]
         [Authorize]
         [SwaggerOperation(Tags = new[] { ApiTag })]
-        [Route("/remove-skill")]
+        [Route("/skill")]
         public async Task<bool> RemoveSkill(Guid userId, Guid skillId)
         {
             return await _mediator.Send(new RemoveSkillFromUserCommand(userId, skillId));
@@ -219,7 +219,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [HttpPost]
         [Authorize]
         [SwaggerOperation(Tags = new[] { ApiTag })]
-        [Route("/add-interest")]
+        [Route("/interest")]
         public async Task<bool> AddInterest(InterestData interestData)
         {
             return await _mediator.Send(new AddInterestToUserCommand(interestData));
@@ -234,7 +234,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [HttpDelete]
         [Authorize]
         [SwaggerOperation(Tags = new[] { ApiTag })]
-        [Route("/remove-interest")]
+        [Route("/interest")]
         public async Task<bool> RemoveInterest(Guid userId,Guid interestId)
         {
             return await _mediator.Send(new RemoveInterestFromUserCommand(userId,interestId));
@@ -311,7 +311,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// /// /// <param id="id">for user</param>
         [HttpGet]
         [SwaggerOperation(Tags = new[] { ApiTag })]
-        [Route("/get-user")]
+        [Route("/user")]
         public async Task<User> GetUserAsync(Guid id)
         {
             return await _mediator.Send(new GetUserCommand(id));
