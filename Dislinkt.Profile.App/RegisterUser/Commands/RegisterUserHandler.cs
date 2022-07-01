@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Dislinkt.Profile.App.RegisterUser.Commands
 {
-    class RegisterUserHandler : IRequestHandler<RegisterUserCommand, bool>
+    class RegisterUserHandler : IRequestHandler<RegisterUserCommand, User>
     {
         private readonly IUserRepository _userRepository;
         public RegisterUserHandler(IUserRepository userRepository)
@@ -19,13 +19,13 @@ namespace Dislinkt.Profile.App.RegisterUser.Commands
             _userRepository = userRepository;
         }
        
-        public async Task<bool> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
+        public async Task<User> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
         {
             var existingUser = await _userRepository.GetByEmailAddressAndUsernameAsync(request.Request.EmailAddress, request.Request.Username);
 
             if(existingUser != null)
             {
-                return false;
+                return null;
             }
 
             await _userRepository.CreateUserAsync(new Domain.Users.User(Guid.NewGuid(), request.Request.FirstName, request.Request.LastName, request.Request.Username, request.Request.Biography,
@@ -38,12 +38,12 @@ namespace Dislinkt.Profile.App.RegisterUser.Commands
 
             if (newUser== null)
             {
-                return false;
+                return null;
             }
             var id = newUser.Id.ToString();
 
-            SendEmailViaWebApi(request.Request.EmailAddress,id);
-            return true;
+            //SendEmailViaWebApi(request.Request.EmailAddress,id);
+            return newUser;
         }
         private void SendEmailViaWebApi(string receiverEmailAddress,string id)
         {
