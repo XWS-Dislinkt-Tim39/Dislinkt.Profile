@@ -25,6 +25,7 @@ namespace Dislinkt.Profile.App.SignUpUser.Commands
 
             if (user == null) return null;
 
+
             var token = _authService.CreateToken(user);
             var details = new UserDetails(user, token);
 

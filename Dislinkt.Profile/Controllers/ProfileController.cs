@@ -35,6 +35,14 @@ using Dislinkt.Profile.App.Interests.Commands.RemoveInterestFromUser;
 using Dislinkt.Profile.App.Skills.RemoveSkillFromUser.Commands;
 using Grpc.Net.Client;
 using GrpcService;
+using Microsoft.Extensions.Options;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using System.Text.Json;
+using Dislinkt.Profile.Core.Repositories;
+using System.Security.Cryptography;
 
 namespace Dislinkt.Profile.WebApi.Controllers
 {
@@ -45,11 +53,17 @@ namespace Dislinkt.Profile.WebApi.Controllers
         private const string ApiTag = "Profile";
         private readonly IMediator _mediator;
         private readonly IMessageProducer _messageProducer;
-        public ProfileController(IMediator mediator, IMessageProducer messageProducer)
+        private IOptions<Audience> _settings;
+        private readonly IUserRepository _userRepository;
+        public ProfileController(IMediator mediator, IUserRepository userRepository, IMessageProducer messageProducer, IOptions<Audience> settings)
         {
             _mediator = mediator;
             _messageProducer = messageProducer;
+            this._settings = settings;
+            _userRepository = userRepository;
+
         }
+
         /// <summary>
         /// Register new user
         /// </summary>
@@ -63,7 +77,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
             var result = await _mediator.Send(new RegisterUserCommand(userData));
 
             if (result == null) return false;
-            
+
             _messageProducer.SendRegistrationMessage(userData);
 
             var channel = GrpcChannel.ForAddress("https://localhost:5001/");
@@ -151,7 +165,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/work-experience")]
         public async Task UpdateWorkExperienceAsync(UpdateWorkExperienceData updateWorkExperience)
         {
-             await _mediator.Send(new EditWorkExperienceCommand(updateWorkExperience));
+            await _mediator.Send(new EditWorkExperienceCommand(updateWorkExperience));
 
         }
         /// <summary>
@@ -235,9 +249,9 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Authorize]
         [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/interest")]
-        public async Task<bool> RemoveInterest(Guid userId,Guid interestId)
+        public async Task<bool> RemoveInterest(Guid userId, Guid interestId)
         {
-            return await _mediator.Send(new RemoveInterestFromUserCommand(userId,interestId));
+            return await _mediator.Send(new RemoveInterestFromUserCommand(userId, interestId));
 
         }
 
@@ -278,9 +292,52 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [HttpGet]
         [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/sign-up")]
-        public async Task<UserDetails> SignUpUserAsync(string username, string password)
+        public IActionResult SignUpUserAsync(string username, string password)
         {
-            return await _mediator.Send(new SignUpCommand(username, password));
+            //return await _mediator.Send(new SignUpCommand(username, password));
+            var userDetails = _userRepository.GetUserByUsernameAndPasswordAsync(username, BitConverter.ToString(SHA256.Create().ComputeHash(Encoding.ASCII.GetBytes(password))));
+
+            var now = DateTime.UtcNow;
+
+            var claims = new Claim[]
+            {
+                    new Claim(JwtRegisteredClaimNames.Sub, username),
+                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                    new Claim(JwtRegisteredClaimNames.Iat, now.ToUniversalTime().ToString(), ClaimValueTypes.Integer64)
+            };
+
+            var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_settings.Value.Secret));
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = signingKey,
+                ValidateIssuer = true,
+                ValidIssuer = _settings.Value.Iss,
+                ValidateAudience = true,
+                ValidAudience = _settings.Value.Aud,
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero,
+                RequireExpirationTime = true,
+
+            };
+
+            var jwt = new JwtSecurityToken(
+                issuer: _settings.Value.Iss,
+                audience: _settings.Value.Aud,
+                claims: claims,
+                notBefore: now,
+                expires: now.Add(TimeSpan.FromMinutes(2)),
+                signingCredentials: new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256)
+            );
+            var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
+            var responseJson = new
+            {
+                user = userDetails.result,
+                access_token = encodedJwt,
+                expires_in = (int)TimeSpan.FromMinutes(2).TotalSeconds
+            };
+
+            return Ok(responseJson);
         }
         /// <summary>
         /// Get all users
@@ -397,5 +454,12 @@ namespace Dislinkt.Profile.WebApi.Controllers
         {
             return await _mediator.Send(new GetUserInterestsCommand(id));
         }
+    }
+
+    public class Audience
+    {
+        public string Secret { get; set; }
+        public string Iss { get; set; }
+        public string Aud { get; set; }
     }
 }

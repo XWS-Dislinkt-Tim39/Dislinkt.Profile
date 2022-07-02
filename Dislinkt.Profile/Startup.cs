@@ -26,6 +26,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using Dislinkt.Profile.WebApi.Controllers;
 
 namespace Dislinkt.Profile
 {
@@ -40,6 +41,22 @@ namespace Dislinkt.Profile
 
         public void ConfigureServices(IServiceCollection services)
         {
+            var audienceConfig = Configuration.GetSection("Audience");
+
+            var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(audienceConfig["Secret"]));
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = signingKey,
+                ValidateIssuer = true,
+                ValidIssuer = audienceConfig["Iss"],
+                ValidateAudience = true,
+                ValidAudience = audienceConfig["Aud"],
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero,
+                RequireExpirationTime = true,
+            };
+
             services.AddMvc();
             services.AddCors(options =>
             {
@@ -91,33 +108,22 @@ namespace Dislinkt.Profile
 
             });
 
-            services.AddAuthentication(x =>
+            services.AddAuthentication(o =>
             {
-                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                o.DefaultAuthenticateScheme = "Auth_key";
+            })
+            .AddJwtBearer("Auth_key", x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.TokenValidationParameters = tokenValidationParameters;
             });
-
-            services.AddAuthentication()
-                    .AddJwtBearer(cfg =>
-                    {
-                        cfg.TokenValidationParameters = new TokenValidationParameters()
-                        {
-                            ValidateIssuerSigningKey = true,
-                            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8
-                                .GetBytes(Configuration.GetSection("AppSettings:Token").Value)),
-                            ValidateIssuer = false,
-                            ValidateAudience = false
-
-                        };
-                    });
-
 
             services.Configure<MongoSettings>(options =>
             {
                 options.Connection = Configuration.GetSection("MongoSettings:ConnectionString").Value;
                 options.DatabaseName = Configuration.GetSection("MongoSettings:DatabaseName").Value;
             });
-
+            services.Configure<Audience>(Configuration.GetSection("Audience"));
             services.AddSingleton(Configuration);
             services.AddMediatR(typeof(RegisterUserCommand).GetTypeInfo().Assembly);
             services.AddScoped<IDatabaseFactory, DatabaseFactory>();
