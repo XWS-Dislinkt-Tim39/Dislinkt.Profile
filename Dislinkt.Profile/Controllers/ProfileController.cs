@@ -332,7 +332,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
             var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
             var responseJson = new
             {
-                user = userDetails.result,
+                user = userDetails.Result,
                 access_token = encodedJwt,
                 expires_in = (int)TimeSpan.FromMinutes(2).TotalSeconds
             };
