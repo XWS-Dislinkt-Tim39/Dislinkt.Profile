@@ -274,7 +274,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// <returns>A boolean status of changed privacy for user</returns>
         /// /// <param name="userId">for user</param>
         /// /// <param name="isPublic">for privacy</param>
-        [HttpPost]
+        [HttpGet]
         [Authorize]
         [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/change-privacy")]
@@ -332,7 +332,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
             var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
             var responseJson = new
             {
-                user = userDetails.result,
+                user = userDetails.Result,
                 access_token = encodedJwt,
                 expires_in = (int)TimeSpan.FromMinutes(2).TotalSeconds
             };
