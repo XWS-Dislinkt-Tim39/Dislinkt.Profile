@@ -27,6 +27,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
 using Dislinkt.Profile.WebApi.Controllers;
+using Prometheus;
 
 namespace Dislinkt.Profile
 {
@@ -169,16 +170,14 @@ namespace Dislinkt.Profile
 
             app.UseAuthentication();
             app.UseRouting();
+            app.UseHttpMetrics();
             app.UseAuthorization();
-            //app.UseJwtBearerAuthentication(new JwtBearerOptions()
-            // {
-            //     Audience = "http://localhost:5001/",
-            //     Authority = "http://localhost:5000/"
-            // });
+            
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapMetrics();
             });
         }
     }
