@@ -43,6 +43,7 @@ using System.Text;
 using System.Text.Json;
 using Dislinkt.Profile.Core.Repositories;
 using System.Security.Cryptography;
+using GrpcNotificationService;
 
 namespace Dislinkt.Profile.WebApi.Controllers
 {
@@ -78,9 +79,9 @@ namespace Dislinkt.Profile.WebApi.Controllers
 
             if (result == null) return false;
 
-            _messageProducer.SendRegistrationMessage(userData);
+            //_messageProducer.SendRegistrationMessage(userData);
 
-            var channel = GrpcChannel.ForAddress("https://localhost:5001/");
+           /* var channel = GrpcChannel.ForAddress("https://localhost:5001/");
             var client = new Greeter.GreeterClient(channel);
 
             var reply = client.SayHello(new HelloRequest { Id = result.Id.ToString(), Username = userData.Username, Status = 1 });
@@ -91,7 +92,22 @@ namespace Dislinkt.Profile.WebApi.Controllers
                 return false;
             }
 
-            Debug.WriteLine("Uspesno prosledjen na registraciju u Neo4j -- " + reply.Message);
+            Debug.WriteLine("Uspesno prosledjen na registraciju u Neo4j -- " + reply.Message);*/
+
+            var channel2 = GrpcChannel.ForAddress("https://localhost:5002/");
+            var client2 = new notificationSettingsGreeter.notificationSettingsGreeterClient(channel2);
+
+            var reply2 = client2.CreateSettings(new NotificationSettingsRequest { UserId = result.Id.ToString(), MessageOn=true,PostOn=true,JobOn=true,FriendRequestOn=true});
+            
+         
+           
+            if (!reply2.Successful)
+            {
+                Debug.WriteLine("Doslo je do greske prilikom kreiranja notifikacija za usera");
+                return false;
+            }
+
+            Debug.WriteLine("Uspesno prosledjen na registraciju u notifikacijama -- " + reply2.Message);
 
             return true;
 
