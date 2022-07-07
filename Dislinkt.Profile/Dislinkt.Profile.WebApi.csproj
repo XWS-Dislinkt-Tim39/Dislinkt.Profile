@@ -13,10 +13,11 @@
 
 	<PropertyGroup>
 		<_FunctionsSkipCleanOutput>true</_FunctionsSkipCleanOutput>
+		<DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
 	</PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\Natalija\OneDrive\Desktop\Dislinkt\Dislinkt.Profile\Dislinkt.Profile\Dislinkt.Profile.WebApi.xml</DocumentationFile>
+    <DocumentationFile>C:\Users\DELL\Desktop\profile new\Dislinkt.Profile\Dislinkt.Profile\Dislinkt.Profile.WebApi.xml</DocumentationFile>
     <NoWarn>1701;1702;1591</NoWarn>
     <Optimize>False</Optimize>
   </PropertyGroup>
@@ -53,6 +54,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="prometheus-net" Version="3.6.0" />
     <PackageReference Include="prometheus-net.AspNetCore" Version="3.6.0" />
+    <PackageReference Include="prometheus-net.AspNetCore.HealthChecks" Version="3.6.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.3.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.3.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.3.0" />

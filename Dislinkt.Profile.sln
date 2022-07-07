@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Profile.App", "Dis
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Profile.RabbitMQ", "Dislinkt.Profile.RabbitMQ\Dislinkt.Profile.RabbitMQ.csproj", "{CCBC3A9B-43A5-4139-8153-C99BA35909ED}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{37B4C8A9-8414-4398-972E-A1CE2AD18F2F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{CCBC3A9B-43A5-4139-8153-C99BA35909ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCBC3A9B-43A5-4139-8153-C99BA35909ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCBC3A9B-43A5-4139-8153-C99BA35909ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37B4C8A9-8414-4398-972E-A1CE2AD18F2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37B4C8A9-8414-4398-972E-A1CE2AD18F2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37B4C8A9-8414-4398-972E-A1CE2AD18F2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37B4C8A9-8414-4398-972E-A1CE2AD18F2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
