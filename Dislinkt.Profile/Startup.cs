@@ -143,6 +143,7 @@ namespace Dislinkt.Profile
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseMetricServer();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
