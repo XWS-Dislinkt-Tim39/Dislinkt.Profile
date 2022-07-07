@@ -290,7 +290,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// <returns>A boolean status of changed privacy for user</returns>
         /// /// <param name="userId">for user</param>
         /// /// <param name="isPublic">for privacy</param>
-        [HttpPost]
+        [HttpGet]
         [Authorize]
         [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/change-privacy")]
