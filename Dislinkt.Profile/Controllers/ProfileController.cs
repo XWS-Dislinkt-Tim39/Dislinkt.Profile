@@ -81,7 +81,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
 
             //_messageProducer.SendRegistrationMessage(userData);
 
-           /* var channel = GrpcChannel.ForAddress("https://localhost:5001/");
+            var channel = GrpcChannel.ForAddress("https://localhost:5001/");
             var client = new Greeter.GreeterClient(channel);
 
             var reply = client.SayHello(new HelloRequest { Id = result.Id.ToString(), Username = userData.Username, Status = 1 });
@@ -92,7 +92,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
                 return false;
             }
 
-            Debug.WriteLine("Uspesno prosledjen na registraciju u Neo4j -- " + reply.Message);*/
+            Debug.WriteLine("Uspesno prosledjen na registraciju u Neo4j -- " + reply.Message);
 
             var channel2 = GrpcChannel.ForAddress("https://localhost:5002/");
             var client2 = new notificationSettingsGreeter.notificationSettingsGreeterClient(channel2);
