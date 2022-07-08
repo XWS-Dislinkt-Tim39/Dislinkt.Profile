@@ -4,7 +4,7 @@ namespace Dislinkt.Profile.Domain.Users
 {
     public class WorkExperience
     {
-        public WorkExperience(Guid id, Guid userId, string nameOfCompany, string fieldOfWork, DateTime startDate, DateTime endDate, string description)
+        public WorkExperience(Guid id, Guid userId, string nameOfCompany, string fieldOfWork, DateTime startDate, DateTime endDate, string description, Seniority seniority)
         {
             Id = id;
             UserId = userId;
@@ -13,6 +13,7 @@ namespace Dislinkt.Profile.Domain.Users
             StartDate = startDate;
             EndDate = endDate;
             Description = description;
+            Seniority = seniority;
         }
 
         public Guid Id { get; }
@@ -22,5 +23,6 @@ namespace Dislinkt.Profile.Domain.Users
         public DateTime StartDate { get; }
         public DateTime EndDate { get; }
         public string Description { get; }
+        public Seniority Seniority { get; }
     }
 }

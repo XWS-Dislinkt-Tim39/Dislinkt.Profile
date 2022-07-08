@@ -7,6 +7,7 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,8 +30,9 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
         public async Task UpdateWorkExperienceAsync(UpdateWorkExperienceData experience)
         {
             var filter = Builders<UserEntity>.Filter.ElemMatch(u => u.WorkExperiences, Builders<WorkExperienceEntity>.Filter.Eq(u=>u.Id,experience.Id));
-            
-            var update = Builders<UserEntity>.Update.Set(u => u.WorkExperiences[-1].NameOfCompany, experience.NameOfCompany)
+
+            var update = Builders<UserEntity>.Update
+                .Set(u => u.WorkExperiences[-1].NameOfCompany, experience.NameOfCompany)
                 .Set(u => u.WorkExperiences[-1].FieldOfWork, experience.FieldOfWork)
                 .Set(u => u.WorkExperiences[-1].Description, experience.Description)
                 .Set(u => u.WorkExperiences[-1].StartDate, experience.StartDate)

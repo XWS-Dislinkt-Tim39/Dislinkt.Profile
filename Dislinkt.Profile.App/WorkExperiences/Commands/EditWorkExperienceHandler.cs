@@ -24,7 +24,7 @@ namespace Dislinkt.Profile.App.WorkExperiences.Commands
            // if (existingWorkExperience == null) return null;
 
             var updatedWorkExperience = new WorkExperience(request.Request.Id, request.Request.UserId, request.Request.NameOfCompany, request.Request.FieldOfWork,
-                request.Request.StartDate, request.Request.EndDate, request.Request.Description
+                request.Request.StartDate, request.Request.EndDate, request.Request.Description, request.Request.Seniority
                 );
 
 
