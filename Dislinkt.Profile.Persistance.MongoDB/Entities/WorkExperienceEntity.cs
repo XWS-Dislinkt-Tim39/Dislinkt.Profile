@@ -14,6 +14,7 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Entities
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public string Description { get; set; }
+        public Seniority Seniority { get; set; }
         public static WorkExperienceEntity[] ToWorkExperienceEntities(WorkExperience[] workExperiences)
             => workExperiences.Select(p => ToWorkExperienceEntity(p)).ToArray();
         public static WorkExperienceEntity ToWorkExperienceEntity(WorkExperience workExperience)
@@ -26,10 +27,11 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Entities
                 FieldOfWork = workExperience.FieldOfWork,
                 StartDate = workExperience.StartDate,
                 EndDate = workExperience.EndDate,
-                Description = workExperience.Description
+                Description = workExperience.Description,
+                Seniority = workExperience.Seniority
             };
         }
         public WorkExperience ToWorkExperience()
-            => new WorkExperience(this.Id, this.UserId, this.NameOfCompany, this.FieldOfWork, this.StartDate, this.EndDate, this.Description);
+            => new WorkExperience(this.Id, this.UserId, this.NameOfCompany, this.FieldOfWork, this.StartDate, this.EndDate, this.Description, this.Seniority);
     }
 }

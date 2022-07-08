@@ -20,7 +20,7 @@ namespace Dislinkt.Profile.App.WorkExperiences
             if (existingUser == null) return false;
 
             var updatedWorkExperience = existingUser.WorkExperiences.Append(new Domain.Users.WorkExperience(System.Guid.NewGuid(), request.Request.UserId, request.Request.NameOfCompany,
-                request.Request.FieldOfWork, request.Request.StartDate, request.Request.EndDate, request.Request.Description));
+                request.Request.FieldOfWork, request.Request.StartDate, request.Request.EndDate, request.Request.Description, request.Request.Seniority));
 
             await _userRepository.AddWorkExperienceAsync(new Domain.Users.User(existingUser.Id, existingUser.FirstName, existingUser.LastName,
                 existingUser.Username, existingUser.Biography, existingUser.EmailAddress, existingUser.Password, existingUser.DateOfBirth, existingUser.Address,
