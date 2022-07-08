@@ -44,6 +44,7 @@ using System.Text.Json;
 using Dislinkt.Profile.Core.Repositories;
 using System.Security.Cryptography;
 using GrpcNotificationService;
+using OpenTracing;
 
 namespace Dislinkt.Profile.WebApi.Controllers
 {
@@ -56,12 +57,14 @@ namespace Dislinkt.Profile.WebApi.Controllers
         private readonly IMessageProducer _messageProducer;
         private IOptions<Audience> _settings;
         private readonly IUserRepository _userRepository;
-        public ProfileController(IMediator mediator, IUserRepository userRepository, IMessageProducer messageProducer, IOptions<Audience> settings)
+        private readonly ITracer _tracer;
+        public ProfileController(IMediator mediator, IUserRepository userRepository, IMessageProducer messageProducer, IOptions<Audience> settings, ITracer tracer)
         {
             _mediator = mediator;
             _messageProducer = messageProducer;
             this._settings = settings;
             _userRepository = userRepository;
+            _tracer = tracer;
 
         }
 
@@ -75,6 +78,9 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/register-user")]
         public async Task<bool> RegisterUserAsync(UserData userData)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
+
             var result = await _mediator.Send(new RegisterUserCommand(userData));
 
             if (result == null) return false;
@@ -124,6 +130,8 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/user")]
         public async Task<User> UpdateUserAsync(UpdateUserData updateUserData)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
             return await _mediator.Send(new UpdateUserCommand(updateUserData));
 
         }
@@ -138,6 +146,8 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/education")]
         public async Task<bool> AddEducation(EducationData educationData)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
             return await _mediator.Send(new EducationCommand(educationData));
 
         }
@@ -152,6 +162,8 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/education")]
         public async Task UpdateEducationAsync(UpdateEducationData updateEducation)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
             await _mediator.Send(new UpdateEducationCommand(updateEducation));
 
         }
@@ -167,6 +179,8 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/work-experience")]
         public async Task<bool> AddWorkExperience(WorkExperienceData workExperienceData)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
             return await _mediator.Send(new WorkExperienceCommand(workExperienceData));
 
         }
@@ -181,6 +195,8 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/work-experience")]
         public async Task UpdateWorkExperienceAsync(UpdateWorkExperienceData updateWorkExperience)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
             await _mediator.Send(new EditWorkExperienceCommand(updateWorkExperience));
 
         }
@@ -195,6 +211,8 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/add-new-skill")]
         public async Task<bool> AddNewSkill(SkillAddedData skillAddedData)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
             return await _mediator.Send(new NewSkillCommand(skillAddedData));
 
         }
@@ -209,6 +227,8 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/skill")]
         public async Task<bool> AddSkill(SkillData skillData)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
             return await _mediator.Send(new AddSkillToUserCommand(skillData));
 
         }
@@ -224,6 +244,8 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/skill")]
         public async Task<bool> RemoveSkill(Guid userId, Guid skillId)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
             return await _mediator.Send(new RemoveSkillFromUserCommand(userId, skillId));
 
         }
@@ -238,6 +260,8 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/add-new-interest")]
         public async Task<bool> AddNewInterest(InterestAddedData interestAddedData)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
             return await _mediator.Send(new NewInterestCommand(interestAddedData));
 
         }
@@ -252,6 +276,8 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/interest")]
         public async Task<bool> AddInterest(InterestData interestData)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
             return await _mediator.Send(new AddInterestToUserCommand(interestData));
 
         }
@@ -267,6 +293,8 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/interest")]
         public async Task<bool> RemoveInterest(Guid userId, Guid interestId)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
             return await _mediator.Send(new RemoveInterestFromUserCommand(userId, interestId));
 
         }
@@ -281,6 +309,8 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/approve-user/{id}")]
         public async Task<bool> ApproveUserAsync(Guid id)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
             return await _mediator.Send(new ApproveUserCommand(id));
 
         }
@@ -296,6 +326,8 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/change-privacy")]
         public async Task<bool> ChangePrivacyAsync(Guid userId, bool isPublic)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
             return await _mediator.Send(new UpdatePrivacyCommand(userId, isPublic));
 
         }
@@ -310,6 +342,8 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/sign-up")]
         public IActionResult SignUpUserAsync(string username, string password)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
             //return await _mediator.Send(new SignUpCommand(username, password));
             var userDetails = _userRepository.GetUserByUsernameAndPasswordAsync(username, BitConverter.ToString(SHA256.Create().ComputeHash(Encoding.ASCII.GetBytes(password))));
 
@@ -364,6 +398,8 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/get-all-users")]
         public async Task<IReadOnlyCollection<User>> GetAllUsersAsync()
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
             return await _mediator.Send(new GetAllUsersCommand());
         }
         /// <summary>
@@ -375,6 +411,8 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/get-public-users")]
         public async Task<IReadOnlyCollection<User>> GetPublicUsersAsync()
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
             return await _mediator.Send(new GetPublicUsersCommand());
         }
         /// <summary>
@@ -387,6 +425,8 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/user")]
         public async Task<User> GetUserAsync(Guid id)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
             return await _mediator.Send(new GetUserCommand(id));
         }
         /// <summary>
@@ -399,6 +439,8 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/search-users")]
         public async Task<IReadOnlyCollection<User>> SearchUserAsync(string username)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
             return await _mediator.Send(new SearchUsersCommand(username));
         }
         /// <summary>
@@ -410,6 +452,8 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/search-skills")]
         public async Task<IReadOnlyCollection<Skill>> SearchSkillsAsync(string name)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
             return await _mediator.Send(new SearchSkillsCommand(name));
         }
         /// <summary>
@@ -422,6 +466,8 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/search-interests")]
         public async Task<IReadOnlyCollection<Interest>> SearchInterestsAsync(string name)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
             return await _mediator.Send(new SearchInterestsCommand(name));
         }
         /// <summary>
@@ -433,6 +479,8 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/get-all-skills")]
         public async Task<IReadOnlyCollection<Skill>> GetAllSkillsAsync()
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
             return await _mediator.Send(new GetAllSkillsCommand());
         }
         /// <summary>
@@ -444,6 +492,8 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/get-all-interests")]
         public async Task<IReadOnlyCollection<Interest>> GetAllInterestsAsync()
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
             return await _mediator.Send(new GetAllInterestsCommand());
         }
         /// <summary>
@@ -456,6 +506,8 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/get-user-skills")]
         public async Task<IReadOnlyCollection<Skill>> GetUserSkillsAsync(Guid id)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
             return await _mediator.Send(new GetUserSkillsCommand(id));
         }
         /// <summary>
@@ -468,6 +520,8 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Route("/get-user-interests")]
         public async Task<IReadOnlyCollection<Interest>> GetUserInterestsAsync(Guid id)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
             return await _mediator.Send(new GetUserInterestsCommand(id));
         }
     }
