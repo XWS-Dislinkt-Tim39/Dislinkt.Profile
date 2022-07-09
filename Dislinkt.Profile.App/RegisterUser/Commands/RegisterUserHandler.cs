@@ -32,7 +32,7 @@ namespace Dislinkt.Profile.App.RegisterUser.Commands
                 request.Request.EmailAddress, BitConverter.ToString(SHA256.Create().ComputeHash(Encoding.ASCII.GetBytes(request.Request.Password))), request.Request.DateOfBirth, request.Request.Address, request.Request.City, request.Request.Country,
                 request.Request.PhoneNumber, (Domain.Users.Gender)request.Request.Gender, 
                 false, Domain.Users.VisibilityStatus.Public, Array.Empty<Education>(), 
-                Array.Empty<WorkExperience>(), Array.Empty<Guid>(), Array.Empty<Guid>()));
+                Array.Empty<WorkExperience>(), Array.Empty<Guid>(), Array.Empty<Guid>(), (Domain.Users.Seniority)request.Request.Seniority));
            
             var newUser = await _userRepository.GetByEmailAddressAndUsernameAsync(request.Request.EmailAddress, request.Request.Username);
 

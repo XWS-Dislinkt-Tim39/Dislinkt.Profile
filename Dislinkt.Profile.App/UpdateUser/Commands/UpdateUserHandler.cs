@@ -24,7 +24,7 @@ namespace Dislinkt.Profile.App.UpdateUser.Commands
                request.Request.Biography, request.Request.EmailAddress, existingUser.Password, request.Request.DateOfBirth, request.Request.Address, request.Request.City,
                 request.Request.Country, request.Request.PhoneNumber, (Gender)request.Request.Gender, 
                 existingUser.IsApproved, existingUser.Status, existingUser.Educations, 
-                existingUser.WorkExperiences, existingUser.Skills, existingUser.Interests);
+                existingUser.WorkExperiences, existingUser.Skills, existingUser.Interests,(Seniority) request.Request.Seniority);
 
             await _userRepository.UpdateUserAsync(updatedUser);
 

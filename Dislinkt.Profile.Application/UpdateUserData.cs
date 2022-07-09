@@ -36,5 +36,9 @@ namespace Dislinkt.Profile.Application
         /// Gender
         /// </summary>
         public GenderData Gender { get; set; }
+        /// <summary>
+        /// Seniority
+        /// </summary>
+        public int Seniority { get; set; }
     }
 }

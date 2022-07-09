@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dislinkt.Profile.Domain.Users;
 
 namespace Dislinkt.Profile.Application
 {
@@ -36,5 +37,9 @@ namespace Dislinkt.Profile.Application
         /// Description
         /// </summary>
         public string Description { get; set; }
+        /// <summary>
+        /// Seniority
+        /// </summary>
+        public Seniority Seniority { get; set; }
     }
 }
