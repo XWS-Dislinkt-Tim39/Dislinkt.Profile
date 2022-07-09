@@ -45,6 +45,7 @@ using Dislinkt.Profile.Core.Repositories;
 using System.Security.Cryptography;
 using GrpcNotificationService;
 using OpenTracing;
+using GrpcAddActivityService;
 
 namespace Dislinkt.Profile.WebApi.Controllers
 {
@@ -104,8 +105,6 @@ namespace Dislinkt.Profile.WebApi.Controllers
             var client2 = new notificationSettingsGreeter.notificationSettingsGreeterClient(channel2);
 
             var reply2 = client2.CreateSettings(new NotificationSettingsRequest { UserId = result.Id.ToString(), MessageOn=true,PostOn=true,JobOn=true,FriendRequestOn=true});
-            
-         
            
             if (!reply2.Successful)
             {
@@ -114,6 +113,18 @@ namespace Dislinkt.Profile.WebApi.Controllers
             }
 
             Debug.WriteLine("Uspesno prosledjen na registraciju u notifikacijama -- " + reply2.Message);
+
+            var channel3 = GrpcChannel.ForAddress("https://localhost:5003/");
+            var client3 = new addActivityGreeter.addActivityGreeterClient(channel3);
+            var reply3 = client3.addActivity(new ActivityRequest { UserId = result.Id.ToString(), Text = "Sucessfully registered", Type = "Registration", Date = DateTime.Now.AddHours(2).ToString() });
+
+            if (!reply3.Successful)
+            {
+                Debug.WriteLine("Doslo je do greske prilikom kreiranja eventa za admina");
+                return false;
+            }
+
+            Debug.WriteLine("Uspesno prosledjen na dashboard kod admina-- " + reply3.Message);
 
             return true;
 
@@ -376,7 +387,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
                 audience: _settings.Value.Aud,
                 claims: claims,
                 notBefore: now,
-                expires: now.Add(TimeSpan.FromMinutes(2)),
+                expires: now.Add(TimeSpan.FromMinutes(30)),
                 signingCredentials: new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256)
             );
             var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
@@ -384,7 +395,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
             {
                 user = userDetails.Result,
                 access_token = encodedJwt,
-                expires_in = (int)TimeSpan.FromMinutes(2).TotalSeconds
+                expires_in = (int)TimeSpan.FromMinutes(30).TotalSeconds
             };
 
             return Ok(responseJson);

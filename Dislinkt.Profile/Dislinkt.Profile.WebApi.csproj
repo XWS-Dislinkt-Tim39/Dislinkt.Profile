@@ -32,6 +32,9 @@
    <ItemGroup>  
   <Protobuf Remove="Protos\notificationSettings.proto" />  
   </ItemGroup>   
+  <ItemGroup>  
+  <Protobuf Remove="Protos\addActivity.proto" />  
+  </ItemGroup> 
 
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.21.1" />
@@ -76,6 +79,9 @@
   </ItemGroup>
   <ItemGroup>  
   <Protobuf Include="Protos\notificationSettings.proto" GrpcServices="Client" />  
+  </ItemGroup> 
+  <ItemGroup>  
+  <Protobuf Include="Protos\addActivity.proto" GrpcServices="Client" />  
   </ItemGroup> 
 
 
