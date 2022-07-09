@@ -28,7 +28,7 @@ namespace Dislinkt.Profile.App.Educations.Commands
             await _userRepository.AddEducationAsync(new User(existingUser.Id, existingUser.FirstName, existingUser.LastName, existingUser.Username, existingUser.Biography,
                 existingUser.EmailAddress, existingUser.Password, existingUser.DateOfBirth, existingUser.Address, existingUser.City, existingUser.Country,
                 existingUser.PhoneNumber, existingUser.Gender, existingUser.IsApproved, 
-                existingUser.Status, updatedEducations.ToArray(), existingUser.WorkExperiences, existingUser.Skills, existingUser.Interests));
+                existingUser.Status, updatedEducations.ToArray(), existingUser.WorkExperiences, existingUser.Skills, existingUser.Interests,existingUser.Seniority));
 
             return true;
         }

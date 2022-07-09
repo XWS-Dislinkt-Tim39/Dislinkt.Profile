@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dislinkt.Profile.Domain.Users;
+using System;
 
 namespace Dislinkt.Profile.Application
 {
@@ -39,6 +40,6 @@ namespace Dislinkt.Profile.Application
         /// <summary>
         /// Seniority
         /// </summary>
-        public int Seniority { get; set; }
+        public Seniority Seniority { get; set; }
     }
 }

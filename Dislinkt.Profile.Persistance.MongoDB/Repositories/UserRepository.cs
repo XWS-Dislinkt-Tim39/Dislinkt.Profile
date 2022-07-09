@@ -188,7 +188,8 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
                 .Set(u => u.City, user.City)
                 .Set(u => u.Country, user.Country)
                 .Set(u => u.Address, user.Address)
-                .Set(u => u.Biography, user.Biography);
+                .Set(u => u.Biography, user.Biography)
+                .Set(u => u.Seniority, user.Seniority);
 
 
 
@@ -221,7 +222,8 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
                 PhoneNumber = user.PhoneNumber,
                 Gender = user.Gender,
                 IsApproved = user.IsApproved,
-                Status = user.Status
+                Status = user.Status,
+                Seniority = user.Seniority
             };
         }
 
