@@ -8,6 +8,8 @@ namespace Dislinkt.Profile.Core.Repositories
     public interface IUserRepository
     {
         Task CreateUserAsync(User user);
+        Task DeleteUserById(Guid id);
+
         Task<IReadOnlyList<User>> GetAllAsync();
         Task<IReadOnlyList<User>> GetPublicAsync();
         Task<IReadOnlyCollection<User>> GetByUsernameAsync(string username);

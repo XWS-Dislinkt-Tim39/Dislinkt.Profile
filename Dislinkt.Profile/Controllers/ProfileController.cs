@@ -46,6 +46,7 @@ using System.Security.Cryptography;
 using GrpcNotificationService;
 using OpenTracing;
 using GrpcAddActivityService;
+using Dislinkt.Profile.App.Users.Commands.DeleteUser;
 
 namespace Dislinkt.Profile.WebApi.Controllers
 {
@@ -128,6 +129,22 @@ namespace Dislinkt.Profile.WebApi.Controllers
 
             return true;
 
+
+
+        }
+        /// <summary>
+        /// Delete existing user
+        /// </summary>
+        /// <returns>user</returns>
+        /// /// <param name="deleteUserData">for user</param>
+        [HttpDelete]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
+        [Route("/delete-user")]
+        public async Task RemoveProduct(Guid id)
+        {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
+            await _mediator.Send(new DeleteUserCommand(id));
         }
 
         /// <summary>

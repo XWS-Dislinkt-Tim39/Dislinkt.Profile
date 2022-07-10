@@ -205,6 +205,14 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
             await _queryExecutor.UpdateAsync(filter, update);
         }
 
+        public async Task DeleteUserById(Guid id)
+        {
+            var filter = Builders<UserEntity>.Filter.Eq(u => u.Id, id);
+
+            await _queryExecutor.DeleteByIdAsync<UserEntity>(filter);
+
+        }
+
         private UserEntity ToUserEntity(User user)
         {
             return new UserEntity

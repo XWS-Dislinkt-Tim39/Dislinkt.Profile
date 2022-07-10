@@ -318,6 +318,8 @@
     <Compile Include="UpdateUser\Commands\UpdateUserHandler.cs" />
     <Compile Include="Users\Commands\ApproveUsers\ApproveUserCommand.cs" />
     <Compile Include="Users\Commands\ApproveUsers\ApproveUserHandler.cs" />
+    <Compile Include="Users\Commands\DeleteUser\DeleteUserCommand.cs" />
+    <Compile Include="Users\Commands\DeleteUser\DeleteUserHandler.cs" />
     <Compile Include="Users\Commands\GetAllUsers\GetAllUsersCommand.cs" />
     <Compile Include="Users\Commands\GetAllUsers\GetAllUsersHandler.cs" />
     <Compile Include="Users\Commands\GetPublicUsers\GetPublicUsersCommand.cs" />
