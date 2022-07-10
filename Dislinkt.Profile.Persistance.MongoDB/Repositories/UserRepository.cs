@@ -231,7 +231,8 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Repositories
                 Gender = user.Gender,
                 IsApproved = user.IsApproved,
                 Status = user.Status,
-                Seniority = user.Seniority
+                Seniority = user.Seniority,
+                Role=user.Role
             };
         }
 

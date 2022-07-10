@@ -28,6 +28,9 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Entities
         public Guid[] Interests { get; set; }
 
         public Seniority Seniority { get; set; }
+
+        public Role Role { get; set; }
+
         public static UserEntity ToUserEntity(User user)
         {
             return new UserEntity
@@ -50,7 +53,8 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Entities
                 WorkExperiences = WorkExperienceEntity.ToWorkExperienceEntities(user.WorkExperiences),
                 Skills = user.Skills,
                 Interests = user.Interests,
-                Seniority=user.Seniority
+                Seniority=user.Seniority,
+                Role=user.Role
             };
         }
         public User ToUser()
@@ -58,7 +62,7 @@ namespace Dislinkt.Profile.Persistance.MongoDB.Entities
                 this.DateOfBirth, this.Address, this.City, this.Country, this.PhoneNumber, this.Gender, this.IsApproved,
                 this.Status, this.Educations == null ? Array.Empty<Education>() : this.Educations.Select(p => p.ToEducation()).ToArray(),
                 this.WorkExperiences == null ? Array.Empty<WorkExperience>() : this.WorkExperiences.Select(p => p.ToWorkExperience()).ToArray(),
-                this.Skills ?? Array.Empty<Guid>(), this.Interests ?? Array.Empty<Guid>(),this.Seniority);
+                this.Skills ?? Array.Empty<Guid>(), this.Interests ?? Array.Empty<Guid>(),this.Seniority,this.Role);
 
     }
 }

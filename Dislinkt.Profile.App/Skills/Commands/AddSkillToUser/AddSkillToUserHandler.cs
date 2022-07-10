@@ -24,7 +24,7 @@ namespace Dislinkt.Profile.App.Skills.Commands.AddSkillToUser
             await _userRepository.AddSkillAsync(new Domain.Users.User(existingUser.Id, existingUser.FirstName, existingUser.LastName,
                 existingUser.Username, existingUser.Biography, existingUser.EmailAddress, existingUser.Password, existingUser.DateOfBirth, existingUser.Address,
                 existingUser.City, existingUser.Country, existingUser.PhoneNumber, existingUser.Gender, existingUser.IsApproved, existingUser.Status,
-                existingUser.Educations, existingUser.WorkExperiences, updatedSkills, existingUser.Interests,existingUser.Seniority));
+                existingUser.Educations, existingUser.WorkExperiences, updatedSkills, existingUser.Interests,existingUser.Seniority,existingUser.Role));
 
             return true;
         }
