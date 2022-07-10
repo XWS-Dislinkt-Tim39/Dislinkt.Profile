@@ -16,7 +16,6 @@
             Delete existing user
             </summary>
             <returns>user</returns>
-            /// <param name="deleteUserData">for user</param>
         </member>
         <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.UpdateUserAsync(Dislinkt.Profile.Application.UpdateUserData)">
             <summary>

@@ -78,18 +78,18 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [HttpPost]
         [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/register-user")]
-        public async Task<bool> RegisterUserAsync(UserData userData)
+        public async Task<User> RegisterUserAsync(UserData userData)
         {
             var actionName = ControllerContext.ActionDescriptor.DisplayName;
             using var scope = _tracer.BuildSpan(actionName).StartActive(true);
 
             var result = await _mediator.Send(new RegisterUserCommand(userData));
 
-            if (result == null) return false;
+            if (result == null) return null;
 
             //_messageProducer.SendRegistrationMessage(userData);
 
-            var channel = GrpcChannel.ForAddress("https://localhost:5001/");
+           /* var channel = GrpcChannel.ForAddress("https://localhost:5001/");
             var client = new Greeter.GreeterClient(channel);
 
             var reply = client.SayHello(new HelloRequest { Id = result.Id.ToString(), Username = userData.Username, Status = 1 });
@@ -97,12 +97,12 @@ namespace Dislinkt.Profile.WebApi.Controllers
             if (!reply.Successful)
             {
                 Debug.WriteLine("Doslo je do greske prilikom upisa u Neo4j");
-                return false;
+                return null;
             }
 
-            Debug.WriteLine("Uspesno prosledjen na registraciju u Neo4j -- " + reply.Message);
+            Debug.WriteLine("Uspesno prosledjen na registraciju u Neo4j -- " + reply.Message);*/
 
-            var channel2 = GrpcChannel.ForAddress("https://localhost:5002/");
+            /*var channel2 = GrpcChannel.ForAddress("https://localhost:5002/");
             var client2 = new notificationSettingsGreeter.notificationSettingsGreeterClient(channel2);
 
             var reply2 = client2.CreateSettings(new NotificationSettingsRequest { UserId = result.Id.ToString(), MessageOn=true,PostOn=true,JobOn=true,FriendRequestOn=true});
@@ -110,24 +110,24 @@ namespace Dislinkt.Profile.WebApi.Controllers
             if (!reply2.Successful)
             {
                 Debug.WriteLine("Doslo je do greske prilikom kreiranja notifikacija za usera");
-                return false;
+                return null;
             }
+            
+            Debug.WriteLine("Uspesno prosledjen na registraciju u notifikacijama -- " + reply2.Message);*/
 
-            Debug.WriteLine("Uspesno prosledjen na registraciju u notifikacijama -- " + reply2.Message);
-
-            var channel3 = GrpcChannel.ForAddress("https://localhost:5003/");
+            /*var channel3 = GrpcChannel.ForAddress("https://localhost:5003/");
             var client3 = new addActivityGreeter.addActivityGreeterClient(channel3);
             var reply3 = client3.addActivity(new ActivityRequest { UserId = result.Id.ToString(), Text = "Sucessfully registered", Type = "Registration", Date = DateTime.Now.ToString() });
 
             if (!reply3.Successful)
             {
                 Debug.WriteLine("Doslo je do greske prilikom kreiranja eventa za admina");
-                return false;
+                return null;
             }
 
-            Debug.WriteLine("Uspesno prosledjen na dashboard kod admina-- " + reply3.Message);
+            Debug.WriteLine("Uspesno prosledjen na dashboard kod admina-- " + reply3.Message);*/
 
-            return true;
+            return result;
 
 
 
@@ -136,10 +136,9 @@ namespace Dislinkt.Profile.WebApi.Controllers
         /// Delete existing user
         /// </summary>
         /// <returns>user</returns>
-        /// /// <param name="deleteUserData">for user</param>
         [HttpDelete]
         [SwaggerOperation(Tags = new[] { ApiTag })]
-        [Route("/delete-user")]
+        [Route("/delete-user/{id}")]
         public async Task RemoveProduct(Guid id)
         {
             var actionName = ControllerContext.ActionDescriptor.DisplayName;
