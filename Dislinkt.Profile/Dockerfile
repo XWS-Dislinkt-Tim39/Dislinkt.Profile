@@ -16,7 +16,7 @@ COPY ["./Dislinkt.Profile/Dislinkt.Profile.Persistance.MongoDB/Dislinkt.Profile.
 COPY ["./Dislinkt.Profile/Dislinkt.Profile.RabbitMQ/Dislinkt.Profile.RabbitMQ.csproj", "Dislinkt.Profile.RabbitMQ/"]
 
 COPY . .
-WORKDIR "/src/Dislinkt.Profile"
+WORKDIR "./Dislinkt.Profile/Dislinkt.Profile"
 RUN dotnet build "Dislinkt.Profile.WebApi.csproj" -c Release -o /app/build
 
 FROM build AS publish
