@@ -116,7 +116,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
 
             var channel3 = GrpcChannel.ForAddress("https://localhost:5003/");
             var client3 = new addActivityGreeter.addActivityGreeterClient(channel3);
-            var reply3 = client3.addActivity(new ActivityRequest { UserId = result.Id.ToString(), Text = "Sucessfully registered", Type = "Registration", Date = DateTime.Now.AddHours(2).ToString() });
+            var reply3 = client3.addActivity(new ActivityRequest { UserId = result.Id.ToString(), Text = "Sucessfully registered", Type = "Registration", Date = DateTime.Now.ToString() });
 
             if (!reply3.Successful)
             {
