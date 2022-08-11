@@ -14,6 +14,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Profile.Core", "Dislinkt.Profile.Core\Dislinkt.Profile.Core.csproj", "{9F19F507-05BA-487A-85A7-1147E89E00E3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Profile.App", "Dislinkt.Profile.App\Dislinkt.Profile.App.csproj", "{25D1E3FA-7351-4C4C-9ADA-D83690C5B2C7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A0D5730E-58A0-475C-852C-E4282FDCF172} = {A0D5730E-58A0-475C-852C-E4282FDCF172}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Profile.RabbitMQ", "Dislinkt.Profile.RabbitMQ\Dislinkt.Profile.RabbitMQ.csproj", "{CCBC3A9B-43A5-4139-8153-C99BA35909ED}"
 EndProject

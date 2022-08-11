@@ -32,7 +32,7 @@ namespace Dislinkt.Profile.App.RegisterUser.Commands
                 request.Request.EmailAddress, BitConverter.ToString(SHA256.Create().ComputeHash(Encoding.ASCII.GetBytes(request.Request.Password))), request.Request.DateOfBirth, request.Request.Address, request.Request.City, request.Request.Country,
                 request.Request.PhoneNumber, (Domain.Users.Gender)request.Request.Gender, 
                 true, Domain.Users.VisibilityStatus.Public, Array.Empty<Education>(), 
-                Array.Empty<WorkExperience>(), Array.Empty<Guid>(), Array.Empty<Guid>(), request.Request.Seniority,Role.User));
+                Array.Empty<WorkExperience>(), Array.Empty<Guid>(), Array.Empty<Guid>(), MapSeniorityData(request.Request.Seniority),Role.User));
            
             var newUser = await _userRepository.GetByEmailAddressAndUsernameAsync(request.Request.EmailAddress, request.Request.Username);
 
@@ -44,6 +44,14 @@ namespace Dislinkt.Profile.App.RegisterUser.Commands
 
             //SendEmailViaWebApi(request.Request.EmailAddress,id);
             return newUser;
+        }
+        private Seniority MapSeniorityData(SeniorityData seniorityData)
+        {
+            if (seniorityData == SeniorityData.Junior) return Seniority.Junior;
+            if (seniorityData == SeniorityData.Medior) return Seniority.Medior;
+            if (seniorityData == SeniorityData.Senior) return Seniority.Senior;
+
+            return Seniority.Junior;
         }
         private void SendEmailViaWebApi(string receiverEmailAddress,string id)
         {

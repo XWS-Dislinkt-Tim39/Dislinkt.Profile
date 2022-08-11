@@ -24,13 +24,21 @@ namespace Dislinkt.Profile.App.WorkExperiences.Commands
            // if (existingWorkExperience == null) return null;
 
             var updatedWorkExperience = new WorkExperience(request.Request.Id, request.Request.UserId, request.Request.NameOfCompany, request.Request.FieldOfWork,
-                request.Request.StartDate, request.Request.EndDate, request.Request.Description, request.Request.Seniority
+                request.Request.StartDate, request.Request.EndDate, request.Request.Description, MapSeniorityData(request.Request.Seniority)
                 );
 
 
             await _experienceRepository.UpdateWorkExperienceAsync(request.Request);
 
             return updatedWorkExperience;
+        }
+        private Seniority MapSeniorityData(SeniorityData seniorityData)
+        {
+            if (seniorityData == SeniorityData.Junior) return Seniority.Junior;
+            if (seniorityData == SeniorityData.Medior) return Seniority.Medior;
+            if (seniorityData == SeniorityData.Senior) return Seniority.Senior;
+
+            return Seniority.Junior;
         }
     }
 }

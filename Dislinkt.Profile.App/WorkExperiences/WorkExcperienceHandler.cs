@@ -3,6 +3,7 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Linq;
+using Dislinkt.Profile.Domain.Users;
 
 namespace Dislinkt.Profile.App.WorkExperiences
 {
@@ -20,7 +21,7 @@ namespace Dislinkt.Profile.App.WorkExperiences
             if (existingUser == null) return false;
 
             var updatedWorkExperience = existingUser.WorkExperiences.Append(new Domain.Users.WorkExperience(System.Guid.NewGuid(), request.Request.UserId, request.Request.NameOfCompany,
-                request.Request.FieldOfWork, request.Request.StartDate, request.Request.EndDate, request.Request.Description, request.Request.Seniority));
+                request.Request.FieldOfWork, request.Request.StartDate, request.Request.EndDate, request.Request.Description, MapSeniorityData(request.Request.Seniority)));
 
             await _userRepository.AddWorkExperienceAsync(new Domain.Users.User(existingUser.Id, existingUser.FirstName, existingUser.LastName,
                 existingUser.Username, existingUser.Biography, existingUser.EmailAddress, existingUser.Password, existingUser.DateOfBirth, existingUser.Address,
@@ -28,6 +29,14 @@ namespace Dislinkt.Profile.App.WorkExperiences
                 existingUser.Educations, updatedWorkExperience.ToArray(), existingUser.Skills, existingUser.Interests,existingUser.Seniority,existingUser.Role));
 
             return true;
+        }
+        private Seniority MapSeniorityData(SeniorityData seniorityData)
+        {
+            if (seniorityData == SeniorityData.Junior) return Seniority.Junior;
+            if (seniorityData == SeniorityData.Medior) return Seniority.Medior;
+            if (seniorityData == SeniorityData.Senior) return Seniority.Senior;
+
+            return Seniority.Junior;
         }
     }
 }

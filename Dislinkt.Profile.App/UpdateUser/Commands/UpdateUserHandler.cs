@@ -24,11 +24,19 @@ namespace Dislinkt.Profile.App.UpdateUser.Commands
                request.Request.Biography, request.Request.EmailAddress, existingUser.Password, request.Request.DateOfBirth, request.Request.Address, request.Request.City,
                 request.Request.Country, request.Request.PhoneNumber, (Gender)request.Request.Gender, 
                 existingUser.IsApproved, existingUser.Status, existingUser.Educations, 
-                existingUser.WorkExperiences, existingUser.Skills, existingUser.Interests,request.Request.Seniority,Role.User);
+                existingUser.WorkExperiences, existingUser.Skills, existingUser.Interests,MapSeniorityData(request.Request.Seniority),Role.User);
 
             await _userRepository.UpdateUserAsync(updatedUser);
 
             return updatedUser;
+        }
+        private Seniority MapSeniorityData(SeniorityData seniorityData)
+        {
+            if (seniorityData == SeniorityData.Junior) return Seniority.Junior;
+            if (seniorityData == SeniorityData.Medior) return Seniority.Medior;
+            if (seniorityData == SeniorityData.Senior) return Seniority.Senior;
+
+            return Seniority.Junior;
         }
     }
 }
