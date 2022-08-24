@@ -250,7 +250,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         [Authorize]
         [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/add-new-skill")]
-        public async Task<bool> AddNewSkill(SkillAddedData skillAddedData)
+        public async Task<Skill> AddNewSkill(SkillAddedData skillAddedData)
         {
             var actionName = ControllerContext.ActionDescriptor.DisplayName;
             using var scope = _tracer.BuildSpan(actionName).StartActive(true);
