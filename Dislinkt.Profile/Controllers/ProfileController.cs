@@ -129,7 +129,8 @@ namespace Dislinkt.Profile.WebApi.Controllers
 
             Debug.WriteLine("Uspesno prosledjen na dashboard kod admina-- " + reply3.Message);*/
 
-            var channel4 = GrpcChannel.ForAddress("https://localhost:5004/");
+
+            /*var channel4 = GrpcChannel.ForAddress("https://localhost:5004/"); // podesiti kanal lokalno
             var client4 = new AddSkillGreeter.AddSkillGreeterClient(channel4);
 
             var reply4 = client4.AddSkill(new AddSkillRequest { Id = result.Id.ToString(), Name = userData.Username });
@@ -140,7 +141,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
                 return null;
             }
 
-            Debug.WriteLine("Uspesno prosledjen na registraciju u Neo4j (Jobs) -- " + reply4.Message);
+            Debug.WriteLine("Uspesno prosledjen na registraciju u Neo4j (Jobs) -- " + reply4.Message);*/
 
             return result;
         }
