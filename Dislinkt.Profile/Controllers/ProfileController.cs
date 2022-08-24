@@ -103,7 +103,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
                  return null;
              }
 
-             Debug.WriteLine("Uspesno prosledjen na registraciju u Neo4j (Connections) -- " + reply.Message);*/
+             Debug.WriteLine("Successfully passed on for registration to Neo4j (Connections) -- " + reply.Message);*/
 
             /*var channel2 = GrpcChannel.ForAddress("https://localhost:5002/");
             var client2 = new notificationSettingsGreeter.notificationSettingsGreeterClient(channel2);
@@ -116,7 +116,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
                 return null;
             }
             
-            Debug.WriteLine("Uspesno prosledjen na registraciju u notifikacijama -- " + reply2.Message);*/
+            Debug.WriteLine("Successfully passed on for registration to notifications -- " + reply2.Message);*/
 
             /*var channel3 = GrpcChannel.ForAddress("https://localhost:5003/");
             var client3 = new addActivityGreeter.addActivityGreeterClient(channel3);
@@ -131,7 +131,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
             Debug.WriteLine("Uspesno prosledjen na dashboard kod admina-- " + reply3.Message);*/
 
 
-            var channel4 = GrpcChannel.ForAddress("https://localhost:5004/"); // podesiti kanal lokalno
+            /*var channel4 = GrpcChannel.ForAddress("https://localhost:5004/"); // podesiti kanal lokalno
             var client4 = new AddUserJobsGreeter.AddUserJobsGreeterClient(channel4);
 
             var reply4 = client4.AddUserJobs(new AddUserJobsRequest { Id = result.Id.ToString(), Name = userData.Username, Seniority = (int)result.Seniority});
@@ -142,20 +142,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
                 return null;
             }
 
-            Debug.WriteLine("Uspesno prosledjen na registraciju u Neo4j (Jobs) -- " + reply4.Message);
-
-            /*var channel4 = GrpcChannel.ForAddress("https://localhost:5004/"); // podesiti kanal lokalno
-            var client4 = new AddSkillGreeter.AddSkillGreeterClient(channel4);
-
-            var reply4 = client4.AddSkill(new AddSkillRequest { Id = result.Id.ToString(), Name = userData.Username });
-
-            if (!reply4.Successful)
-            {
-                Debug.WriteLine("Doslo je do greske prilikom upisa u Neo4j (Jobs)");
-                return null;
-            }
-
-            Debug.WriteLine("Uspesno prosledjen na registraciju u Neo4j (Jobs) -- " + reply4.Message);*/
+            Debug.WriteLine("Successfully passed on for registration to Neo4j (Jobs) -- " + reply4.Message);*/
 
             return result;
         }
@@ -267,6 +254,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
         {
             var actionName = ControllerContext.ActionDescriptor.DisplayName;
             using var scope = _tracer.BuildSpan(actionName).StartActive(true);
+
             return await _mediator.Send(new NewSkillCommand(skillAddedData));
 
         }
@@ -283,6 +271,20 @@ namespace Dislinkt.Profile.WebApi.Controllers
         {
             var actionName = ControllerContext.ActionDescriptor.DisplayName;
             using var scope = _tracer.BuildSpan(actionName).StartActive(true);
+            /*var channel = GrpcChannel.ForAddress("https://localhost:5004"); // podesiti kanal lokalno
+            var client = new AddSkillGreeter.AddSkillGreeterClient(channel);
+
+            var reply = client.AddSkill(new AddSkillRequest { UserId = skillData.UserId.ToString(), SkillId = skillData.Id.ToString()});
+
+            if (!reply.Successful)
+            {
+                Debug.WriteLine("Doslo je do greske prilikom upisa u Neo4j (Jobs)");
+                return false;
+            }
+
+            Debug.WriteLine("Successfully passed skill on for registration to Neo4j (Jobs) -- " + reply.Message);*/
+
+            
             return await _mediator.Send(new AddSkillToUserCommand(skillData));
 
         }

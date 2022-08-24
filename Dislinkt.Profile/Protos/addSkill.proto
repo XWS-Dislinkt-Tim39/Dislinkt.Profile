@@ -9,8 +9,8 @@ service AddSkillGreeter {
 }
 
 message AddSkillRequest {
-	string Id = 1;
-	string Name = 2;
+	string UserId = 1;
+	string SkillId = 2;
 }
 
 message AddSkillReply {
