@@ -34,9 +34,12 @@
   </ItemGroup>   
   <ItemGroup>  
   <Protobuf Remove="Protos\addActivity.proto" />  
-  </ItemGroup> 
+  </ItemGroup>
+	<ItemGroup>
+        <Protobuf Remove="Protos\addSkill.proto" />
+	</ItemGroup>
 
-  <ItemGroup>
+	<ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.21.1" />
     <PackageReference Include="Grpc.Net.Client" Version="2.46.0" />
     <PackageReference Include="Grpc.Tools" Version="2.46.3">
@@ -82,7 +85,10 @@
   </ItemGroup> 
   <ItemGroup>  
   <Protobuf Include="Protos\addActivity.proto" GrpcServices="Client" />  
-  </ItemGroup> 
+  </ItemGroup>
+	<ItemGroup>
+        <Protobuf Include="Protos\addSkill.proto" GrpcServices="Client" />
+	</ItemGroup>
 
 
 </Project>

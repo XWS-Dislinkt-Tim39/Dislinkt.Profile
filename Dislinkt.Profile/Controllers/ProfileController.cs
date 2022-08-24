@@ -34,7 +34,6 @@ using Dislinkt.Profile.App.Interests.Commands.GetUserInterests;
 using Dislinkt.Profile.App.Interests.Commands.RemoveInterestFromUser;
 using Dislinkt.Profile.App.Skills.RemoveSkillFromUser.Commands;
 using Grpc.Net.Client;
-using GrpcService;
 using Microsoft.Extensions.Options;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
@@ -47,6 +46,9 @@ using GrpcNotificationService;
 using OpenTracing;
 using GrpcAddActivityService;
 using Dislinkt.Profile.App.Users.Commands.DeleteUser;
+//using Dislinkt.Profile.WebApi.Protos;
+using GrpcAddSkillService;
+using Greeter = GrpcService.Greeter;
 
 namespace Dislinkt.Profile.WebApi.Controllers
 {
@@ -89,18 +91,18 @@ namespace Dislinkt.Profile.WebApi.Controllers
 
             //_messageProducer.SendRegistrationMessage(userData);
 
-           /* var channel = GrpcChannel.ForAddress("https://localhost:5001/");
-            var client = new Greeter.GreeterClient(channel);
+            /* var channel = GrpcChannel.ForAddress("https://localhost:5001/");
+             var client = new Greeter.GreeterClient(channel);
 
-            var reply = client.SayHello(new HelloRequest { Id = result.Id.ToString(), Username = userData.Username, Status = 1 });
+             var reply = client.SayHello(new HelloRequest { Id = result.Id.ToString(), Username = userData.Username, Status = 1 });
 
-            if (!reply.Successful)
-            {
-                Debug.WriteLine("Doslo je do greske prilikom upisa u Neo4j");
-                return null;
-            }
+             if (!reply.Successful)
+             {
+                 Debug.WriteLine("Doslo je do greske prilikom upisa u Neo4j (Connections)");
+                 return null;
+             }
 
-            Debug.WriteLine("Uspesno prosledjen na registraciju u Neo4j -- " + reply.Message);*/
+             Debug.WriteLine("Uspesno prosledjen na registraciju u Neo4j (Connections) -- " + reply.Message);*/
 
             /*var channel2 = GrpcChannel.ForAddress("https://localhost:5002/");
             var client2 = new notificationSettingsGreeter.notificationSettingsGreeterClient(channel2);
@@ -127,10 +129,20 @@ namespace Dislinkt.Profile.WebApi.Controllers
 
             Debug.WriteLine("Uspesno prosledjen na dashboard kod admina-- " + reply3.Message);*/
 
+            var channel4 = GrpcChannel.ForAddress("https://localhost:5004/");
+            var client4 = new AddSkillGreeter.AddSkillGreeterClient(channel4);
+
+            var reply4 = client4.AddSkill(new AddSkillRequest { Id = result.Id.ToString(), Name = userData.Username });
+
+            if (!reply4.Successful)
+            {
+                Debug.WriteLine("Doslo je do greske prilikom upisa u Neo4j (Jobs)");
+                return null;
+            }
+
+            Debug.WriteLine("Uspesno prosledjen na registraciju u Neo4j (Jobs) -- " + reply4.Message);
+
             return result;
-
-
-
         }
         /// <summary>
         /// Delete existing user
