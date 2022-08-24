@@ -4,19 +4,15 @@ option csharp_namespace = "GrpcAddSkillService";
 
 package AddNewSkill;
 
-// The greeting service definition.
 service AddSkillGreeter {
-	// Sends a greeting
 	rpc AddSkill (AddSkillRequest) returns (AddSkillReply);
 }
 
-// The request message containing the user's name.
 message AddSkillRequest {
 	string Id = 1;
 	string Name = 2;
 }
 
-// The response message containing the greetings.
 message AddSkillReply {
 	bool successful = 1;
 	string message = 2;

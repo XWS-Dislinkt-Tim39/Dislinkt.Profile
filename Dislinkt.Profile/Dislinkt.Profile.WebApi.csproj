@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -37,6 +37,9 @@
   </ItemGroup>
 	<ItemGroup>
         <Protobuf Remove="Protos\addSkill.proto" />
+	</ItemGroup>
+	<ItemGroup>
+		<Protobuf Remove="Protos\addUserJobs.proto" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -88,6 +91,9 @@
   </ItemGroup>
 	<ItemGroup>
         <Protobuf Include="Protos\addSkill.proto" GrpcServices="Client" />
+	</ItemGroup>
+	<ItemGroup>
+        <Protobuf Include="Protos\addUserJobs.proto" GrpcServices="Client" />
 	</ItemGroup>
 
 

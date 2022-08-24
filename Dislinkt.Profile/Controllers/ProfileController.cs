@@ -45,6 +45,7 @@ using System.Security.Cryptography;
 using GrpcNotificationService;
 using OpenTracing;
 using GrpcAddActivityService;
+using GrpcAddUserJobsService;
 using Dislinkt.Profile.App.Users.Commands.DeleteUser;
 //using Dislinkt.Profile.WebApi.Protos;
 using GrpcAddSkillService;
@@ -129,6 +130,19 @@ namespace Dislinkt.Profile.WebApi.Controllers
 
             Debug.WriteLine("Uspesno prosledjen na dashboard kod admina-- " + reply3.Message);*/
 
+
+            var channel4 = GrpcChannel.ForAddress("https://localhost:5004/"); // podesiti kanal lokalno
+            var client4 = new AddUserJobsGreeter.AddUserJobsGreeterClient(channel4);
+
+            var reply4 = client4.AddUserJobs(new AddUserJobsRequest { Id = result.Id.ToString(), Name = userData.Username, Seniority = (int)result.Seniority});
+
+            if (!reply4.Successful)
+            {
+                Debug.WriteLine("Doslo je do greske prilikom upisa u Neo4j (Jobs)");
+                return null;
+            }
+
+            Debug.WriteLine("Uspesno prosledjen na registraciju u Neo4j (Jobs) -- " + reply4.Message);
 
             /*var channel4 = GrpcChannel.ForAddress("https://localhost:5004/"); // podesiti kanal lokalno
             var client4 = new AddSkillGreeter.AddSkillGreeterClient(channel4);
