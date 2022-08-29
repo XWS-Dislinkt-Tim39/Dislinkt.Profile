@@ -10,7 +10,7 @@ service UpdateSeniorityGreeter {
 
 message UpdateSeniorityRequest {
 	string Id = 1;
-	int32 Seniority = 3;
+	int32 Seniority = 2;
 }
 
 message UpdateSeniorityReply {
