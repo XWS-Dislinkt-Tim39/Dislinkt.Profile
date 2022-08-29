@@ -46,6 +46,7 @@ using GrpcNotificationService;
 using OpenTracing;
 using GrpcAddActivityService;
 using GrpcAddUserJobsService;
+using GrpcUpdateSeniorityService;
 using Dislinkt.Profile.App.Users.Commands.DeleteUser;
 //using Dislinkt.Profile.WebApi.Protos;
 using GrpcAddSkillService;
@@ -176,10 +177,10 @@ namespace Dislinkt.Profile.WebApi.Controllers
 
             if (updateUserData.SeniorityUpdated)
             {
-                var channel = GrpcChannel.ForAddress("https://localhost:5004/"); // podesiti kanal lokalno
-                var client = new UpdateSeniorityGreeter.AddUserJobsGreeterClient(channel);
+                /*var channel = GrpcChannel.ForAddress("https://localhost:5004/"); // podesiti kanal lokalno
+                var client = new UpdateSeniorityGreeter.UpdateSeniorityGreeterClient(channel);
 
-                var reply = client.AddUserJobs(new AddUserJobsRequest { Id = updateUserData.Id.ToString(), Seniority = (int)updateUserData.Seniority});
+                var reply = client.UpdateSeniority(new UpdateSeniorityRequest { Id = updateUserData.Id.ToString(), Seniority = (int)updateUserData.Seniority});
 
                 if (!reply.Successful)
                 {
@@ -187,7 +188,7 @@ namespace Dislinkt.Profile.WebApi.Controllers
                     return null;
                 }
 
-                Debug.WriteLine("Successfully passed on for seniority update to Neo4j (Jobs) -- " + reply.Message);
+                Debug.WriteLine("Successfully passed on for seniority update to Neo4j (Jobs) -- " + reply.Message);*/
 
             }
 
