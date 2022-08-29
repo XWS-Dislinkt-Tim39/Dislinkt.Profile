@@ -40,5 +40,9 @@ namespace Dislinkt.Profile.Application
         /// Seniority
         /// </summary>
         public SeniorityData Seniority { get; set; }
+        /// <summary>
+        /// Boolean that indicates if the seniority field has been updated.
+        /// </summary>
+        public bool SeniorityUpdated { get; set; }
     }
 }
