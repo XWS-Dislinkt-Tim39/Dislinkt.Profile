@@ -41,6 +41,9 @@
 	<ItemGroup>
 		<Protobuf Remove="Protos\addUserJobs.proto" />
 	</ItemGroup>
+    <ItemGroup>
+        <Protobuf Remove="Protos\updateSeniority.proto" />
+    </ItemGroup>
 
 	<ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.21.1" />
@@ -95,6 +98,8 @@
 	<ItemGroup>
         <Protobuf Include="Protos\addUserJobs.proto" GrpcServices="Client" />
 	</ItemGroup>
-
+    <ItemGroup>
+        <Protobuf Include="Protos\updateSeniority.proto" GrpcServices="Client" />
+    </ItemGroup>
 
 </Project>
