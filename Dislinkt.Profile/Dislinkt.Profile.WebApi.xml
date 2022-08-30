@@ -380,5 +380,92 @@
         <member name="M:GrpcAddActivityService.addActivityGreeter.addActivityGreeterClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)">
             <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
         </member>
+        <member name="T:GrpcAddSkillService.AddSkillReflection">
+            <summary>Holder for reflection information generated from Protos/addSkill.proto</summary>
+        </member>
+        <member name="P:GrpcAddSkillService.AddSkillReflection.Descriptor">
+            <summary>File descriptor for Protos/addSkill.proto</summary>
+        </member>
+        <member name="F:GrpcAddSkillService.AddSkillRequest.UserIdFieldNumber">
+            <summary>Field number for the "UserId" field.</summary>
+        </member>
+        <member name="F:GrpcAddSkillService.AddSkillRequest.SkillIdFieldNumber">
+            <summary>Field number for the "SkillId" field.</summary>
+        </member>
+        <member name="F:GrpcAddSkillService.AddSkillReply.SuccessfulFieldNumber">
+            <summary>Field number for the "successful" field.</summary>
+        </member>
+        <member name="F:GrpcAddSkillService.AddSkillReply.MessageFieldNumber">
+            <summary>Field number for the "message" field.</summary>
+        </member>
+        <member name="P:GrpcAddSkillService.AddSkillGreeter.Descriptor">
+            <summary>Service descriptor</summary>
+        </member>
+        <member name="T:GrpcAddSkillService.AddSkillGreeter.AddSkillGreeterClient">
+            <summary>Client for AddSkillGreeter</summary>
+        </member>
+        <member name="M:GrpcAddSkillService.AddSkillGreeter.AddSkillGreeterClient.#ctor(Grpc.Core.ChannelBase)">
+            <summary>Creates a new client for AddSkillGreeter</summary>
+            <param name="channel">The channel to use to make remote calls.</param>
+        </member>
+        <member name="M:GrpcAddSkillService.AddSkillGreeter.AddSkillGreeterClient.#ctor(Grpc.Core.CallInvoker)">
+            <summary>Creates a new client for AddSkillGreeter that uses a custom <c>CallInvoker</c>.</summary>
+            <param name="callInvoker">The callInvoker to use to make remote calls.</param>
+        </member>
+        <member name="M:GrpcAddSkillService.AddSkillGreeter.AddSkillGreeterClient.#ctor">
+            <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
+        </member>
+        <member name="M:GrpcAddSkillService.AddSkillGreeter.AddSkillGreeterClient.#ctor(Grpc.Core.ClientBase.ClientBaseConfiguration)">
+            <summary>Protected constructor to allow creation of configured clients.</summary>
+            <param name="configuration">The client configuration.</param>
+        </member>
+        <member name="M:GrpcAddSkillService.AddSkillGreeter.AddSkillGreeterClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)">
+            <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
+        </member>
+        <member name="T:GrpcAddUserJobsService.AddUserJobsReflection">
+            <summary>Holder for reflection information generated from Protos/addUserJobs.proto</summary>
+        </member>
+        <member name="P:GrpcAddUserJobsService.AddUserJobsReflection.Descriptor">
+            <summary>File descriptor for Protos/addUserJobs.proto</summary>
+        </member>
+        <member name="F:GrpcAddUserJobsService.AddUserJobsRequest.IdFieldNumber">
+            <summary>Field number for the "Id" field.</summary>
+        </member>
+        <member name="F:GrpcAddUserJobsService.AddUserJobsRequest.NameFieldNumber">
+            <summary>Field number for the "Name" field.</summary>
+        </member>
+        <member name="F:GrpcAddUserJobsService.AddUserJobsRequest.SeniorityFieldNumber">
+            <summary>Field number for the "Seniority" field.</summary>
+        </member>
+        <member name="F:GrpcAddUserJobsService.AddUserJobsReply.SuccessfulFieldNumber">
+            <summary>Field number for the "successful" field.</summary>
+        </member>
+        <member name="F:GrpcAddUserJobsService.AddUserJobsReply.MessageFieldNumber">
+            <summary>Field number for the "message" field.</summary>
+        </member>
+        <member name="P:GrpcAddUserJobsService.AddUserJobsGreeter.Descriptor">
+            <summary>Service descriptor</summary>
+        </member>
+        <member name="T:GrpcAddUserJobsService.AddUserJobsGreeter.AddUserJobsGreeterClient">
+            <summary>Client for AddUserJobsGreeter</summary>
+        </member>
+        <member name="M:GrpcAddUserJobsService.AddUserJobsGreeter.AddUserJobsGreeterClient.#ctor(Grpc.Core.ChannelBase)">
+            <summary>Creates a new client for AddUserJobsGreeter</summary>
+            <param name="channel">The channel to use to make remote calls.</param>
+        </member>
+        <member name="M:GrpcAddUserJobsService.AddUserJobsGreeter.AddUserJobsGreeterClient.#ctor(Grpc.Core.CallInvoker)">
+            <summary>Creates a new client for AddUserJobsGreeter that uses a custom <c>CallInvoker</c>.</summary>
+            <param name="callInvoker">The callInvoker to use to make remote calls.</param>
+        </member>
+        <member name="M:GrpcAddUserJobsService.AddUserJobsGreeter.AddUserJobsGreeterClient.#ctor">
+            <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
+        </member>
+        <member name="M:GrpcAddUserJobsService.AddUserJobsGreeter.AddUserJobsGreeterClient.#ctor(Grpc.Core.ClientBase.ClientBaseConfiguration)">
+            <summary>Protected constructor to allow creation of configured clients.</summary>
+            <param name="configuration">The client configuration.</param>
+        </member>
+        <member name="M:GrpcAddUserJobsService.AddUserJobsGreeter.AddUserJobsGreeterClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)">
+            <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
+        </member>
     </members>
 </doc>
