@@ -1,4 +1,4 @@
-﻿using Dislinkt.Profile.App.Educations.Commands;
+using Dislinkt.Profile.App.Educations.Commands;
 using Dislinkt.Profile.App.Interests.Commands.AddInterestToUser;
 using Dislinkt.Profile.App.Interests.Commands.GetAllInterests;
 using Dislinkt.Profile.App.Interests.Commands.NewInterest;
@@ -72,7 +72,12 @@ namespace Dislinkt.Profile.WebApi.Controllers
             _tracer = tracer;
 
         }
-
+        [Route("")]
+        [HttpGet]
+        public string Index()
+        {
+            return "Hello from Auth/Controller";
+        }
         /// <summary>
         /// Register new user
         /// </summary>

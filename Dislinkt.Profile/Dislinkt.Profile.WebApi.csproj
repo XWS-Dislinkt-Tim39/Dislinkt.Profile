@@ -26,6 +26,7 @@
     <DocumentationFile>C:\Users\DELL\Desktop\Profile\Dislinkt.Profile\Dislinkt.Profile\Dislinkt.Profile.WebApi.xml</DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Dislinkt.Profile' " />
   <ItemGroup>
     <None Remove="Protos\greet.proto" />
   </ItemGroup>
